@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+  
+	<parent>
+  		<groupId>org.sylrsykssoft</groupId>
+  		<artifactId>common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+  	<artifactId>common-api</artifactId>
+  	<packaging>jar</packaging>
+  	<name>${project.groupId}:${project.artifactId}</name>
+	<description>Common Api for Projet for Spring boot Aplication</description>
+	<url>${meal-buider.common.api.git.url}</url>
+  	
+	<properties>
+	    <common.api.git.url>${common.git.url}/common-api</common.api.git.url>
+	</properties>
+	
+	<dependencies>
+		
+		<!-- =========================================================== -->
+        <!-- COMPILE SCOPE -->
+        <!-- =========================================================== -->
+        
+        <!-- =========================================================== -->
+        <!-- IMPORT SCOPE -->
+        <!-- =========================================================== -->
+        
+        
+        <!-- =========================================================== -->
+        <!-- PROVIDED SCOPE -->
+        <!-- =========================================================== -->
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+        
+        <!-- =========================================================== -->
+        <!-- RUNTIME SCOPE -->
+        <!-- =========================================================== -->
+
+		<!-- =========================================================== -->
+        <!-- TEST SCOPE -->
+        <!-- =========================================================== -->
+        <dependency>
+		  <groupId>com.jayway.jsonpath</groupId>
+		  <artifactId>json-path</artifactId>
+		  <scope>test</scope>
+		</dependency>
+
+        <!-- =========================================================== -->
+        <!-- EXTERNAL DEPENDENCIES -->
+        <!-- =========================================================== -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+	    	<groupId>org.apache.commons</groupId>
+	    	<artifactId>commons-collections4</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.validation</groupId>
+		    <artifactId>validation-api</artifactId>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+		
+		<dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-data-jpa</artifactId>
+    	</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.modelmapper.extensions</groupId>
+			<artifactId>modelmapper-spring</artifactId>
+		</dependency>
+		
+	</dependencies>
+  
+</project>

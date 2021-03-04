@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	  <groupId>org.sylrsykssoft</groupId>
+	  <artifactId>meal-builder</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+  	<artifactId>meal-builder-boot</artifactId>
+  	<packaging>jar</packaging>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<description>Meal Builder Spring Boot Application</description>
+	<url>${meal-buider.common.api.git.url}</url>
+	
+	<properties>
+	    <meal-buider.api.git.url>${meal-buider.common.git.url}/meal-builder-boot</meal-buider.api.git.url>
+	    
+	    <start-class>org.sylrsykssoft.java.springboot.mealbuilder.boot.MealBuilderApplication</start-class>
+	</properties>
+	
+	<dependencies>
+	
+		<!-- =========================================================== -->
+        <!-- COMPILE SCOPE -->
+        <!-- =========================================================== -->
+        
+        <!-- =========================================================== -->
+        <!-- IMPORT SCOPE -->
+        <!-- =========================================================== -->
+        
+        
+        <!-- =========================================================== -->
+        <!-- PROVIDED SCOPE -->
+        <!-- =========================================================== -->
+        
+        <!-- =========================================================== -->
+        <!-- RUNTIME SCOPE -->
+        <!-- =========================================================== -->
+
+		<!-- =========================================================== -->
+        <!-- TEST SCOPE -->
+        <!-- =========================================================== -->
+
+        <!-- =========================================================== -->
+        <!-- EXTERNAL DEPENDENCIES -->
+        <!-- =========================================================== -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+        
+        <!-- =========================================================== -->
+        <!-- COMMON -->
+        <!-- =========================================================== -->
+	
+	
+		<!-- =========================================================== -->
+        <!-- MEAL BUILDER -->
+        <!-- =========================================================== -->
+		<dependency>
+			<groupId>org.sylrsykssoft</groupId>
+			<artifactId>meal-builder-api</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.sylrsykssoft</groupId>
+			<artifactId>meal-builder-repository</artifactId>
+		</dependency>
+
+		
+	</dependencies>
+	
+	<profiles>
+		<profile>
+		    <id>develop</id>
+		    <properties>
+		        <activatedProperties>develop</activatedProperties>
+		    </properties>
+		    <activation>
+		        <activeByDefault>true</activeByDefault>
+		    </activation>
+		</profile>
+		<profile>
+		    <id>release</id>
+		    <properties>
+		        <activatedProperties>release</activatedProperties>
+		    </properties>
+		</profile>
+	</profiles>
+	
+	<build>
+		<plugins>
+			
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+		    <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			
+		</plugins>
+		
+		<resources>
+	        <resource>
+	            <directory>src/main/resources</directory>
+	            <filtering>true</filtering>
+	        </resource>
+	    </resources>
+	</build>
+</project>

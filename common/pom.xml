@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+	<groupId>org.sylrsykssoft</groupId>
+	<artifactId>common</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<description>Development of the common utilities for "Meal Builder" application with the Spring boot framework</description>
+	<url>${common.git.url}</url>
+	
+	<developers>
+		<developer>
+			<id>${developer.id}</id>
+			<name>${developer.fullName}</name>
+			<email>${developer.email}</email>
+			<url>${developer.git.user.url}</url>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+	<scm>
+		<url>${github.meal-builder.repository.url}</url>
+		<connection>${github.meal-builder.connection}</connection>
+		<developerConnection>${github.meal-builder.developerConnection}</developerConnection>
+	</scm>
+	
+	<properties>
+		<!-- Common -->
+		<developer.id>juan.gonzalez.fernandez.jgf</developer.id>
+		<developer.name>Juan</developer.name>
+		<developer.fullName>Juan Gonz?lez Fern?ndez</developer.fullName>
+		<developer.email>juan.gonzalez.fernandez.jgf@outlook.com</developer.email>
+		
+		<!-- Git -->
+		<github.user>sylarsykes</github.user>
+		<developer.git.user.url>https://github.com/${github.user}</developer.git.user.url>
+		<github.meal-builder.repository>${project.artifactId}</github.meal-builder.repository>
+		<github.meal-builder.repository.url>http://github.com/${github.user}/${github.repository}</github.meal-builder.repository.url>
+        <github.meal-builder.connection>https://github.com/${github.user}/${github.repository}.git</github.meal-builder.connection>
+        <github.meal-builder.developerConnection>ps://github.com/${github.user}</github.meal-builder.developerConnection>
+		
+		<main.basedir>${basedir}</main.basedir>
+		<java.version>11</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<maven.compiler.source>${java.version}</maven.compiler.source>
+    	<maven.compiler.target>${java.version}</maven.compiler.target>
+    	<maven.compiler.release>${java.version}</maven.compiler.release>
+    	
+    	<maven-config.maven-deploy-plugin.skip>false</maven-config.maven-deploy-plugin.skip>
+		<maven-config.maven-eclipse-plugin.addVersionToProjectName>false</maven-config.maven-eclipse-plugin.addVersionToProjectName>
+		
+		<common.git.url>http://github.com/${github.user}/spring-boot-meal-builder/common</common.git.url>
+		
+		<!-- Meal Builder Dependencies -->
+		<common.version>0.0.1-SNAPSHOT</common.version>
+		<common.api.version>0.0.1-SNAPSHOT</common.api.version>
+		<common.util.version>0.0.1-SNAPSHOT</common.util.version>
+		
+		<!-- 3rd Library Dependencies -->
+		<!-- Apache -->
+		<commons-lang3.version>3.11</commons-lang3.version>
+		<commons-beanutils.version>1.9.4</commons-beanutils.version>
+		<commons-collections4.version>4.4</commons-collections4.version>
+		<commons-codec.version>1.15</commons-codec.version>
+		<commons-dbcp2.version>2.8.0</commons-dbcp2.version>
+		
+		<!-- Eclipse -->
+		<org.eclipse.persistence.version>2.2.1</org.eclipse.persistence.version>
+		
+		<mariadb.version>2.7.1</mariadb.version>
+		
+		<!-- Maven -->
+		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+		
+		<!-- Modelmapper -->
+		<modelmapper-spring.version>2.3.9</modelmapper-spring.version>
+		
+		<!-- Mockito -->
+		<mockito.version>3.7.7</mockito.version>
+		
+		<!-- JUnit -->
+		<junit-jupiter.version>5.7.0</junit-jupiter.version>
+		
+		<!-- Spring Boot -->
+		<spring-boot.version>2.4.3</spring-boot.version>
+		
+		<!-- Validation Api -->
+		<validation-api.version>2.0.1.Final</validation-api.version>
+	</properties>
+	
+	<dependencyManagement>
+	  	<dependencies>
+	  	
+	  		<!-- =========================================================== -->
+            <!-- COMPILE SCOPE -->
+            <!-- =========================================================== -->
+            
+            <!-- =========================================================== -->
+            <!-- IMPORT SCOPE -->
+            <!-- =========================================================== -->
+            
+            
+            <!-- =========================================================== -->
+            <!-- PROVIDED SCOPE -->
+            <!-- =========================================================== -->
+            
+            <!-- =========================================================== -->
+            <!-- RUNTIME SCOPE -->
+            <!-- =========================================================== -->
+			
+			<!-- =========================================================== -->
+            <!-- TEST SCOPE -->
+            <!-- =========================================================== -->
+			<dependency>
+			    <groupId>org.junit.jupiter</groupId>
+			    <artifactId>junit-jupiter</artifactId>
+			    <version>${junit-jupiter.version}</version>
+			    <scope>test</scope>
+			</dependency>
+	        
+	        <!-- =========================================================== -->
+            <!-- JAVA DEPENDENCIES -->
+            <!-- =========================================================== -->
+			<dependency>
+			    <groupId>javax.validation</groupId>
+			    <artifactId>validation-api</artifactId>
+			    <version>${validation-api.version}</version>
+			</dependency>
+			
+			<!-- =========================================================== -->
+            <!-- SPRING BOOT DEPENDENCIES -->
+            <!-- =========================================================== -->
+	        <dependency>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-starter-validation</artifactId>
+	            <version>${spring-boot.version}</version>
+	        </dependency>
+			
+	        <dependency>
+	      		<groupId>org.springframework</groupId>
+	      		<artifactId>spring-beans</artifactId>
+	      		<version>${spring-framework.version}</version>
+			</dependency>
+			
+	    	<dependency>
+	      		<groupId>org.springframework</groupId>
+	      		<artifactId>spring-context</artifactId>
+	      		<version>${spring-framework.version}</version>
+			</dependency>
+			
+			<dependency>
+	        	<groupId>org.springframework.boot</groupId>
+	        	<artifactId>spring-boot-starter-data-jpa</artifactId>
+	        	<version>${spring-boot.version}</version>
+	    	</dependency>
+			
+            <!-- =========================================================== -->
+            <!-- EXTERNAL DEPENDENCIES -->
+            <!-- =========================================================== -->
+            <dependency>
+			    <groupId>org.apache.commons</groupId>
+			    <artifactId>commons-lang3</artifactId>
+			    <version>${commons-lang3.version}</version>
+			</dependency>
+
+            <dependency>
+		    	<groupId>org.apache.commons</groupId>
+		    	<artifactId>commons-collections4</artifactId>
+		    	<version>${commons-collections4.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.modelmapper.extensions</groupId>
+				<artifactId>modelmapper-spring</artifactId>
+				<version>${modelmapper-spring.version}</version>
+			</dependency>
+			
+			<!-- =========================================================== -->
+	        <!-- COMMON -->
+	        <!-- =========================================================== -->        
+	        <dependency>
+			    <groupId>org.sylrsykssoft</groupId>
+			    <artifactId>common-util</artifactId>
+	        	<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.sylrsykssoft</groupId>
+			    <artifactId>common-api</artifactId>
+	        	<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+	  	</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<!-- =========================================================== -->
+		<!-- COMPILE SCOPE -->
+		<!-- =========================================================== -->
+           
+        <!-- =========================================================== -->
+        <!-- IMPORT SCOPE -->
+        <!-- =========================================================== -->
+           
+           
+        <!-- =========================================================== -->
+        <!-- PROVIDED SCOPE -->
+        <!-- =========================================================== -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+           
+        <!-- =========================================================== -->
+        <!-- RUNTIME SCOPE -->
+        <!-- =========================================================== -->
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		
+		<!-- =========================================================== -->
+		<!-- TEST SCOPE -->
+		<!-- =========================================================== -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+    					<artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter</artifactId>
+		    <scope>test</scope>
+		</dependency>
+        
+           
+        <!-- =========================================================== -->
+        <!-- EXTERNAL DEPENDENCIES -->
+        <!-- =========================================================== -->
+  	
+  	</dependencies>
+	
+	<build>
+  		<resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/application*.yml</include>
+                    <include>**/application*.yaml</include>
+                    <include>**/application*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <excludes>
+                    <exclude>**/application*.yml</exclude>
+                    <exclude>**/application*.yaml</exclude>
+                    <exclude>**/application*.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${basedir}/src/test/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/application*.yml</include>
+                    <include>**/application*.yaml</include>
+                    <include>**/application*.properties</include>
+                </includes>
+            </testResource>
+            <testResource>
+                <directory>${basedir}/src/test/resources</directory>
+                <excludes>
+                    <exclude>**/application*.yml</exclude>
+                    <exclude>**/application*.yaml</exclude>
+                    <exclude>**/application*.properties</exclude>
+                </excludes>
+            </testResource>
+        </testResources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+				<plugin>
+	                <groupId>org.codehaus.mojo</groupId>
+	                <artifactId>versions-maven-plugin</artifactId>
+	            </plugin>
+	            
+	            <plugin>
+	                <groupId>org.codehaus.mojo</groupId>
+	                <artifactId>properties-maven-plugin</artifactId>
+	                <version>${properties-maven-plugin.version}</version>
+	            </plugin>
+	            
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-surefire-plugin</artifactId>
+	                <version>${maven-surefire-plugin.version}</version>
+	            </plugin>
+				
+				<plugin>
+			        <groupId>org.apache.maven.plugins</groupId>
+			        <artifactId>maven-compiler-plugin</artifactId>
+			        <configuration>
+			        	<compilerArgs>
+	                        <arg>-parameters</arg>
+	                    </compilerArgs>
+			        	<source>${maven.compiler.source}</source>
+			        	<target>${maven.compiler.target}</target>
+			        	<release>${maven.compiler.release}</release>
+			        	<!-- Unable to use Lombok with Java 11 -->
+			        	<annotationProcessorPaths>
+			        		<annotationProcessorPath>
+		                    	<groupId>org.projectlombok</groupId>
+		                        <artifactId>lombok</artifactId>
+								<version>${lombok.version}</version>
+			        		</annotationProcessorPath>
+			        	</annotationProcessorPaths>
+			        </configuration>
+				</plugin>
+				<plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-deploy-plugin</artifactId>
+	                <configuration>
+	                    <skip>${maven-config.maven-deploy-plugin.skip}</skip>
+	                </configuration>
+	            </plugin>
+				<plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-eclipse-plugin</artifactId>
+	                <configuration>
+	                    <addVersionToProjectName>${maven-config.maven-eclipse-plugin.addVersionToProjectName}</addVersionToProjectName>
+	                </configuration>
+	            </plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
+	<modules>
+		<module>common-util</module>
+		<module>common-api</module>
+	</modules>
+</project>

@@ -1,0 +1,104 @@
+spring:
+  application:
+    name: Meal Builder
+  data:
+    rest:
+      base-path: /api/v1
+  profiles:
+    active: @activatedProperties@
+  # Show or not log for each sql query
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    database: mysql
+    hibernate:
+      # Hibernate ddl auto (create, create-drop, update): with "create-drop" the database
+      # schema will be automatically created afresh for every start of application
+      ddl-auto: create-drop
+      globally_quoted_identifiers: true
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: true
+        #dialect: org.hibernate.dialect.MariaDBDialect
+  h2:
+    console:
+      enabled: true
+  output:
+    ansi:
+      enabled: ALWAYS
+
+# ===============================
+# = SERVER
+# ===============================
+server:
+  port: 8084
+  error:
+    whitelabel:
+      enable: false
+    path: /error
+
+
+# ===============================
+# = LOGGER
+# ===============================
+logging:
+  level:
+    root: INFO
+    org:
+      springframework: WARN
+      springframework.web.client: WARN
+      springframework.cloud: WARN
+      springframework.integration: WARN
+      springframework.jdbc.core.JdbcTemplate: WARN
+      springframework.transaction: WARN  
+      apache: WARN
+      apache.commons.jexl2: ERROR
+      apache.tomcat: ERROR
+      apache.catalina: ERROR
+      # Activar para ver peticion SOAP HTTP
+      apache.http: ERROR
+      apache.kafka: WARN
+      apache.activemq: WARN
+      hibernate: WARN
+      # Activar para ver querys JPA
+      hibernate.SQL: WARN
+      # Activar para ver parametros de querys JPA
+      hibernate.type.descriptor.sql.BasicBinder: WARN
+    io:
+      app: TRACE
+    sun: WARN
+    net: WARN
+    web: DEBUG
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%"
+
+# ===============================
+# = APPLICATION
+# ===============================
+app:
+  data:
+    # ===============================
+    # DATA SOURCE
+    # ===============================
+    datasource:
+      meals:
+        driver-class-name: org.mariadb.jdbc.Driver
+        schema-name: meals
+        url: jdbc:mariadb://localhost:3306/meals
+        username: root
+        password: root
+        configuration:
+          maximum-pool-size: 30
+      drinks:
+        driver-class-name: org.mariadb.jdbc.Driver
+        schema-name: drinks
+        url: jdbc:mariadb://localhost:3306/drinks
+        username: root
+        password: root
+      sauces:
+        driver-class-name: org.mariadb.jdbc.Driver
+        schema-name: sauces
+        url: jdbc:mariadb://localhost:3306/sauces
+        username: root
+        password: root
