@@ -4,6 +4,14 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.datasource;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.MEALS_BREAD_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.MEALS_BURGER_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.MEALS_BURGER_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.MEALS_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.DessertApiConstants.MEALS_DESSERT_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.DessertApiConstants.MEALS_DESSERT_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.FoodStarterApiConstants.MEALS_FOOD_STARTER_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.FoodStarterApiConstants.MEALS_FOOD_STARTER_JPA_REPOSITORIES_MAPPING_FILE;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.COMPONENT_MODEL_SCAN;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_DATA_SOURCE_CONFIGURATION_PROPERTIES;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_DATA_SOURCE_PROPERTIES;
@@ -14,6 +22,10 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.mea
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_JPA_REPOSITORIES_ENTITY_MANAGER;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_JPA_REPOSITORIES_PERSISTENCE_UNIT;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_JPA_REPOSITORIES_TRANSACTION_MANAGER;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SaladApiConstants.MEALS_SALAD_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SaladApiConstants.MEALS_SALAD_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.MEALS_SANDWICH_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.MEALS_SANDWICH_JPA_REPOSITORIES_MAPPING_FILE;
 
 import java.util.Map;
 
@@ -68,8 +80,23 @@ public class MealsConfiguration {
 			EntityManagerFactoryBuilder eMFactoryBuilder,
 			@Qualifier(MEALS_JPA_REPOSITORIES_DATA_SOURCE_CUSTOM_PROPERTIES) final Map<String, String> properties,
 			@Qualifier(MEALS_JPA_REPOSITORIES_DATA_SOURCE) DataSource dataSource) {
-		return eMFactoryBuilder.dataSource(dataSource).packages(COMPONENT_MODEL_SCAN)
-				.persistenceUnit(MEALS_JPA_REPOSITORIES_PERSISTENCE_UNIT).properties(properties).build();
+		return eMFactoryBuilder.dataSource(dataSource)
+				.packages(COMPONENT_MODEL_SCAN)
+				.persistenceUnit(MEALS_JPA_REPOSITORIES_PERSISTENCE_UNIT)
+				.mappingResources(MEALS_BURGER_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_BURGER_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_BREAD_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_DESSERT_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_DESSERT_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_FOOD_STARTER_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_FOOD_STARTER_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_SALAD_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_SALAD_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_SANDWICH_JPA_REPOSITORIES_MAPPING_FILE,
+						MEALS_SANDWICH_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE)
+				.properties(properties)
+				.build();
 	}
 
     @Primary

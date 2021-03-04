@@ -4,7 +4,7 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.model.sauces;
 
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientsApiConstants.INGREDIENT_ID_JOIN_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_ID_JOIN_COLUMN;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SauceApiConstants.REPOSITORY_SAUCE_INGREDIENT_ENTITY_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SauceApiConstants.REPOSITORY_SAUCE_INGREDIENT_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SauceApiConstants.SAUCE_ID_JOIN_COLUMN;

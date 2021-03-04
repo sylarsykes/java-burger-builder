@@ -3,7 +3,7 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals;
 
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientsApiConstants.INGREDIENT_ID_JOIN_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_ID_JOIN_COLUMN;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEAL_SCHEMA_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SaladApiConstants.REPOSITORY_SALAD_INGREDIENT_ENTITY_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SaladApiConstants.REPOSITORY_SALAD_INGREDIENT_TABLE_NAME;

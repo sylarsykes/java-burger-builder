@@ -4,12 +4,12 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals;
 
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientsApiConstants.REPOSITORY_INGREDIENT_ENTITY_NAME;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientsApiConstants.INGREDIENT_TYPE_NAME_COLUMN;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientsApiConstants.REPOSITORY_INGREDIENT_TABLE_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_TYPE_NAME_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.REPOSITORY_BURGER_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.DessertApiConstants.REPOSITORY_DESSERT_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.FoodStarterApiConstants.REPOSITORY_FOOD_STARTER_TABLE_KEY_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_REPOSITORY_INGREDIENT_ENTITY_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEAL_SCHEMA_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SaladApiConstants.REPOSITORY_SALAD_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.REPOSITORY_SANDWICH_TABLE_NAME;
@@ -28,7 +28,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
-import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientsApiConstants.IngredientType;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.IngredientType;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
 import org.sylrsykssoft.springboot.common.api.model.BaseNameModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
@@ -47,7 +47,7 @@ import lombok.experimental.SuperBuilder;
  */
 @Table(name = REPOSITORY_INGREDIENT_TABLE_NAME, schema = MEAL_SCHEMA_NAME, catalog = MEAL_SCHEMA_NAME, uniqueConstraints = {
 		@UniqueConstraint(columnNames = { INGREDIENT_TYPE_NAME_COLUMN, BASE_NAME_MODEL_NAME_NAME_COLUMN }) })
-@Entity(name = REPOSITORY_INGREDIENT_ENTITY_NAME)
+@Entity(name = MEALS_REPOSITORY_INGREDIENT_ENTITY_NAME)
 @Value
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
