@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	  <groupId>org.sylrsykssoft</groupId>
+	  <artifactId>meal-builder</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>meal-builder-repository</artifactId>
+	<packaging>jar</packaging>
+  	<name>${project.groupId}:${project.artifactId}</name>
+	<description>Common Api for Projet for Spring boot Aplication</description>
+	<url>${meal-buider.common.api.git.url}</url>
+	
+	<properties>
+	    <meal-buider.api.git.url>${meal-buider.common.git.url}/meal-builder-repository</meal-buider.api.git.url>
+	</properties>
+	
+	<dependencies>
+		
+		<!-- =========================================================== -->
+        <!-- COMPILE SCOPE -->
+        <!-- =========================================================== -->
+        
+        <!-- =========================================================== -->
+        <!-- IMPORT SCOPE -->
+        <!-- =========================================================== -->
+        
+        
+        <!-- =========================================================== -->
+        <!-- PROVIDED SCOPE -->
+        <!-- =========================================================== -->
+        
+        <!-- =========================================================== -->
+        <!-- RUNTIME SCOPE -->
+        <!-- =========================================================== -->
+
+		<!-- =========================================================== -->
+        <!-- TEST SCOPE -->
+        <!-- =========================================================== -->
+
+        <!-- =========================================================== -->
+        <!-- EXTERNAL DEPENDENCIES -->
+        <!-- =========================================================== -->
+		<dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-data-jpa</artifactId>
+    	</dependency>
+    	
+    	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        
+        <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		</dependency>
+		
+		<dependency>
+	   		<groupId>org.mariadb.jdbc</groupId>
+	   		<artifactId>mariadb-java-client</artifactId>
+		</dependency>
+        
+        <!-- =========================================================== -->
+        <!-- COMMON -->
+        <!-- =========================================================== -->
+		<dependency>
+		    <groupId>org.sylrsykssoft</groupId>
+		    <artifactId>common-util</artifactId>
+		</dependency>
+		
+		<!-- =========================================================== -->
+        <!-- MEAL BUILDER -->
+        <!-- =========================================================== -->
+		<dependency>
+			<groupId>org.sylrsykssoft</groupId>
+			<artifactId>meal-builder-api</artifactId>
+		</dependency>
+		
+	</dependencies>
+</project>
