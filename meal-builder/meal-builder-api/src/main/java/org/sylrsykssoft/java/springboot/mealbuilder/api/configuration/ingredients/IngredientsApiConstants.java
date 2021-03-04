@@ -29,23 +29,5 @@ public class IngredientsApiConstants {
 	public static final String INGREDIENTS_JPA_REPOSITORIES_ENTITY_MANAGER = INGREDIENT_SCHEMA_NAME + "EntityManagerFactory";
 	public static final String INGREDIENTS_JPA_REPOSITORIES_PERSISTENCE_UNIT = INGREDIENT_SCHEMA_NAME + "PersistenceUnit";
 	public static final String INGREDIENTS_JPA_REPOSITORIES_TRANSACTION_MANAGER = INGREDIENT_SCHEMA_NAME + "EntityTransactionManager";
-
-	// INGREDIENT //
-	public static final String REPOSITORY_INGREDIENT_TABLE_NAME = "ingredient";
-	public static final String REPOSITORY_INGREDIENT_ENTITY_NAME = "DIngredient";
-	public static final String INGREDIENT_ID_JOIN_COLUMN = "ingredient_id";
-	
-	public enum IngredientType {
-		FOOD_STARTER, SALAD, BURGER, SANDWICH, SAUCE, COCKTAIL, DESSERT
-		
-		// Check exists use EnumUtils.isValidEnum
-	}
-	
-	public static final String INGREDIENT_TYPE_NAME_COLUMN = "type";
-	public static final String INGREDIENT_COUNT_NAME_COLUMN = "count";
-	public static final String INGREDIENT_POSITION_NAME_COLUMN = "position";
-	public static final String INGREDIENT_CREATED_AT_NAME_COLUMN = "created_at";
-	
-	
 	
 }

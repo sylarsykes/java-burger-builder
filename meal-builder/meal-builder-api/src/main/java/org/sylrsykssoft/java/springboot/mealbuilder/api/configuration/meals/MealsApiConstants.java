@@ -4,6 +4,8 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_ENTITY_NAME;
+
 import lombok.experimental.UtilityClass;
 
 /**
@@ -21,6 +23,7 @@ public class MealsApiConstants {
 	// DATASOURCE
 	public static final String COMPONENT_MODEL_SCAN = "org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals";
 	public static final String MEALS_JPA_REPOSITORIES_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder.repository.meals";
+	public static final String MEALS_JPA_REPOSITORIES_MAPPING_FILE = "META-INF/" + MEAL_SCHEMA_NAME + "-mapping/";
 	public static final String MEALS_DATA_SOURCE_PROPERTIES = "app.data.datasource.meals";
 	public static final String MEALS_DATA_SOURCE_CONFIGURATION_PROPERTIES = "app.data.datasource.meals.configuration";
 	public static final String MEALS_DATA_SOURCE_CUSTOM_PROPERTIES = "app.data.datasource.meals.custom";
@@ -32,4 +35,7 @@ public class MealsApiConstants {
 	public static final String MEALS_JPA_REPOSITORIES_PERSISTENCE_UNIT = MEAL_SCHEMA_NAME + "PersistenceUnit";
 	public static final String MEALS_JPA_REPOSITORIES_TRANSACTION_MANAGER = MEAL_SCHEMA_NAME + "EntityTransactionManager";
 	
+	// INGREDIENT //
+	public static final String MEALS_REPOSITORY_INGREDIENT_ENTITY_NAME = "M" + REPOSITORY_INGREDIENT_ENTITY_NAME;
+		
 }

@@ -5,6 +5,8 @@
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals;
 
 import static java.util.Arrays.asList;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_TABLE_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_JPA_REPOSITORIES_MAPPING_FILE;
 
 import java.util.List;
 
@@ -68,5 +70,11 @@ public class BurgerApiConstants {
 		
 		// Check exists use EnumUtils.isValidEnum
 	}
+	
+	// MAPPING FILE //
+	public static final String MEALS_BURGER_JPA_REPOSITORIES_MAPPING_FILE = MEALS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_BURGER_TABLE_NAME + ".orm.xml";
+	public static final String MEALS_BURGER_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE = MEALS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_BURGER_INGREDIENT_TABLE_NAME + ".orm.xml";
+	public static final String MEALS_BREAD_JPA_REPOSITORIES_MAPPING_FILE = MEALS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_BREAD_TABLE_NAME + ".orm.xml";
+	public static final String MEALS_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE = MEALS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_INGREDIENT_TABLE_NAME + ".orm.xml";
 	
 }

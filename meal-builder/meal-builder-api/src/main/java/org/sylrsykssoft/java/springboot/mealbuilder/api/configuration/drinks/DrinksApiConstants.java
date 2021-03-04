@@ -4,6 +4,8 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_ENTITY_NAME;
+
 import lombok.experimental.UtilityClass;
 
 /**
@@ -21,7 +23,7 @@ public class DrinksApiConstants {
 	// DATASOURCE //
 	public static final String COMPONENT_MODEL_SCAN = "org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks";
 	public static final String DRINKS_JPA_REPOSITORIES_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks";
-	public static final String DRINKS_JPA_REPOSITORIES_MAPPING_FILE = "META-INF/drinks-mapping/*.xml";
+	public static final String DRINKS_JPA_REPOSITORIES_MAPPING_FILE = "META-INF/" + DRINK_SCHEMA_NAME + "-mapping/";
 	public static final String DRINKS_DATA_SOURCE_PROPERTIES = "app.data.datasource.drinks";
 	public static final String DRINKS_DATA_SOURCE_CONFIGURATION_PROPERTIES = "app.data.datasource.drinks.configuration";
 	public static final String DRINKS_DATA_SOURCE_CUSTOM_PROPERTIES = "app.data.datasource.drinks.custom";
@@ -32,5 +34,9 @@ public class DrinksApiConstants {
 	public static final String DRINKS_JPA_REPOSITORIES_ENTITY_MANAGER = DRINK_SCHEMA_NAME + "EntityManagerFactory";
 	public static final String DRINKS_JPA_REPOSITORIES_PERSISTENCE_UNIT = DRINK_SCHEMA_NAME + "PersistenceUnit";
 	public static final String DRINKS_JPA_REPOSITORIES_TRANSACTION_MANAGER = DRINK_SCHEMA_NAME + "EntityTransactionManager";
+	
+	
+	// INGREDIENT //
+	public static final String DRINKS_REPOSITORY_INGREDIENT_ENTITY_NAME = "D" + REPOSITORY_INGREDIENT_ENTITY_NAME;
 	
 }

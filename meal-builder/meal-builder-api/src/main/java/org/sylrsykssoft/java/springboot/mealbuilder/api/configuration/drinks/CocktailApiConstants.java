@@ -4,6 +4,9 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_TABLE_NAME;
+
 import lombok.experimental.UtilityClass;
 
 /**
@@ -42,4 +45,10 @@ public class CocktailApiConstants {
 		
 		// Check exists use EnumUtils.isValidEnum
 	}
+	
+	// MAPPING FILE //
+	public static final String DRINKS_COCKTAIL_JPA_REPOSITORIES_MAPPING_FILE = DRINKS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_COCKTAIL_TABLE_NAME + ".orm.xml";
+	public static final String DRINKS_COCKTAIL_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE = DRINKS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_COCKTAIL_INGREDIENT_TABLE_NAME + ".orm.xml";
+	public static final String DRINKS_GLASS_COCKTAIL_JPA_REPOSITORIES_MAPPING_FILE = DRINKS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_GLASS_COCKTAIL_TABLE_NAME + ".orm.xml";
+	public static final String DRINKS_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE = DRINKS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_INGREDIENT_TABLE_NAME + ".orm.xml";
 }

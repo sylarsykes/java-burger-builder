@@ -4,6 +4,8 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_JPA_REPOSITORIES_MAPPING_FILE;
+
 import lombok.experimental.UtilityClass;
 
 /**
@@ -23,4 +25,7 @@ public class DessertApiConstants {
 	public static final String REPOSITORY_DESSERT_INGREDIENT_TABLE_NAME = "dessert_ingredient";
 	public static final String REPOSITORY_DESSERT_INGREDIENT_ENTITY_NAME = "DessertIngredient";
 	
+	// MAPPING FILE //
+	public static final String MEALS_DESSERT_JPA_REPOSITORIES_MAPPING_FILE = MEALS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_DESSERT_TABLE_NAME + ".orm.xml";
+	public static final String MEALS_DESSERT_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE = MEALS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_DESSERT_INGREDIENT_TABLE_NAME + ".orm.xml";
 }

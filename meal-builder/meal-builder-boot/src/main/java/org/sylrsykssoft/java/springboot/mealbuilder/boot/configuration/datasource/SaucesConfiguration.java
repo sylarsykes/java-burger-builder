@@ -4,6 +4,9 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.datasource;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SauceApiConstants.SAUCES_BURGER_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SauceApiConstants.SAUCES_BURGER_JPA_REPOSITORIES_MAPPING_FILE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SauceApiConstants.SAUCES_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SaucesApiConstants.SAUCES_DATA_SOURCE_CONFIGURATION_PROPERTIES;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SaucesApiConstants.SAUCES_DATA_SOURCE_PROPERTIES;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SaucesApiConstants.SAUCES_JPA_MODEL_BASE_PACKAGE;
@@ -64,8 +67,14 @@ public class SaucesConfiguration {
 			EntityManagerFactoryBuilder eMFactoryBuilder,
 			@Qualifier(SAUCES_JPA_REPOSITORIES_DATA_SOURCE_CUSTOM_PROPERTIES) final Map<String, String> properties,
 			@Qualifier(SAUCES_JPA_REPOSITORIES_DATA_SOURCE) DataSource dataSource) {
-		return eMFactoryBuilder.dataSource(dataSource).packages(SAUCES_JPA_MODEL_BASE_PACKAGE)
-				.persistenceUnit(SAUCES_JPA_REPOSITORIES_PERSISTENCE_UNIT).properties(properties).build();
+		return eMFactoryBuilder.dataSource(dataSource)
+				.packages(SAUCES_JPA_MODEL_BASE_PACKAGE)
+				.persistenceUnit(SAUCES_JPA_REPOSITORIES_PERSISTENCE_UNIT)
+				.mappingResources(SAUCES_BURGER_JPA_REPOSITORIES_MAPPING_FILE,
+						SAUCES_BURGER_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE,
+						SAUCES_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE)
+				.properties(properties)
+				.build();
 	}
 
     @Bean(SAUCES_JPA_REPOSITORIES_TRANSACTION_MANAGER)

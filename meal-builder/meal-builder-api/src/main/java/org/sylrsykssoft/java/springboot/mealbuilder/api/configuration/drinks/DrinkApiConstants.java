@@ -4,10 +4,7 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks;
 
-
-import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_NAME_MODEL_OBJECT_DESCRIPTION_JPA;
-import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_NAME_MODEL_OBJECT_NAME_JPA;
-import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_MODEL_NAME_ID_JPA;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_JPA_REPOSITORIES_MAPPING_FILE;
 
 import lombok.experimental.UtilityClass;
 
@@ -19,7 +16,7 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public class DrinkApiConstants {
-
+	
 	// DRINK //
 	public static final String REPOSITORY_DRINK_TABLE_NAME = "drink";
 	public static final String REPOSITORY_DRINK_ENTITY_NAME = "Drink";
@@ -30,9 +27,7 @@ public class DrinkApiConstants {
 		// Check exists use EnumUtils.isValidEnum
 	}
 	
-	// JPA FIELD NAMES //
-	public static final String DRINK_MODEL_ID_JPA = BASE_MODEL_NAME_ID_JPA;
-	public static final String DRINK_MODEL_NAME_JPA = BASE_NAME_MODEL_OBJECT_NAME_JPA;
-	public static final String DRINK_MODEL_DESCRIPTION_JPA = BASE_NAME_MODEL_OBJECT_DESCRIPTION_JPA;
+	// MAPPING FILE //
+	public static final String DRINKS_DRINK_JPA_REPOSITORIES_MAPPING_FILE = DRINKS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_DRINK_TABLE_NAME + ".orm.xml";
 	
 }

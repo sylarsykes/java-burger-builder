@@ -4,6 +4,8 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_ENTITY_NAME;
+
 import lombok.experimental.UtilityClass;
 
 /**
@@ -21,6 +23,7 @@ public class SaucesApiConstants {
 	// DATASOURCE
 	public static final String SAUCES_JPA_MODEL_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder.api.model.sauces";
 	public static final String SAUCES_JPA_REPOSITORIES_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder.repository.sauces";
+	public static final String SAUCES_JPA_REPOSITORIES_MAPPING_FILE = "META-INF/" + SAUCE_SCHEMA_NAME + "-mapping/";
 	public static final String SAUCES_DATA_SOURCE_PROPERTIES = "app.data.datasource.sauces";
 	public static final String SAUCES_DATA_SOURCE_CONFIGURATION_PROPERTIES = "app.data.datasource.sauces.configuration";
 	public static final String SAUCES_DATA_SOURCE_CUSTOM_PROPERTIES = "app.data.datasource.sauces.custom";
@@ -31,5 +34,8 @@ public class SaucesApiConstants {
 	public static final String SAUCES_JPA_REPOSITORIES_ENTITY_MANAGER = SAUCE_SCHEMA_NAME + "EntityManagerFactory";
 	public static final String SAUCES_JPA_REPOSITORIES_PERSISTENCE_UNIT = SAUCE_SCHEMA_NAME + "PersistenceUnit";
 	public static final String SAUCES_JPA_REPOSITORIES_TRANSACTION_MANAGER = SAUCE_SCHEMA_NAME + "EntityTransactionManager";
-
+	
+	// INGREDIENT //
+	public static final String SAUCES_REPOSITORY_INGREDIENT_ENTITY_NAME = "S" + REPOSITORY_INGREDIENT_ENTITY_NAME;
+		
 }
