@@ -23,6 +23,8 @@ public class DrinksApiConstants {
 	// DATASOURCE //
 	public static final String COMPONENT_MODEL_SCAN = "org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks";
 	public static final String DRINKS_JPA_REPOSITORIES_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks";
+	public static final String DRINKS_MODEL_SERVICES_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder.model.service.drinks";
+	public static final String DRINKS_REST_CONTROLLER_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks";
 	public static final String DRINKS_JPA_REPOSITORIES_MAPPING_FILE = "META-INF/" + DRINK_SCHEMA_NAME + "-mapping/";
 	public static final String DRINKS_DATA_SOURCE_PROPERTIES = "app.data.datasource.drinks";
 	public static final String DRINKS_DATA_SOURCE_CONFIGURATION_PROPERTIES = "app.data.datasource.drinks.configuration";

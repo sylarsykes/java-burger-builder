@@ -5,9 +5,12 @@
 package org.sylrsykssoft.springboot.common.api.service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.constraints.NotBlank;
 
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.model.BaseModel;
+
+import lombok.NonNull;
 
 /**
  * @author juan.gonzalez.fernandez.jgf
@@ -23,6 +26,6 @@ public interface FindByNameService<D extends BaseNameModelDTO<N>, E extends Base
 	 * @throws IllegalArgumentException if {@literal name} is {@literal null}.
 	 * @throws EntityNotFoundException if entity not exists.
 	 */
-	D findByName(String name) throws IllegalArgumentException, EntityNotFoundException;
+	D findByName(@NonNull @NotBlank String name) throws IllegalArgumentException, EntityNotFoundException;
 	
 }

@@ -74,7 +74,7 @@
 		    <groupId>org.springdoc</groupId>
 		    <artifactId>springdoc-openapi-data-rest</artifactId>
 		</dependency>
-        
+		
 		<!-- =========================================================== -->
         <!-- MEAL BUILDER -->
         <!-- =========================================================== -->

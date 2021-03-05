@@ -4,10 +4,12 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.model.service.drinks.drink.find;
 
+import java.text.MessageFormat;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 import org.modelmapper.ModelMapper;
@@ -33,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Validated
-@Service
+@Service("drinkFindServiceImpl")
 @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
 public class DrinkFindService implements IDrinkFindService {
 
@@ -84,7 +86,7 @@ public class DrinkFindService implements IDrinkFindService {
 	 */
 	@Override
 	@SneakyThrows({ NullPointerException.class, IllegalArgumentException.class })
-	public DrinkDTO findById(@NonNull @Positive final Long id)
+	public DrinkDTO findById(@NonNull @NotNull @Positive final Long id)
 			throws IllegalArgumentException, EntityNotFoundException {
 		LOGGER.info("{} id {}", LOG_METHOD_FIND_BY_ID, id);
 
@@ -92,7 +94,8 @@ public class DrinkFindService implements IDrinkFindService {
 
 		LOGGER.info("{} result {}", LOG_METHOD_FIND_BY_ID, resultEntity);
 
-		return mapperToModel(resultEntity.orElseThrow(EntityNotFoundException::new));
+		return mapperToModel(resultEntity.orElseThrow(
+				() -> new EntityNotFoundException(MessageFormat.format("Drink with id {0} not exists.", id))));
 	}
 
 	/**
@@ -100,7 +103,7 @@ public class DrinkFindService implements IDrinkFindService {
 	 */
 	@Override
 	@SneakyThrows({ NullPointerException.class, IllegalArgumentException.class })
-	public boolean existsById(@NonNull @Positive final Long id) throws IllegalArgumentException {
+	public boolean existsById(@NonNull @NotNull @Positive final Long id) throws IllegalArgumentException {
 		LOGGER.info("{} id {}", LOG_METHOD_EXISTS_BY_ID, id);
 
 		return getRepository().existsById(id);
@@ -117,7 +120,8 @@ public class DrinkFindService implements IDrinkFindService {
 
 		final Optional<Drink> resultEntity = getRepository().findByName(name);
 
-		return mapperToModel(resultEntity.orElseThrow(EntityNotFoundException::new));
+		return mapperToModel(resultEntity.orElseThrow(
+				() -> new EntityNotFoundException(MessageFormat.format("Drink with name {0} not exists.", name))));
 	}
 
 }

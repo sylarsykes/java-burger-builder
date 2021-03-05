@@ -2,7 +2,7 @@
  * DrinksNotFoundControllerAdvice.java 5 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.rest.controlleradvice.drinks;
+package org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks.controlleradvice;
 
 import javax.persistence.EntityNotFoundException;
 
