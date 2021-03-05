@@ -4,12 +4,20 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.CONTROLLER_GET_EXISTS_BY_ID;
+import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.CONTROLLER_GET_FIND_BY_ID;
+import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.CONTROLLER_GET_FIND_BY_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.FIND_MODEL_CONTROLLER_REQUEST_MAPPING;
+import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.FIND_MODEL_CONTROLLER_TAG_DESCRIPTION;
+import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.FIND_MODEL_CONTROLLER_TAG_NAME;
+
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,8 +43,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Validated
 @RestController
-@RequestMapping(path = "public/find/drinks")
-@Tag(name = "DrinkFindModelServiceController", description = "Rest Controller to find Drink")
+@RequestMapping(path = FIND_MODEL_CONTROLLER_REQUEST_MAPPING)
+@Tag(name = FIND_MODEL_CONTROLLER_TAG_NAME, description = FIND_MODEL_CONTROLLER_TAG_DESCRIPTION)
 public class DrinkFindModelServiceController implements IRestModelController<DrinkDTO, Drink, Long> {
 
 	private static final String LOG_CLASS_NAME = DrinkFindModelServiceController.class.getSimpleName() + ".";
@@ -50,6 +58,7 @@ public class DrinkFindModelServiceController implements IRestModelController<Dri
 			+ "findByName - Retrieves an entity by its name - ";
 
 	@Autowired
+	@Qualifier("drinkFindServiceImpl")
 	IDrinkFindService findByModelService;
 
 	/**
@@ -68,9 +77,9 @@ public class DrinkFindModelServiceController implements IRestModelController<Dri
 	 * @throws IllegalArgumentException if {@literal id} is {@literal null}.
 	 * @throws EntityNotFoundException  if entity not exists.
 	 */
-	@GetMapping("/{id}")
+	@GetMapping(CONTROLLER_GET_FIND_BY_ID)
 	@ResponseBody
-	@Operation(summary = "Retrieves an dto by its id.", tags = "DrinkFindModelServiceController", responses = {
+	@Operation(summary = "Retrieves an dto by its id.", tags = FIND_MODEL_CONTROLLER_TAG_NAME, responses = {
 			@ApiResponse(responseCode = "200", description = "DrinkDTO object"),
 			@ApiResponse(responseCode = "400", description = "Illegal argument"),
 			@ApiResponse(responseCode = "404", description = "DrinkDTO not exists") })
@@ -93,8 +102,8 @@ public class DrinkFindModelServiceController implements IRestModelController<Dri
 	 *         {@literal false} otherwise.
 	 * @throws IllegalArgumentException if {@literal id} is {@literal null}.
 	 */
-	@GetMapping("/exists/{id}")
-	@Operation(summary = "Returns whether an dto with the given id exists.", tags = "DrinkFindModelServiceController", responses = {
+	@GetMapping(CONTROLLER_GET_EXISTS_BY_ID)
+	@Operation(summary = "Returns whether an dto with the given id exists.", tags = FIND_MODEL_CONTROLLER_TAG_NAME, responses = {
 			@ApiResponse(responseCode = "200", description = "DrinkDTO object"),
 			@ApiResponse(responseCode = "400", description = "Illegal argument"),
 			@ApiResponse(responseCode = "404", description = "DrinkDTO not exists") })
@@ -117,9 +126,9 @@ public class DrinkFindModelServiceController implements IRestModelController<Dri
 	 * @throws IllegalArgumentException if {@literal name} is {@literal null}.
 	 * @throws EntityNotFoundException  if entity not exists.
 	 */
-	@GetMapping("/{name}")
+	@GetMapping(CONTROLLER_GET_FIND_BY_NAME)
 	@ResponseBody
-	@Operation(summary = "Retrieves an dto by its name.", tags = "DrinkFindModelServiceController", responses = {
+	@Operation(summary = "Retrieves an dto by its name.", tags = FIND_MODEL_CONTROLLER_TAG_NAME, responses = {
 			@ApiResponse(responseCode = "200", description = "DrinkDTO object"),
 			@ApiResponse(responseCode = "400", description = "Illegal argument"),
 			@ApiResponse(responseCode = "404", description = "DrinkDTO not exists") })

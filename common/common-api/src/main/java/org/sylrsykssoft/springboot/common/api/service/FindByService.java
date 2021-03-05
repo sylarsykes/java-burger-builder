@@ -5,9 +5,13 @@
 package org.sylrsykssoft.springboot.common.api.service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.model.BaseModel;
+
+import lombok.NonNull;
 
 /**
  * @author juan.gonzalez.fernandez.jgf
@@ -23,7 +27,7 @@ public interface FindByService<D extends BaseNameModelDTO<N>, E extends BaseMode
 	 * @throws IllegalArgumentException if {@literal id} is {@literal null}.
 	 * @throws EntityNotFoundException if entity not exists.
 	 */
-	D findById(N id) throws IllegalArgumentException, EntityNotFoundException;
+	D findById(@NonNull @NotNull @Positive N id) throws IllegalArgumentException, EntityNotFoundException;
 	
 	/**
 	 * Returns whether an entity with the given id exists.
@@ -32,6 +36,6 @@ public interface FindByService<D extends BaseNameModelDTO<N>, E extends BaseMode
 	 * @return {@literal true} if an entity with the given id exists, {@literal false} otherwise.
 	 * @throws IllegalArgumentException if {@literal id} is {@literal null}.
 	 */
-	boolean existsById(N id) throws IllegalArgumentException;
+	boolean existsById(@NonNull @NotNull @Positive N id) throws IllegalArgumentException;
 	
 }

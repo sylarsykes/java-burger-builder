@@ -85,6 +85,7 @@ springdoc:
   api-docs:
     path: /springdoc/v3/api-docs
   swagger-ui:
+    operationsSorter: method
     path: /springdoc/v3/swagger-ui.html
     #configUrl: /springdoc/v3/api-docs/swagger-config
     #oauth2RedirectUrl: /springdoc/v3/swagger-ui/oauth2-redirect.html
@@ -118,6 +119,11 @@ app:
         url: jdbc:mariadb://localhost:3306/sauces
         username: root
         password: root
+  rest:
+    public:
+      base-path: ${spring.data.rest.base-path}/public/
+    admin:
+      base-path: ${spring.data.rest.base-path}/admin/
   # ===============================
   # = SPRING DOC
   # ===============================
@@ -133,10 +139,12 @@ app:
         external-doc-url: @project.url@/docs
       admin-api:
         group: meal-builder-app-admin
-        base-path: /admin/
+        base-path: ${app.rest.admin.base-path}
+        paths:
+          - ${app.rest.admin.base-path}**
       public-api:
         group: meal-builder-app-public
-        base-path: /public/
+        base-path: ${app.rest.public.base-path}
         paths:
-          - ${app.springdoc.configuration.public-api.base-path}find/drinks
+          - ${app.rest.public.base-path}**
         
