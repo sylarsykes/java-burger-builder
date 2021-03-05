@@ -5,7 +5,8 @@
 package org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.springdoc;
 
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_REST_CONTROLLER_BASE_PACKAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_REST_CONTROLLER_ADMIN_API_PACKAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_REST_CONTROLLER_PUBLIC_API_PACKAGE;
 
 import org.springdoc.core.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,7 +44,7 @@ public class SpringDocConfiguration {
 						.toArray(new String[mealBuilderConfigPublicApiProps.getPaths().size()])
 				: new String[] { "/api/v1/public/**" };
 
-		final String packagesToScan[] = { DRINKS_REST_CONTROLLER_BASE_PACKAGE };
+		final String packagesToScan[] = { DRINKS_REST_CONTROLLER_PUBLIC_API_PACKAGE };
 
 		return GroupedOpenApi.builder().group(mealBuilderConfigPublicApiProps.getGroup()).pathsToMatch(paths)
 				.packagesToScan(packagesToScan).build();
@@ -64,11 +65,10 @@ public class SpringDocConfiguration {
 						.toArray(new String[mealBuilderConfigAdminApiProps.getPaths().size()])
 				: new String[] { "/api/v1/admin/**" };
 
-//		final String packagesToScan[] = { DRINKS_REST_CONTROLLER_BASE_PACKAGE };
-		
-		return GroupedOpenApi.builder().group(mealBuilderConfigAdminApiProps.getGroup())
-				.pathsToMatch(paths)
-				.build();
+		final String packagesToScan[] = { DRINKS_REST_CONTROLLER_ADMIN_API_PACKAGE };
+
+		return GroupedOpenApi.builder().group(mealBuilderConfigAdminApiProps.getGroup()).pathsToMatch(paths)
+				.packagesToScan(packagesToScan).build();
 	}
 
 	@Bean
