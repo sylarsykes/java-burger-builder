@@ -1,19 +1,18 @@
 /**
- * DescriptionModel.java 16 feb. 2021
+ * PreparationDataDTO.java 4 mar. 2021
  *
  */
-package org.sylrsykssoft.springboot.common.api.dto.embeddable;
+package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable;
 
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_DESCRIPTION;
+import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_DESCRIPTION;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.springframework.lang.Nullable;
 import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -21,8 +20,6 @@ import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
 /**
- * Embeddable description model
- * 
  * @author juan.gonzalez.fernandez.jgf
  *
  */
@@ -30,13 +27,12 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
-public class DescriptionModelDTO extends BaseDTO implements Serializable {
+public class PreparationDataDTO extends BaseDTO implements Serializable {
 
-	private static final long serialVersionUID = 1721699098779609535L;
+	private static final long serialVersionUID = -4122900039714155647L;
 	
-	@Nullable
-	@Size(max = MAX_LENGTH_DESCRIPTION)
-	@JsonProperty(value = "Description", required = false)
-	String description;
+	@NotBlank(message = "Prepatation field is mandatory")
+	@Size(min = MIN_LENGTH_DESCRIPTION, max = MAX_LENGTH_DESCRIPTION)
+	String preparation;
 	
 }

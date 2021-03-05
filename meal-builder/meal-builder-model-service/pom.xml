@@ -7,14 +7,14 @@
 	  <version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>meal-builder-api</artifactId>
+	<artifactId>meal-builder-model-service</artifactId>
 	<packaging>jar</packaging>
   	<name>${project.groupId}:${project.artifactId}</name>
-	<description>Api Module for "Meal Builder" application with the Spring boot framework</description>
-	<url>${meal-buider.api.git.url}</url>
+	<description>Model Services Module for "Meal Builder" application with the Spring boot framework</description>
+	<url>${meal-buider.model.service.git.url}</url>
 	
 	<properties>
-	    <meal-buider.api.git.url>${meal-buider.git.url}/meal-builder-api</meal-buider.api.git.url>
+	    <meal-buider.model.service.git.url>${meal-buider.git.url}/meal-builder-model-service</meal-buider.model.service.git.url>
 	</properties>
 	
 	<dependencies>
@@ -26,6 +26,7 @@
         <!-- =========================================================== -->
         <!-- IMPORT SCOPE -->
         <!-- =========================================================== -->
+        
         
         <!-- =========================================================== -->
         <!-- PROVIDED SCOPE -->
@@ -63,23 +64,18 @@
 	    	<groupId>org.apache.commons</groupId>
 	    	<artifactId>commons-collections4</artifactId>
 		</dependency>
-		
-		<dependency>
-		    <groupId>org.springdoc</groupId>
-		    <artifactId>springdoc-openapi-ui</artifactId>
-		</dependency>
         
-        <!-- =========================================================== -->
-        <!-- COMMON -->
+		<!-- =========================================================== -->
+        <!-- MEAL BUILDER -->
         <!-- =========================================================== -->
 		<dependency>
-		    <groupId>org.sylrsykssoft</groupId>
-		    <artifactId>common-util</artifactId>
+			<groupId>org.sylrsykssoft</groupId>
+			<artifactId>meal-builder-api</artifactId>
 		</dependency>
 		
 		<dependency>
-		    <groupId>org.sylrsykssoft</groupId>
-		    <artifactId>common-api</artifactId>
+			<groupId>org.sylrsykssoft</groupId>
+			<artifactId>meal-builder-repository</artifactId>
 		</dependency>
 		
 	</dependencies>

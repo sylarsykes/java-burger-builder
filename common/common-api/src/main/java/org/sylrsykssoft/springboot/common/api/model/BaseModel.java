@@ -37,7 +37,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @EqualsAndHashCode(callSuper = false, doNotUseGetters = true)
-@ToString
+@ToString(callSuper = true, includeFieldNames = true)
 public class BaseModel<N extends Number> implements Persistable<N> {
 
 	@Id

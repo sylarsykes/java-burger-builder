@@ -7,21 +7,22 @@ package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_NICKNAME_USER;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_NICKNAME_USER;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.lang.Nullable;
+import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.experimental.FieldDefaults;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
 
 /**
  * Embeddable audit model
@@ -29,18 +30,19 @@ import lombok.experimental.FieldDefaults;
  * @author juan.gonzalez.fernandez.jgf
  *
  */
-@Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Embeddable
-public class AuditModelDTO {
+@Value
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
+@ToString(callSuper = true, includeFieldNames = true)
+public class AuditModelDTO extends BaseDTO implements Serializable {
 
-	@NonNull
+	private static final long serialVersionUID = -8640731493307745895L;
+
 	@NotBlank(message = "CreatedBy field is mandatory")
 	@Size(min = MIN_LENGTH_NICKNAME_USER, max = MAX_LENGTH_NICKNAME_USER)
 	@JsonProperty(value = "CreatedBy", required = true)
 	String createdBy;
 
-	@NonNull
 	@NotNull(message = "CreatedDate field is mandatory")
 	@JsonProperty(value = "CreatedDate", required = true)
 	LocalDateTime createdDate;

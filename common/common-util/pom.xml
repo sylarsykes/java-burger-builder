@@ -10,8 +10,8 @@
  	<artifactId>common-util</artifactId>
   	<packaging>jar</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
-	<description>Common Api for Projet for Spring boot Aplication</description>
-	<url>${common.api.git.url}</url>
+	<description>Common Utils for Projet for Spring boot Aplication</description>
+	<url>${common.util.git.url}</url>
   
 	 <properties>
 	    <common.util.git.url>${common.git.url}/common-util</common.util.git.url>

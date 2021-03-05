@@ -11,10 +11,10 @@
   	<packaging>jar</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Meal Builder Spring Boot Application</description>
-	<url>${meal-buider.common.api.git.url}</url>
+	<url>${meal-buider.boot.git.url}</url>
 	
 	<properties>
-	    <meal-buider.api.git.url>${meal-buider.common.git.url}/meal-builder-boot</meal-buider.api.git.url>
+	    <meal-buider.boot.git.url>${meal-buider.git.url}/meal-builder-boot</meal-buider.boot.git.url>
 	    
 	    <start-class>org.sylrsykssoft.java.springboot.mealbuilder.boot.MealBuilderApplication</start-class>
 	</properties>
@@ -28,7 +28,6 @@
         <!-- =========================================================== -->
         <!-- IMPORT SCOPE -->
         <!-- =========================================================== -->
-        
         
         <!-- =========================================================== -->
         <!-- PROVIDED SCOPE -->
@@ -50,6 +49,11 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.springdoc</groupId>
+		    <artifactId>springdoc-openapi-ui</artifactId>
+		</dependency>
         
         <!-- =========================================================== -->
         <!-- COMMON -->
@@ -61,14 +65,8 @@
         <!-- =========================================================== -->
 		<dependency>
 			<groupId>org.sylrsykssoft</groupId>
-			<artifactId>meal-builder-api</artifactId>
+			<artifactId>meal-builder-rest</artifactId>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.sylrsykssoft</groupId>
-			<artifactId>meal-builder-repository</artifactId>
-		</dependency>
-
 		
 	</dependencies>
 	
