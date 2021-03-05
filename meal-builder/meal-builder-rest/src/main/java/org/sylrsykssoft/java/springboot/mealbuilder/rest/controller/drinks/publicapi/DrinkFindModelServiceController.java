@@ -2,7 +2,7 @@
  * DrinkFindModelServiceController.java 4 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks;
+package org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks.publicapi;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.CONTROLLER_GET_EXISTS_BY_ID;
 import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.CONTROLLER_GET_FIND_BY_ID;
