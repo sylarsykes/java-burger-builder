@@ -7,14 +7,14 @@
 	  <version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>meal-builder-api</artifactId>
+	<artifactId>meal-builder-rest</artifactId>
 	<packaging>jar</packaging>
   	<name>${project.groupId}:${project.artifactId}</name>
-	<description>Api Module for "Meal Builder" application with the Spring boot framework</description>
-	<url>${meal-buider.api.git.url}</url>
+	<description>Rest Module for "Meal Builder" application with the Spring boot framework</description>
+	<url>${meal-buider.rest.git.url}</url>
 	
 	<properties>
-	    <meal-buider.api.git.url>${meal-buider.git.url}/meal-builder-api</meal-buider.api.git.url>
+	    <meal-buider.rest.git.url>${meal-buider.git.url}/meal-builder-service</meal-buider.rest.git.url>
 	</properties>
 	
 	<dependencies>
@@ -26,6 +26,7 @@
         <!-- =========================================================== -->
         <!-- IMPORT SCOPE -->
         <!-- =========================================================== -->
+        
         
         <!-- =========================================================== -->
         <!-- PROVIDED SCOPE -->
@@ -68,18 +69,18 @@
 		    <groupId>org.springdoc</groupId>
 		    <artifactId>springdoc-openapi-ui</artifactId>
 		</dependency>
-        
-        <!-- =========================================================== -->
-        <!-- COMMON -->
-        <!-- =========================================================== -->
-		<dependency>
-		    <groupId>org.sylrsykssoft</groupId>
-		    <artifactId>common-util</artifactId>
-		</dependency>
 		
 		<dependency>
-		    <groupId>org.sylrsykssoft</groupId>
-		    <artifactId>common-api</artifactId>
+		    <groupId>org.springdoc</groupId>
+		    <artifactId>springdoc-openapi-data-rest</artifactId>
+		</dependency>
+        
+		<!-- =========================================================== -->
+        <!-- MEAL BUILDER -->
+        <!-- =========================================================== -->
+		<dependency>
+			<groupId>org.sylrsykssoft</groupId>
+			<artifactId>meal-builder-model-service</artifactId>
 		</dependency>
 		
 	</dependencies>

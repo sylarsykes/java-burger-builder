@@ -7,13 +7,19 @@ package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_CODE;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_CODE;
 
-import javax.persistence.Embeddable;
+import java.io.Serializable;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.experimental.FieldDefaults;
+import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.Value;
+import lombok.experimental.SuperBuilder;
 
 /**
  * Embeddable code model
@@ -21,13 +27,17 @@ import lombok.experimental.FieldDefaults;
  * @author juan.gonzalez.fernandez.jgf
  *
  */
-@Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Embeddable
-public class CodeModelDTO {
+@Value
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
+@ToString(callSuper = true, includeFieldNames = true)
+public class CodeModelDTO extends BaseDTO implements Serializable {
 
+	private static final long serialVersionUID = -4216933576851395499L;
+	
 	@NotBlank(message = "Code field is mandatory")
 	@Size(min = MIN_LENGTH_CODE, max = MAX_LENGTH_CODE)
+	@JsonProperty(value = "Code", required = true)
 	String code;
 	
 }

@@ -10,11 +10,11 @@
 	<artifactId>meal-builder-repository</artifactId>
 	<packaging>jar</packaging>
   	<name>${project.groupId}:${project.artifactId}</name>
-	<description>Common Api for Projet for Spring boot Aplication</description>
-	<url>${meal-buider.common.api.git.url}</url>
+	<description>Repository Module for "Meal Builder" application with the Spring boot framework</description>
+	<url>${meal-buider.repository.git.url}</url>
 	
 	<properties>
-	    <meal-buider.api.git.url>${meal-buider.common.git.url}/meal-builder-repository</meal-buider.api.git.url>
+	    <meal-buider.repository.git.url>${meal-buider.git.url}/meal-builder-repository</meal-buider.repository.git.url>
 	</properties>
 	
 	<dependencies>

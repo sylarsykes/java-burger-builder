@@ -1,6 +1,9 @@
 spring:
   application:
-    name: Meal Builder
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+    url: @project.url@
   data:
     rest:
       base-path: /api/v1
@@ -73,6 +76,19 @@ logging:
   pattern:
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%"
 
+
+# ===============================
+# = SPRING DOC
+# ===============================
+# https://springdoc.org/#properties
+springdoc:
+  api-docs:
+    path: /springdoc/v3/api-docs
+  swagger-ui:
+    path: /springdoc/v3/swagger-ui.html
+    #configUrl: /springdoc/v3/api-docs/swagger-config
+    #oauth2RedirectUrl: /springdoc/v3/swagger-ui/oauth2-redirect.html
+
 # ===============================
 # = APPLICATION
 # ===============================
@@ -102,3 +118,25 @@ app:
         url: jdbc:mariadb://localhost:3306/sauces
         username: root
         password: root
+  # ===============================
+  # = SPRING DOC
+  # ===============================
+  springdoc:
+    configuration:
+      open-api:
+        title: @project.name@
+        description: @project.description@
+        version: @project.version@
+        license-name: Apache 2.0
+        url: @project.url@
+        external-doc-description: Meal Builder Wiki Documentation
+        external-doc-url: @project.url@/docs
+      admin-api:
+        group: meal-builder-app-admin
+        base-path: /admin/
+      public-api:
+        group: meal-builder-app-public
+        base-path: /public/
+        paths:
+          - ${app.springdoc.configuration.public-api.base-path}find/drinks
+        

@@ -63,7 +63,7 @@
     	<maven-config.maven-deploy-plugin.skip>false</maven-config.maven-deploy-plugin.skip>
 		<maven-config.maven-eclipse-plugin.addVersionToProjectName>false</maven-config.maven-eclipse-plugin.addVersionToProjectName>
 		
-		<common.git.url>http://github.com/${github.user}/spring-boot-meal-builder/common</common.git.url>
+		<common.git.url>http://github.com/${github.user}/spring-boot-meal-builder/tree/main/common</common.git.url>
 		
 		<!-- Meal Builder Dependencies -->
 		<common.version>0.0.1-SNAPSHOT</common.version>

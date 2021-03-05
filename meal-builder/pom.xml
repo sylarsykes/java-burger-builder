@@ -13,7 +13,7 @@
 	<artifactId>meal-builder</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>${project.groupId}:${project.artifactId}</name>
+	<name>"Meal Builder" application</name>
 	<description>Development of the "Meal Builder" application with the Spring boot framework</description>
 	<url>${meal-buider.git.url}</url>
 	
@@ -62,7 +62,7 @@
     	<maven-config.maven-deploy-plugin.skip>false</maven-config.maven-deploy-plugin.skip>
 		<maven-config.maven-eclipse-plugin.addVersionToProjectName>false</maven-config.maven-eclipse-plugin.addVersionToProjectName>
 		
-		<meal-buider.git.url>http://github.com/${github.user}/spring-boot-meal-builder/meal-builder</meal-buider.git.url>
+		<meal-buider.git.url>http://github.com/${github.user}/spring-boot-meal-builder/tree/main/meal-builder</meal-buider.git.url>
 		
 		<!-- Meal Builder Dependencies -->
 		<meal-buider.version>0.0.1-SNAPSHOT</meal-buider.version>
@@ -98,6 +98,10 @@
 		<!-- Spring Boot -->
 		<spring-boot.version>2.4.3</spring-boot.version>
 		
+		<!-- SpringDoc -->
+		<springdoc.version>1.5.5</springdoc.version>
+		<springdoc.openapi.maven.plugin.version>1.1</springdoc.openapi.maven.plugin.version>
+		
 		<!-- Validation Api -->
 		<validation-api.version>2.0.1.Final</validation-api.version>
 	</properties>
@@ -112,7 +116,6 @@
             <!-- =========================================================== -->
             <!-- IMPORT SCOPE -->
             <!-- =========================================================== -->
-            
             
             <!-- =========================================================== -->
             <!-- PROVIDED SCOPE -->
@@ -140,7 +143,23 @@
 			    <artifactId>validation-api</artifactId>
 			    <version>${validation-api.version}</version>
 			</dependency>
-	        
+			
+			<!-- =========================================================== -->
+            <!-- SPRING BOOT DEPENDENCIES -->
+            <!-- =========================================================== -->
+            
+            <dependency>
+			    <groupId>org.springdoc</groupId>
+			    <artifactId>springdoc-openapi-ui</artifactId>
+			    <version>${springdoc.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.springdoc</groupId>
+			    <artifactId>springdoc-openapi-data-rest</artifactId>
+			    <version>${springdoc.version}</version>
+			</dependency>
+            
             <!-- =========================================================== -->
             <!-- EXTERNAL DEPENDENCIES -->
             <!-- =========================================================== -->
@@ -189,6 +208,18 @@
 			<dependency>
 				<groupId>org.sylrsykssoft</groupId>
 				<artifactId>meal-builder-repository</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.sylrsykssoft</groupId>
+				<artifactId>meal-builder-model-service</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.sylrsykssoft</groupId>
+				<artifactId>meal-builder-rest</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			
@@ -300,10 +331,44 @@
         </testResources>
 		<pluginManagement>
 			<plugins>
+			
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
+					<!-- https://springdoc.org/#maven-plugin -->
+					<configuration>
+						<jvmArguments>-Dspring.application.admin.enabled=true</jvmArguments>
+					</configuration>
+					<executions>
+						<execution>
+					   		<id>pre-integration-test</id>
+					   		<goals>
+					   			<goal>start</goal>
+					   		</goals>
+					  	</execution>
+					  	<execution>
+					   		<id>post-integration-test</id>
+					   		<goals>
+					    		<goal>stop</goal>
+					   		</goals>
+					  	</execution>
+					</executions>
 				</plugin>
+				<!-- https://springdoc.org/#maven-plugin -->
+				<plugin>
+					<groupId>org.springdoc</groupId>
+ 					<artifactId>springdoc-openapi-maven-plugin</artifactId>
+ 					<version>${springdoc.openapi.maven.plugin.version}</version>
+ 					<executions>
+						<execution>
+					   		<id>integration-test</id>
+					   		<goals>
+					    		<goal>generate</goal>
+					   		</goals>
+					  	</execution>
+					</executions>
+				</plugin>
+				
 				<plugin>
 	                <groupId>org.codehaus.mojo</groupId>
 	                <artifactId>versions-maven-plugin</artifactId>
@@ -341,6 +406,7 @@
 			        	</annotationProcessorPaths>
 			        </configuration>
 				</plugin>
+				
 				<plugin>
 	                <groupId>org.apache.maven.plugins</groupId>
 	                <artifactId>maven-deploy-plugin</artifactId>
@@ -348,6 +414,7 @@
 	                    <skip>${maven-config.maven-deploy-plugin.skip}</skip>
 	                </configuration>
 	            </plugin>
+	            
 				<plugin>
 	                <groupId>org.apache.maven.plugins</groupId>
 	                <artifactId>maven-eclipse-plugin</artifactId>
@@ -361,7 +428,9 @@
 	
 	<modules>
 		<module>meal-builder-api</module>
-		<module>meal-builder-boot</module>
 		<module>meal-builder-repository</module>
-	</modules>
+		<module>meal-builder-model-service</module>
+    	<module>meal-builder-rest</module>
+		<module>meal-builder-boot</module>
+  </modules>
 </project>

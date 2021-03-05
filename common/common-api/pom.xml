@@ -12,7 +12,7 @@
   	<packaging>jar</packaging>
   	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Common Api for Projet for Spring boot Aplication</description>
-	<url>${meal-buider.common.api.git.url}</url>
+	<url>${common.api.git.url}</url>
   	
 	<properties>
 	    <common.api.git.url>${common.git.url}/common-api</common.api.git.url>
