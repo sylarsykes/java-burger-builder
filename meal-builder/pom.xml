@@ -120,6 +120,13 @@
             <!-- =========================================================== -->
             <!-- PROVIDED SCOPE -->
             <!-- =========================================================== -->
+            <dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+				<optional>true</optional>
+			</dependency>
             
             <!-- =========================================================== -->
             <!-- RUNTIME SCOPE -->
@@ -134,6 +141,25 @@
 			    <version>${junit-jupiter.version}</version>
 			    <scope>test</scope>
 			</dependency>
+			
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+			  	<artifactId>json-path</artifactId>
+			  	<version>${json-path.version}</version>
+			</dependency>
+			
+			<dependency>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-starter-test</artifactId>
+	            <version>${spring-boot.version}</version>
+	            <scope>test</scope>
+	            <exclusions>
+	                <exclusion>
+	                    <groupId>org.junit.vintage</groupId>
+	    					<artifactId>junit-vintage-engine</artifactId>
+	                </exclusion>
+	            </exclusions>
+	        </dependency>
 	        
 	        <!-- =========================================================== -->
             <!-- JAVA DEPENDENCIES -->
@@ -159,6 +185,46 @@
 			    <artifactId>springdoc-openapi-data-rest</artifactId>
 			    <version>${springdoc.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-configuration-processor</artifactId>
+				<version>${spring-boot.version}</version>
+				<optional>true</optional>
+			</dependency>
+		
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-autoconfigure-processor</artifactId>
+				<version>${spring-boot.version}</version>
+				<optional>true</optional>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<version>${spring-boot.version}</version>
+				<scope>runtime</scope>
+				<optional>true</optional>
+			</dependency>
+			
+			<dependency>
+	        	<groupId>org.springframework.boot</groupId>
+	        	<artifactId>spring-boot-starter-data-jpa</artifactId>
+	        	<version>${spring-boot.version}</version>
+	    	</dependency>
+	    	
+	    	<dependency>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-starter-jdbc</artifactId>
+	            <version>${spring-boot.version}</version>
+	        </dependency>
+	        
+	        <dependency>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-starter-data-rest</artifactId>
+			    <version>${spring-boot.version}</version>
+			</dependency>
             
             <!-- =========================================================== -->
             <!-- EXTERNAL DEPENDENCIES -->
@@ -180,6 +246,24 @@
 				<artifactId>modelmapper-spring</artifactId>
 				<version>${modelmapper-spring.version}</version>
 			</dependency>
+			
+			<dependency>
+		        <groupId>org.apache.commons</groupId>
+		        <artifactId>commons-dbcp2</artifactId>
+		        <version>${commons-dbcp2.version}</version>
+		        <exclusions>
+		          <exclusion>
+		            <groupId>commons-logging</groupId>
+		            <artifactId>commons-logging</artifactId>
+		          </exclusion>
+		        </exclusions>
+		    </dependency>
+			
+			<dependency>
+		        <groupId>org.mariadb.jdbc</groupId>
+		        <artifactId>mariadb-java-client</artifactId>
+		        <version>${mariadb.version}</version>
+		    </dependency>
 			
 			<!-- =========================================================== -->
 	        <!-- COMMON -->
@@ -246,53 +330,21 @@
         <!-- IMPORT SCOPE -->
         <!-- =========================================================== -->
            
-           
         <!-- =========================================================== -->
         <!-- PROVIDED SCOPE -->
         <!-- =========================================================== -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-			<optional>true</optional>
-		</dependency>
            
         <!-- =========================================================== -->
         <!-- RUNTIME SCOPE -->
         <!-- =========================================================== -->
-  		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
 		
 		<!-- =========================================================== -->
 		<!-- TEST SCOPE -->
 		<!-- =========================================================== -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-    					<artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         
-		<dependency>
-		    <groupId>org.junit.jupiter</groupId>
-		    <artifactId>junit-jupiter</artifactId>
-		    <scope>test</scope>
-		</dependency>
-        
-           
         <!-- =========================================================== -->
         <!-- EXTERNAL DEPENDENCIES -->
         <!-- =========================================================== -->
-  	
   	</dependencies>
 	
 	

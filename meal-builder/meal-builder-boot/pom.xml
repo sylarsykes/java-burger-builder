@@ -20,7 +20,6 @@
 	</properties>
 	
 	<dependencies>
-	
 		<!-- =========================================================== -->
         <!-- COMPILE SCOPE -->
         <!-- =========================================================== -->
@@ -32,7 +31,11 @@
         <!-- =========================================================== -->
         <!-- PROVIDED SCOPE -->
         <!-- =========================================================== -->
-        
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		
         <!-- =========================================================== -->
         <!-- RUNTIME SCOPE -->
         <!-- =========================================================== -->
@@ -40,20 +43,32 @@
 		<!-- =========================================================== -->
         <!-- TEST SCOPE -->
         <!-- =========================================================== -->
-
-        <!-- =========================================================== -->
-        <!-- EXTERNAL DEPENDENCIES -->
-        <!-- =========================================================== -->
-        <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+		  	<artifactId>json-path</artifactId>
+		</dependency>
+		
+		<!-- =========================================================== -->
+        <!-- SPRING BOOT DEPENDENCIES -->
+        <!-- =========================================================== -->
 		<dependency>
 		    <groupId>org.springdoc</groupId>
 		    <artifactId>springdoc-openapi-ui</artifactId>
 		</dependency>
+		
+        <!-- =========================================================== -->
+        <!-- EXTERNAL DEPENDENCIES -->
+        <!-- =========================================================== -->
         
         <!-- =========================================================== -->
         <!-- COMMON -->

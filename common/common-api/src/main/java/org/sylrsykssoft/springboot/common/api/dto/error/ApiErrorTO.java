@@ -18,6 +18,8 @@ import org.sylrsykssoft.springboot.common.api.builder.ToBuildableType;
 import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
 import org.sylrsykssoft.springboot.common.api.dto.error.ApiErrorTO.ApiErrorTOBuilderImpl;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.Singular;
@@ -35,19 +37,24 @@ import lombok.experimental.SuperBuilder;
 @ToString(includeFieldNames = true, callSuper = true)
 public class ApiErrorTO extends BaseDTO implements ToBuildableType<ApiErrorTOBuilderImpl, ApiErrorTO> {
 	
-	@NotNull
+	@NotNull(message = "Status field is mandatory")
+	@JsonProperty(value = "Status", required = true)
 	HttpStatus status;
 	
 	@NotBlank(message = "Message field is mandatory")
+	@JsonProperty(value = "Message", required = true)
 	String message;
 	
 	@Nullable
+	@JsonProperty(value = "DebugMessage")
 	String debugMessage;
 	
-	@NotNull
+	@NotNull(message = "Timestamp field is mandatory")
+	@JsonProperty(value = "Timestamp", required = true)
 	LocalDateTime timestamp;
 	
 	@Singular
+	@JsonProperty(value = "SubErrors", required = true)
 	Set<ApiValidationErrorTO> subErrors;
 	
 	/**
