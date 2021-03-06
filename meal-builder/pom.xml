@@ -192,6 +192,12 @@
 			
 			<dependency>
 			    <groupId>org.sylrsykssoft</groupId>
+			    <artifactId>common-app-boot</artifactId>
+	        	<version>${meal-buider.common.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.sylrsykssoft</groupId>
 			    <artifactId>common-api</artifactId>
 	        	<version>${meal-buider.common.version}</version>
 			</dependency>

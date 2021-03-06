@@ -1,3 +1,6 @@
+# ===============================
+# = SPRING
+# ===============================
 spring:
   application:
     name: @project.name@
@@ -40,7 +43,6 @@ server:
     whitelabel:
       enable: false
     path: /error
-
 
 # ===============================
 # = LOGGER
@@ -91,6 +93,36 @@ springdoc:
     #oauth2RedirectUrl: /springdoc/v3/swagger-ui/oauth2-redirect.html
 
 # ===============================
+# = COMMON
+# ===============================
+common:
+  app:
+    boot:
+      configuration:
+        # ===============================
+        # = SPRING DOC
+        # ===============================
+        springdoc:
+          open-api:
+            title: @project.name@
+            description: @project.description@
+            version: @project.version@
+            license-name: Apache 2.0
+            url: @project.url@
+            external-doc-description: Meal Builder Wiki Documentation
+            external-doc-url: @project.url@/docs
+          admin-api:
+            group: meal-builder-app-admin
+            base-path: ${app.rest.admin.base-path}
+            paths:
+              - ${app.rest.admin.base-path}**
+          public-api:
+            group: meal-builder-app-public
+            base-path: ${app.rest.public.base-path}
+            paths:
+              - ${app.rest.public.base-path}**
+
+# ===============================
 # = APPLICATION
 # ===============================
 app:
@@ -124,27 +156,4 @@ app:
       base-path: ${spring.data.rest.base-path}/public/
     admin:
       base-path: ${spring.data.rest.base-path}/admin/
-  # ===============================
-  # = SPRING DOC
-  # ===============================
-  springdoc:
-    configuration:
-      open-api:
-        title: @project.name@
-        description: @project.description@
-        version: @project.version@
-        license-name: Apache 2.0
-        url: @project.url@
-        external-doc-description: Meal Builder Wiki Documentation
-        external-doc-url: @project.url@/docs
-      admin-api:
-        group: meal-builder-app-admin
-        base-path: ${app.rest.admin.base-path}
-        paths:
-          - ${app.rest.admin.base-path}**
-      public-api:
-        group: meal-builder-app-public
-        base-path: ${app.rest.public.base-path}
-        paths:
-          - ${app.rest.public.base-path}**
         
