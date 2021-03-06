@@ -12,9 +12,9 @@ import org.springdoc.core.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.springdoc.properties.SpringDocConfigurationAdminApiProperties;
-import org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.springdoc.properties.SpringDocConfigurationOpenApiProperties;
-import org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.springdoc.properties.SpringDocConfigurationPublicApiProperties;
+import org.sylrsykssoft.springboot.common.app.boot.configuration.properties.springdoc.SpringDocConfigurationAdminApiProperties;
+import org.sylrsykssoft.springboot.common.app.boot.configuration.properties.springdoc.SpringDocConfigurationOpenApiProperties;
+import org.sylrsykssoft.springboot.common.app.boot.configuration.properties.springdoc.SpringDocConfigurationPublicApiProperties;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;

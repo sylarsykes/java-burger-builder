@@ -14,6 +14,8 @@ import org.sylrsykssoft.springboot.common.api.builder.ToBuildableType;
 import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
 import org.sylrsykssoft.springboot.common.api.dto.error.ApiValidationErrorTO.ApiValidationErrorTOBuilderImpl;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
@@ -31,15 +33,19 @@ import lombok.experimental.SuperBuilder;
 public class ApiValidationErrorTO extends BaseDTO implements ToBuildableType<ApiValidationErrorTOBuilderImpl, ApiValidationErrorTO> {
 	
 	@NotBlank(message = "Object field is mandatory")
+	@JsonProperty(value = "Object", required = true)
 	String object;
 	
 	@Nullable
+	@JsonProperty(value = "Field", required = true)
 	String field;
 	
 	@Nullable
+	@JsonProperty(value = "RejectedValue", required = true)
 	Object rejectedValue;
 	
 	@NotBlank(message = "Message field is mandatory")
+	@JsonProperty(value = "Message", required = true)
 	String message;
 	
 	/**

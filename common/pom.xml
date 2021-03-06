@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
@@ -104,7 +103,6 @@
 	
 	<dependencyManagement>
 	  	<dependencies>
-	  	
 	  		<!-- =========================================================== -->
             <!-- COMPILE SCOPE -->
             <!-- =========================================================== -->
@@ -113,10 +111,16 @@
             <!-- IMPORT SCOPE -->
             <!-- =========================================================== -->
             
-            
             <!-- =========================================================== -->
             <!-- PROVIDED SCOPE -->
             <!-- =========================================================== -->
+            <dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+				<optional>true</optional>
+			</dependency>
             
             <!-- =========================================================== -->
             <!-- RUNTIME SCOPE -->
@@ -131,6 +135,25 @@
 			    <version>${junit-jupiter.version}</version>
 			    <scope>test</scope>
 			</dependency>
+			
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+			  	<artifactId>json-path</artifactId>
+			  	<version>${json-path.version}</version>
+			</dependency>
+			
+			<dependency>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-starter-test</artifactId>
+	            <version>${spring-boot.version}</version>
+	            <scope>test</scope>
+	            <exclusions>
+	                <exclusion>
+	                    <groupId>org.junit.vintage</groupId>
+	    					<artifactId>junit-vintage-engine</artifactId>
+	                </exclusion>
+	            </exclusions>
+	        </dependency>
 	        
 	        <!-- =========================================================== -->
             <!-- JAVA DEPENDENCIES -->
@@ -144,13 +167,7 @@
 			<!-- =========================================================== -->
             <!-- SPRING BOOT DEPENDENCIES -->
             <!-- =========================================================== -->
-	        <dependency>
-	            <groupId>org.springframework.boot</groupId>
-	            <artifactId>spring-boot-starter-validation</artifactId>
-	            <version>${spring-boot.version}</version>
-	        </dependency>
-			
-	        <dependency>
+            <dependency>
 	      		<groupId>org.springframework</groupId>
 	      		<artifactId>spring-beans</artifactId>
 	      		<version>${spring-framework.version}</version>
@@ -161,6 +178,40 @@
 	      		<artifactId>spring-context</artifactId>
 	      		<version>${spring-framework.version}</version>
 			</dependency>
+            
+            <dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-configuration-processor</artifactId>
+				<version>${spring-boot.version}</version>
+				<optional>true</optional>
+			</dependency>
+		
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-autoconfigure-processor</artifactId>
+				<version>${spring-boot.version}</version>
+				<optional>true</optional>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<version>${spring-boot.version}</version>
+				<scope>runtime</scope>
+				<optional>true</optional>
+			</dependency>
+			
+	        <dependency>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-starter-validation</artifactId>
+	            <version>${spring-boot.version}</version>
+	        </dependency>
 			
 			<dependency>
 	        	<groupId>org.springframework.boot</groupId>
@@ -200,6 +251,12 @@
 			
 			<dependency>
 			    <groupId>org.sylrsykssoft</groupId>
+			    <artifactId>common-app-boot</artifactId>
+	        	<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.sylrsykssoft</groupId>
 			    <artifactId>common-api</artifactId>
 	        	<version>0.0.1-SNAPSHOT</version>
 			</dependency>
@@ -215,53 +272,21 @@
         <!-- IMPORT SCOPE -->
         <!-- =========================================================== -->
            
-           
         <!-- =========================================================== -->
         <!-- PROVIDED SCOPE -->
         <!-- =========================================================== -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-			<optional>true</optional>
-		</dependency>
            
         <!-- =========================================================== -->
         <!-- RUNTIME SCOPE -->
         <!-- =========================================================== -->
-  		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
 		
 		<!-- =========================================================== -->
 		<!-- TEST SCOPE -->
 		<!-- =========================================================== -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-    					<artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        
-		<dependency>
-		    <groupId>org.junit.jupiter</groupId>
-		    <artifactId>junit-jupiter</artifactId>
-		    <scope>test</scope>
-		</dependency>
-        
            
         <!-- =========================================================== -->
         <!-- EXTERNAL DEPENDENCIES -->
         <!-- =========================================================== -->
-  	
   	</dependencies>
 	
 	<build>
@@ -367,5 +392,6 @@
 	<modules>
 		<module>common-util</module>
 		<module>common-api</module>
-	</modules>
+    	<module>common-app-boot</module>
+  </modules>
 </project>

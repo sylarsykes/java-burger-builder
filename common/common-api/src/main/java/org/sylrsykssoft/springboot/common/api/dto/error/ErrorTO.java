@@ -16,6 +16,9 @@ import org.sylrsykssoft.springboot.common.api.builder.ToBuildableType;
 import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
 import org.sylrsykssoft.springboot.common.api.dto.error.ErrorTO.ErrorTOBuilderImpl;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
@@ -38,16 +41,20 @@ public class ErrorTO extends BaseDTO implements Serializable, ToBuildableType<Er
 
 	/** The status code. */
 	@NotBlank(message = "StatusCode field is mandatory")
+	@JsonProperty(value = "StatusCode", required = true)
 	String statusCode;
 
 	/** The message. */
 	@NotBlank(message = "Message field is mandatory")
+	@JsonProperty(value = "Message", required = true)
 	String message;
 
 	/** The exception. */
+	@JsonIgnore
 	Throwable exception;
 
-	@NotNull(message = "Time field is mandatory")
+	@NotNull(message = "Timestamp field is mandatory")
+	@JsonProperty(value = "Timestamp", required = true)
 	LocalDateTime timestamp;
 
 	/**
@@ -57,30 +64,30 @@ public class ErrorTO extends BaseDTO implements Serializable, ToBuildableType<Er
 	public ErrorTOBuilderImpl toBuilder() {
 		return new ErrorTOBuilderImpl();
 	}
-	
+
 	public static final class ErrorTOBuilderImpl extends ErrorTOBuilder<ErrorTO, ErrorTOBuilderImpl>
-		implements BuildableType<ErrorTO, ErrorTOBuilderImpl> {
-		
+			implements BuildableType<ErrorTO, ErrorTOBuilderImpl> {
+
 		/**
 		 * {@inheritDoc}
 		 */
 		@Override
 		public final ErrorTOBuilderImpl initialize() {
 			this.timestamp(LocalDateTime.now());
-			
+
 			return this;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
 		@Override
 		public final ErrorTOBuilderImpl copy(@NonNull @Valid final ErrorTO model) {
 			this.$fillValuesFrom(model);
-			
+
 			return this;
 		}
-		
+
 		/**
 		 * Create new object
 		 * 
@@ -89,14 +96,15 @@ public class ErrorTO extends BaseDTO implements Serializable, ToBuildableType<Er
 		 * @param exception
 		 * @return ErrorTOBuilderImpl
 		 */
-		public final ErrorTOBuilderImpl createBy(@NotBlank final String statusCode, @NotBlank final String message, @NotNull final Throwable exception) {
+		public final ErrorTOBuilderImpl createBy(@NotBlank final String statusCode, @NotBlank final String message,
+				@NotNull final Throwable exception) {
 			this.statusCode(statusCode);
 			this.message(message);
 			this.exception(exception);
-			
+
 			return initialize();
 		}
-		
+
 		/**
 		 * Create new object
 		 * 
@@ -105,11 +113,12 @@ public class ErrorTO extends BaseDTO implements Serializable, ToBuildableType<Er
 		 * @param exception
 		 * @return ErrorTOBuilderImpl
 		 */
-		public final ErrorTOBuilderImpl createBy(@NotBlank final Integer httpStatusValue, @NotBlank final String message, @NotNull final Throwable exception) {
+		public final ErrorTOBuilderImpl createBy(@NotBlank final Integer httpStatusValue,
+				@NotBlank final String message, @NotNull final Throwable exception) {
 			this.statusCode(httpStatusValue.toString());
 			this.message(message);
 			this.exception(exception);
-			
+
 			return initialize();
 		}
 	}

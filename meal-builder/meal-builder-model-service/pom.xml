@@ -18,7 +18,6 @@
 	</properties>
 	
 	<dependencies>
-		
 		<!-- =========================================================== -->
         <!-- COMPILE SCOPE -->
         <!-- =========================================================== -->
@@ -27,10 +26,13 @@
         <!-- IMPORT SCOPE -->
         <!-- =========================================================== -->
         
-        
         <!-- =========================================================== -->
         <!-- PROVIDED SCOPE -->
         <!-- =========================================================== -->
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
         
         <!-- =========================================================== -->
         <!-- RUNTIME SCOPE -->
@@ -39,22 +41,23 @@
 		<!-- =========================================================== -->
         <!-- TEST SCOPE -->
         <!-- =========================================================== -->
-
+		
+		<!-- =========================================================== -->
+        <!-- SPRING BOOT DEPENDENCIES -->
         <!-- =========================================================== -->
-        <!-- EXTERNAL DEPENDENCIES -->
-        <!-- =========================================================== -->
-        <dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-autoconfigure-processor</artifactId>
-			<optional>true</optional>
 		</dependency>
-        
+		
+        <!-- =========================================================== -->
+        <!-- EXTERNAL DEPENDENCIES -->
+        <!-- =========================================================== -->
         <dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-lang3</artifactId>
