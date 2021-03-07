@@ -10,9 +10,11 @@ import java.util.Set;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 /**
  * SpringDocConfigurationPublicApiProperties
@@ -32,6 +34,7 @@ import lombok.Setter;
  */
 @ConfigurationProperties(prefix = COMMON_APP_BOOT_CONFIGURATION_PROPERTIES_SPRING_DOC_PUBLIC_API)
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
 public class SpringDocConfigurationPublicApiProperties {
