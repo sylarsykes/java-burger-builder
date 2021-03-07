@@ -4,10 +4,6 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.springdoc;
 
-import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_REST_CONTROLLER_ADMIN_API_PACKAGE;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_REST_CONTROLLER_PUBLIC_API_PACKAGE;
-
 import org.springdoc.core.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -39,12 +35,11 @@ public class SpringDocConfiguration {
 	public GroupedOpenApi publicApi(
 			@Qualifier("mealBuilderConfigurationPublicApiProperties") final SpringDocConfigurationPublicApiProperties mealBuilderConfigPublicApiProps) {
 
-		final String[] paths = (isNotEmpty(mealBuilderConfigPublicApiProps.getPaths()))
-				? mealBuilderConfigPublicApiProps.getPaths()
-						.toArray(new String[mealBuilderConfigPublicApiProps.getPaths().size()])
-				: new String[] { "/api/v1/public/**" };
+		final String[] paths = mealBuilderConfigPublicApiProps.getPaths()
+				.toArray(new String[mealBuilderConfigPublicApiProps.getPaths().size()]);
 
-		final String packagesToScan[] = { DRINKS_REST_CONTROLLER_PUBLIC_API_PACKAGE };
+		final String[] packagesToScan = mealBuilderConfigPublicApiProps.getPackages()
+				.toArray(new String[mealBuilderConfigPublicApiProps.getPackages().size()]);
 
 		return GroupedOpenApi.builder().group(mealBuilderConfigPublicApiProps.getGroup()).pathsToMatch(paths)
 				.packagesToScan(packagesToScan).build();
@@ -60,12 +55,11 @@ public class SpringDocConfiguration {
 	public GroupedOpenApi adminApi(
 			@Qualifier("mealBuilderConfigurationAdminApiProperties") final SpringDocConfigurationAdminApiProperties mealBuilderConfigAdminApiProps) {
 
-		final String[] paths = (isNotEmpty(mealBuilderConfigAdminApiProps.getPaths()))
-				? mealBuilderConfigAdminApiProps.getPaths()
-						.toArray(new String[mealBuilderConfigAdminApiProps.getPaths().size()])
-				: new String[] { "/api/v1/admin/**" };
+		final String[] paths = mealBuilderConfigAdminApiProps.getPaths()
+				.toArray(new String[mealBuilderConfigAdminApiProps.getPaths().size()]);
 
-		final String packagesToScan[] = { DRINKS_REST_CONTROLLER_ADMIN_API_PACKAGE };
+		final String[] packagesToScan = mealBuilderConfigAdminApiProps.getPackages()
+				.toArray(new String[mealBuilderConfigAdminApiProps.getPackages().size()]);
 
 		return GroupedOpenApi.builder().group(mealBuilderConfigAdminApiProps.getGroup()).pathsToMatch(paths)
 				.packagesToScan(packagesToScan).build();

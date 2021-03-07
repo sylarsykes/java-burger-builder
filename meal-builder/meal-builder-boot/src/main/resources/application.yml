@@ -4,9 +4,6 @@
 spring:
   application:
     name: @project.name@
-    description: @project.description@
-    version: @project.version@
-    url: @project.url@
   data:
     rest:
       base-path: /api/v1
@@ -100,6 +97,63 @@ common:
     boot:
       configuration:
         # ===============================
+        # DATA SOURCE
+        # ===============================
+        datasource:
+          common:
+            platform: mariadb
+            driver-class-name: org.mariadb.jdbc.Driver
+          drinks:
+            schema-data-source: drinksSchemaDataSource
+            schema-data-source-properties: drinksSchemaDataSourceProperties
+            schema-dataSource-custom-properties: drinksSchemaDataSourceCustomProperties
+            entity-manager-factory: drinksEntityManagerFactory
+            persistence-unit: drinksPersistenceUnit
+            entity-transaction-manager: drinksEntityTransactionManager
+            packages:
+              - org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks
+            mapping-resources:
+              - META-INF/drinks-mapping/ingredient.orm.xml
+              - META-INF/drinks-mapping/drink.orm.xml
+              - META-INF/drinks-mapping/cocktail.orm.xml
+              - META-INF/drinks-mapping/cocktail_ingredient.orm.xml
+              - META-INF/drinks-mapping/glass_cocktail.orm.xml
+          meals:
+            schema-data-source: mealsSchemaDataSource
+            schema-data-source-properties: mealsSchemaDataSourceProperties
+            schema-dataSource-custom-properties: mealsSchemaDataSourceCustomProperties
+            entity-manager-factory: mealsEntityManagerFactory
+            persistence-unit: mealsPersistenceUnit
+            entity-transaction-manager: mealsEntityTransactionManager
+            packages:
+              - org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals
+            mapping-resources:
+              - META-INF/meals-mapping/ingredient.orm.xml
+              - META-INF/meals-mapping/food_starter.orm.xml
+              - META-INF/meals-mapping/food_starter_ingredient.orm.xml
+              - META-INF/meals-mapping/salad.orm.xml
+              - META-INF/meals-mapping/salad_ingredient.orm.xml
+              - META-INF/meals-mapping/sandwich.orm.xml
+              - META-INF/meals-mapping/sandwich_ingredient.orm.xml
+              - META-INF/meals-mapping/burger.orm.xml
+              - META-INF/meals-mapping/burger_ingredient.orm.xml
+              - META-INF/meals-mapping/bread.orm.xml
+              - META-INF/meals-mapping/dessert.orm.xml
+              - META-INF/meals-mapping/dessert_ingredient.orm.xml
+          sauces:
+            schema-data-source: saucesSchemaDataSource
+            schema-data-source-properties: saucesSchemaDataSourceProperties
+            schema-dataSource-custom-properties: saucesSchemaDataSourceCustomProperties
+            entity-manager-factory: saucesEntityManagerFactory
+            persistence-unit: saucesPersistenceUnit
+            entity-transaction-manager: saucesEntityTransactionManager
+            packages:
+              - org.sylrsykssoft.java.springboot.mealbuilder.api.model.sauces
+            mapping-resources:
+              - META-INF/sauces-mapping/ingredient.orm.xml
+              - META-INF/sauces-mapping/sauce.orm.xml
+              - META-INF/sauces-mapping/sauce_ingredient.orm.xml
+        # ===============================
         # = SPRING DOC
         # ===============================
         springdoc:
@@ -116,11 +170,19 @@ common:
             base-path: ${app.rest.admin.base-path}
             paths:
               - ${app.rest.admin.base-path}**
+            packages:
+              - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks.adminapi
+              - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.meals.adminapi
+              - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.sauces.adminapi
           public-api:
             group: meal-builder-app-public
             base-path: ${app.rest.public.base-path}
             paths:
               - ${app.rest.public.base-path}**
+            packages:
+              - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks.publicapi
+              - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.meals.publicapi
+              - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.sauces.publicapi
 
 # ===============================
 # = APPLICATION
@@ -132,7 +194,7 @@ app:
     # ===============================
     datasource:
       meals:
-        driver-class-name: org.mariadb.jdbc.Driver
+        driver-class-name: ${common.app.boot.configuration.datasource.common.driver-class-name}
         schema-name: meals
         url: jdbc:mariadb://localhost:3306/meals
         username: root
@@ -140,13 +202,13 @@ app:
         configuration:
           maximum-pool-size: 30
       drinks:
-        driver-class-name: org.mariadb.jdbc.Driver
+        driver-class-name: ${common.app.boot.configuration.datasource.common.driver-class-name}
         schema-name: drinks
         url: jdbc:mariadb://localhost:3306/drinks
         username: root
         password: root
       sauces:
-        driver-class-name: org.mariadb.jdbc.Driver
+        driver-class-name: ${common.app.boot.configuration.datasource.common.driver-class-name}
         schema-name: sauces
         url: jdbc:mariadb://localhost:3306/sauces
         username: root

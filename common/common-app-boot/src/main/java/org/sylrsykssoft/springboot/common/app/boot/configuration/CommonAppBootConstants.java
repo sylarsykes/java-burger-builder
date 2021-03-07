@@ -18,6 +18,8 @@ public class CommonAppBootConstants {
 	// BASE //
 	public static final String COMMON_APP_BOOT_CONFIGURATION_PROPERTIES = "common.app.boot.configuration";
 	
+	// DATASOURCE //
+	public static final String COMMON_APP_BOOT_CONFIGURATION_PROPERTIES_DATASOURCE = COMMON_APP_BOOT_CONFIGURATION_PROPERTIES + ".datasource";
 	
 	// SPRINGDOC //
 	public static final String COMMON_APP_BOOT_CONFIGURATION_PROPERTIES_SPRING_DOC = COMMON_APP_BOOT_CONFIGURATION_PROPERTIES + ".springdoc";
