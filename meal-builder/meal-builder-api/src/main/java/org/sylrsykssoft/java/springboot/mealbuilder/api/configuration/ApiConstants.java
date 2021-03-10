@@ -26,7 +26,12 @@ public class ApiConstants {
 
 		// Check exists use EnumUtils.isValidEnum
 	}
-
+	
+	public static final String FOOD_SIZE_SIZE_COLUMN = "size";
+	public static final String FOOD_SIZE_SIZE_COLUMN_DEFAULT_VALUE = "varchar(10) default 'MEDIUM'";
+	public static final int FOOD_SIZE_SIZE_COLUMN_LENGTH = 10;
+	
+	
 	// PACKAGES //
 	public static final String API_APP_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder";
 	public static final String API_COMPONENT_MODEL_SCAN = API_APP_BASE_PACKAGE + ".api.model";

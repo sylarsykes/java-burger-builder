@@ -113,11 +113,11 @@ common:
             packages:
               - org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks
             mapping-resources:
-              - META-INF/drinks-mapping/ingredient.orm.xml
-              - META-INF/drinks-mapping/drink.orm.xml
-              - META-INF/drinks-mapping/cocktail.orm.xml
-              - META-INF/drinks-mapping/cocktail_ingredient.orm.xml
-              - META-INF/drinks-mapping/glass_cocktail.orm.xml
+              - META-INF/drinks/mapping/ingredient.orm.xml
+              - META-INF/drinks/mapping/drink.orm.xml
+              - META-INF/drinks/mapping/cocktail.orm.xml
+              - META-INF/drinks/mapping/cocktail_ingredient.orm.xml
+              - META-INF/drinks/mapping/glass_cocktail.orm.xml
           meals:
             schema-data-source: mealsSchemaDataSource
             schema-data-source-properties: mealsSchemaDataSourceProperties
@@ -128,18 +128,26 @@ common:
             packages:
               - org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals
             mapping-resources:
-              - META-INF/meals-mapping/ingredient.orm.xml
-              - META-INF/meals-mapping/food_starter.orm.xml
-              - META-INF/meals-mapping/food_starter_ingredient.orm.xml
-              - META-INF/meals-mapping/salad.orm.xml
-              - META-INF/meals-mapping/salad_ingredient.orm.xml
-              - META-INF/meals-mapping/sandwich.orm.xml
-              - META-INF/meals-mapping/sandwich_ingredient.orm.xml
-              - META-INF/meals-mapping/burger.orm.xml
-              - META-INF/meals-mapping/burger_ingredient.orm.xml
-              - META-INF/meals-mapping/bread.orm.xml
-              - META-INF/meals-mapping/dessert.orm.xml
-              - META-INF/meals-mapping/dessert_ingredient.orm.xml
+              - META-INF/meals/mapping/ingredient.orm.xml
+              - META-INF/meals/mapping/category.orm.xml
+              - META-INF/meals/mapping/starter/food_starter.orm.xml
+              - META-INF/meals/mapping/starter/food_starter_ingredient.orm.xml
+              - META-INF/meals/mapping/starter/salad.orm.xml
+              - META-INF/meals/mapping/starter/salad_ingredient.orm.xml
+              - META-INF/meals/mapping/main/burger.orm.xml
+              - META-INF/meals/mapping/main/burger_category.orm.xml
+              - META-INF/meals/mapping/main/burger_bread.orm.xml
+              - META-INF/meals/mapping/main/burger_ingredient.orm.xml
+              - META-INF/meals/mapping/main/sandwich.orm.xml
+              - META-INF/meals/mapping/main/sandwich_category.orm.xml
+              - META-INF/meals/mapping/main/sandwich_bread.orm.xml
+              - META-INF/meals/mapping/main/sandwich_ingredient.orm.xml
+              - META-INF/meals/mapping/main/kebab.orm.xml
+              - META-INF/meals/mapping/main/kebab_category.orm.xml
+              - META-INF/meals/mapping/main/kebab_bread.orm.xml
+              - META-INF/meals/mapping/main/kebab_ingredient.orm.xml
+              - META-INF/meals/mapping/end/dessert.orm.xml
+              - META-INF/meals/mapping/end/dessert_ingredient.orm.xml
           sauces:
             schema-data-source: saucesSchemaDataSource
             schema-data-source-properties: saucesSchemaDataSourceProperties
@@ -150,9 +158,9 @@ common:
             packages:
               - org.sylrsykssoft.java.springboot.mealbuilder.api.model.sauces
             mapping-resources:
-              - META-INF/sauces-mapping/ingredient.orm.xml
-              - META-INF/sauces-mapping/sauce.orm.xml
-              - META-INF/sauces-mapping/sauce_ingredient.orm.xml
+              - META-INF/sauces/mapping/ingredient.orm.xml
+              - META-INF/sauces/mapping/sauce.orm.xml
+              - META-INF/sauces/mapping/sauce_ingredient.orm.xml
         # ===============================
         # = SPRING DOC
         # ===============================

@@ -5,6 +5,7 @@
 package org.sylrsykssoft.java.springboot.mealbuilder.api.model.sauces;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_TYPE_NAME_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_TYPE_NAME_COLUMN_LENGTH;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SauceApiConstants.REPOSITORY_SAUCE_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.sauces.SaucesApiConstants.SAUCES_REPOSITORY_INGREDIENT_ENTITY_NAME;
@@ -14,6 +15,7 @@ import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPICons
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -51,6 +53,7 @@ import lombok.experimental.SuperBuilder;
 public class Ingredient extends BaseNameModel<Long> {
 
 	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "varchar(20) default 'SAUCE'", length = INGREDIENT_TYPE_NAME_COLUMN_LENGTH)
 	@NotNull(message = "Type field is mandatory")
 	@Builder.Default
 	IngredientType type = IngredientType.SAUCE;

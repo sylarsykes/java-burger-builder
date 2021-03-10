@@ -4,11 +4,16 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.FOOD_SIZE_SIZE_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DRINK_TYPE_TYPE_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DRINK_TYPE_TYPE_COLUMN_DEFAULT_VALUE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DRINK_TYPE_TYPE_COLUMN_LENGTH;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.REPOSITORY_DRINK_ENTITY_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.REPOSITORY_DRINK_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINK_SCHEMA_NAME;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_NAME_MODEL_NAME_NAME_COLUMN;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,8 +22,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
-import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.FoodSize;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DrinkType;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
 import org.sylrsykssoft.springboot.common.api.model.BaseNameModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
@@ -36,7 +41,7 @@ import lombok.experimental.SuperBuilder;
  *
  */
 @Table(name = REPOSITORY_DRINK_TABLE_NAME, schema = DRINK_SCHEMA_NAME, catalog = DRINK_SCHEMA_NAME, uniqueConstraints = {
-		@UniqueConstraint(columnNames = { BASE_NAME_MODEL_NAME_NAME_COLUMN }) })
+		@UniqueConstraint(columnNames = { DRINK_TYPE_TYPE_COLUMN, FOOD_SIZE_SIZE_COLUMN, BASE_NAME_MODEL_NAME_NAME_COLUMN }) })
 @Entity(name = REPOSITORY_DRINK_ENTITY_NAME)
 @Value
 @SuperBuilder(toBuilder = true)
@@ -45,14 +50,14 @@ import lombok.experimental.SuperBuilder;
 public class Drink extends BaseNameModel<Long> {
 
 	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = DRINK_TYPE_TYPE_COLUMN_DEFAULT_VALUE, length = DRINK_TYPE_TYPE_COLUMN_LENGTH)
 	@NotNull(message = "Type field is mandatory")
 	@Builder.Default
 	DrinkType type = DrinkType.NO_ALCOHOLIC;
 	
-	@Enumerated(EnumType.STRING)
+	@Embedded
 	@NotNull(message = "Size field is mandatory")
-	@Builder.Default
-	FoodSize size = FoodSize.MEDIUM;
+	FoodSizeData size;
 	
 	@Embedded
 	@NotNull(message = "Price field is mandatory")

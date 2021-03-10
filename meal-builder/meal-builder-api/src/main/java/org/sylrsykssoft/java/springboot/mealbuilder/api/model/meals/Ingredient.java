@@ -5,10 +5,12 @@
 package org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_TYPE_NAME_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_TYPE_NAME_COLUMN_LENGTH;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.REPOSITORY_BURGER_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.DessertApiConstants.REPOSITORY_DESSERT_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.FoodStarterApiConstants.REPOSITORY_FOOD_STARTER_TABLE_KEY_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.KebabApiConstants.REPOSITORY_KEBAB_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_REPOSITORY_INGREDIENT_ENTITY_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEAL_SCHEMA_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SaladApiConstants.REPOSITORY_SALAD_TABLE_NAME;
@@ -18,6 +20,7 @@ import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPICons
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,6 +33,12 @@ import javax.validation.constraints.NotNull;
 
 import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.IngredientType;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.end.DessertIngredient;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.main.BurgerIngredient;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.main.KebabIngredient;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.main.SandwichIngredient;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.starter.FoodStarterIngredient;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.starter.SaladIngredient;
 import org.sylrsykssoft.springboot.common.api.model.BaseNameModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
 
@@ -55,6 +64,7 @@ import lombok.experimental.SuperBuilder;
 public class Ingredient extends BaseNameModel<Long> {
 
 	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "varchar(20) default 'BURGER'", length = INGREDIENT_TYPE_NAME_COLUMN_LENGTH)
 	@NotNull(message = "Type field is mandatory")
 	@Builder.Default
 	IngredientType type = IngredientType.BURGER;
@@ -78,6 +88,10 @@ public class Ingredient extends BaseNameModel<Long> {
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_BURGER_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Set<BurgerIngredient> burgerIngredients;
+	
+	@EqualsAndHashCode.Exclude
+	@OneToMany(mappedBy = REPOSITORY_KEBAB_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	Set<KebabIngredient> kebabIngredients;
 	
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_DESSERT_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
