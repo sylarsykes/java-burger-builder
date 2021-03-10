@@ -21,7 +21,6 @@ public class SaladApiConstants {
 	public static final String REPOSITORY_SALAD_TABLE_NAME = "salad";
 	public static final String REPOSITORY_SALAD_ENTITY_NAME = "Salad";
 	public static final String SALAD_ID_JOIN_COLUMN = "salad_id";
-	public static final String SALAD_SIZE_COLUMN = "size";
 	
 	public static final String REPOSITORY_SALAD_INGREDIENT_TABLE_NAME = "salad_ingredient";
 	public static final String REPOSITORY_SALAD_INGREDIENT_ENTITY_NAME = "SaladIngredient";

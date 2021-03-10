@@ -4,8 +4,6 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals;
 
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEALS_JPA_REPOSITORIES_MAPPING_FILE;
-
 import lombok.experimental.UtilityClass;
 
 /**
@@ -21,12 +19,14 @@ public class SandwichApiConstants {
 	public static final String REPOSITORY_SANDWICH_TABLE_NAME = "sandwich";
 	public static final String REPOSITORY_SANDWICH_ENTITY_NAME = "Sandwich";
 	public static final String SANDWICH_ID_JOIN_COLUMN = "sandwich_id";
-	public static final String SANDWICH_SIZE_COLUMN = "size";
+	
+	public static final String REPOSITORY_SANDWICH_BREAD_TABLE_NAME = "sandwich_bread";
+	public static final String REPOSITORY_SANDWICH_BREAD_ENTITY_NAME = "SandwichBread";
 	
 	public static final String REPOSITORY_SANDWICH_INGREDIENT_TABLE_NAME = "sandwich_ingredient";
 	public static final String REPOSITORY_SANDWICH_INGREDIENT_ENTITY_NAME = "SandwichIngredient";
 	
-	// MAPPING FILE //
-	public static final String MEALS_SANDWICH_JPA_REPOSITORIES_MAPPING_FILE = MEALS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_SANDWICH_TABLE_NAME + ".orm.xml";
-	public static final String MEALS_SANDWICH_INGREDIENT_JPA_REPOSITORIES_MAPPING_FILE = MEALS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_SANDWICH_INGREDIENT_TABLE_NAME + ".orm.xml";
+	public static final String REPOSITORY_SANDWICH_CATEGORY_TABLE_NAME = "sandwich_category";
+	public static final String REPOSITORY_SANDWICH_CATEGORY_ENTITY_NAME = "SandwichCategory";
+	
 }

@@ -4,8 +4,6 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks;
 
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_JPA_REPOSITORIES_MAPPING_FILE;
-
 import lombok.experimental.UtilityClass;
 
 /**
@@ -27,7 +25,8 @@ public class DrinkApiConstants {
 		// Check exists use EnumUtils.isValidEnum
 	}
 	
-	// MAPPING FILE //
-	public static final String DRINKS_DRINK_JPA_REPOSITORIES_MAPPING_FILE = DRINKS_JPA_REPOSITORIES_MAPPING_FILE + REPOSITORY_DRINK_TABLE_NAME + ".orm.xml";
+	public static final String DRINK_TYPE_TYPE_COLUMN = "type";
+	public static final String DRINK_TYPE_TYPE_COLUMN_DEFAULT_VALUE = "varchar(20) default 'NO_ALCOHOLIC'";
+	public static final int DRINK_TYPE_TYPE_COLUMN_LENGTH = 20;
 	
 }
