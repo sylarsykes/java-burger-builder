@@ -40,13 +40,13 @@ public class DrinkDTO extends BaseNameModelDTO<Long> implements Serializable {
 	private static final long serialVersionUID = -7969741388969178253L;
 
 	@NotNull(message = "Type field is mandatory")
-	@JsonProperty(value = "DrinkType", required = true)
+	@JsonProperty(value = "Type", required = true)
 	@Schema(name = "DrinkType", description = "Type DrinkType", required = true)
 	@Builder.Default
 	DrinkType type = DrinkType.NO_ALCOHOLIC;
 	
 	@NotNull(message = "Size field is mandatory")
-	@JsonProperty(value = "FoodSize", required = true)
+	@JsonProperty(value = "Size", required = true)
 	@Schema(name = "FoodSize", description = "Size FoodSize", required = true)
 	FoodSizeDataDTO size;
 	

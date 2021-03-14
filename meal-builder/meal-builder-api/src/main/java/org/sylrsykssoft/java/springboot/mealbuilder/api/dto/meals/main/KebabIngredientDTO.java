@@ -35,6 +35,8 @@ public class KebabIngredientDTO extends BaseModelDTO<Integer> implements Seriali
 
 	private static final long serialVersionUID = -4404659449398272826L;
 
+	@JsonBackReference
+	KebabDTO kebab;
 	
 	@JsonBackReference
 	IngredientDTO ingredient;

@@ -16,6 +16,9 @@ import javax.validation.constraints.Positive;
 
 import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.Value;
@@ -29,6 +32,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
+@Schema(name = "PriceDataDTO", description = "Model PriceDataDTO")
 public class PriceDataDTO extends BaseDTO implements Serializable {
 
 	private static final long serialVersionUID = 6566937445829466200L;
@@ -36,6 +40,8 @@ public class PriceDataDTO extends BaseDTO implements Serializable {
 	@NotNull(message = "Price field is mandatory")
 	@Positive
 	@Digits(integer = LENGTH_DIGITS_PRECISION_PRICE, fraction = LENGTH_DIGITS_SCALE_PRICE)
+	@JsonProperty(value = "Price", required = true)
+	@Schema(name = "Price", description = "Price", required = true)
 	BigDecimal price;
 	
 }

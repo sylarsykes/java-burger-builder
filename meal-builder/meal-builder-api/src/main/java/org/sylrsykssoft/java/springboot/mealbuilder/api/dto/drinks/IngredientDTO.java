@@ -42,7 +42,7 @@ public class IngredientDTO extends BaseNameModelDTO<Long> implements Serializabl
 	private static final long serialVersionUID = 6224623603699093385L;
 
 	@NotNull(message = "Type field is mandatory")
-	@JsonProperty(value = "IngredientType", required = true)
+	@JsonProperty(value = "Type", required = true)
 	@Schema(name = "IngredientType", description = "Type IngredientType", required = true)
 	@Builder.Default
 	IngredientType type = IngredientType.COCKTAIL;

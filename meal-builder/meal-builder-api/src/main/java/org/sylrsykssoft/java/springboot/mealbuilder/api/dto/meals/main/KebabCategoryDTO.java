@@ -37,6 +37,9 @@ public class KebabCategoryDTO extends BaseModelDTO<Integer> implements Serializa
 	private static final long serialVersionUID = -799562128665955852L;
 
 	@JsonBackReference
+	KebabDTO kebab;
+	
+	@JsonBackReference
 	CategoryDTO category;
 	
 	@NotNull(message = "CreatedAt field is mandatory")

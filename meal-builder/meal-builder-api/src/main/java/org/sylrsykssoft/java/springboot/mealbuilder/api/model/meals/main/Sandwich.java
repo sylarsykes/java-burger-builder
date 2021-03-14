@@ -11,6 +11,12 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.mea
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.REPOSITORY_CATEGORY_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.REPOSITORY_SANDWICH_ENTITY_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.REPOSITORY_SANDWICH_TABLE_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.SANDWICH_BREAD_MAX_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.SANDWICH_BREAD_MIN_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.SANDWICH_CATEGORY_MAX_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.SANDWICH_CATEGORY_MIN_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.SANDWICH_INGREDIENT_MAX_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.SandwichApiConstants.SANDWICH_INGREDIENT_MIN_LENGTH;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_NAME_MODEL_NAME_NAME_COLUMN;
 
 import java.util.List;
@@ -24,6 +30,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PreparationData;
@@ -70,14 +77,17 @@ public class Sandwich extends BaseNameModel<Long> {
 	
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_CATEGORY_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@Size(min = SANDWICH_CATEGORY_MIN_LENGTH, max = SANDWICH_CATEGORY_MAX_LENGTH)
 	Set<SandwichCategory> sandwichCategories;
 	
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_SANDWICH_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@Size(min = SANDWICH_BREAD_MIN_LENGTH, max = SANDWICH_BREAD_MAX_LENGTH)
 	List<SandwichBread> sandwichBreads;
 	
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_INGREDIENT_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@Size(min = SANDWICH_INGREDIENT_MIN_LENGTH, max = SANDWICH_INGREDIENT_MAX_LENGTH)
 	Set<SandwichIngredient> sandwichIngredients;
 	
 	@Embedded
