@@ -82,7 +82,7 @@
         <!-- MEAL BUILDER -->
         <!-- =========================================================== -->
 		<dependency>
-			<groupId>org.sylrsykssoft</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>meal-builder-model-service</artifactId>
 		</dependency>
 		

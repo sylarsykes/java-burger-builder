@@ -1,14 +1,15 @@
 /**
- * CocktailIngredientDTO.java 9 mar. 2021
+ * DessertIngredientDTO.java 11 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks;
+package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.meals.end;
 
 import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.IngredientDataDTO;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.meals.IngredientDTO;
 import org.sylrsykssoft.springboot.common.api.dto.BaseModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -20,7 +21,7 @@ import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
 /**
- * CocktailIngredientDTO
+ * DessertIngredientDTO
  * 
  * @author juan.gonzalez.fernandez.jgf
  *
@@ -29,13 +30,13 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
-@Schema(name = "CocktailIngredientDTO", description = "Model CocktailIngredientDTO")
-public class CocktailIngredientDTO extends BaseModelDTO<Integer> implements Serializable {
+@Schema(name = "DessertIngredientDTO", description = "Model DessertIngredientDTO")
+public class DessertIngredientDTO extends BaseModelDTO<Integer> implements Serializable {
 
-	private static final long serialVersionUID = -1371703639764924998L;
-
+	private static final long serialVersionUID = 8265418190399561154L;
+	
 	@JsonBackReference
-	CocktailDTO cocktail;
+	DessertDTO dessert;
 	
 	@JsonBackReference
 	IngredientDTO ingredient;
@@ -43,5 +44,5 @@ public class CocktailIngredientDTO extends BaseModelDTO<Integer> implements Seri
 	@NotNull(message = "IngredientData field is mandatory")
 	@Schema(name = "IngredientDataDTO", description = "IngredientData IngredientDataDTO", required = true)
 	IngredientDataDTO ingredientData;
-	
+
 }

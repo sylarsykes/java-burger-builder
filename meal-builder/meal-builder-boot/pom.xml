@@ -65,6 +65,10 @@
 		    <groupId>org.springdoc</groupId>
 		    <artifactId>springdoc-openapi-ui</artifactId>
 		</dependency>
+		<dependency>
+		    <groupId>com.github.ulisesbocchio</groupId>
+		    <artifactId>jasypt-spring-boot-starter</artifactId>
+		</dependency>
 		
         <!-- =========================================================== -->
         <!-- EXTERNAL DEPENDENCIES -->
@@ -74,7 +78,7 @@
         <!-- COMMON -->
         <!-- =========================================================== -->
 		<dependency>
-		    <groupId>org.sylrsykssoft</groupId>
+		    <groupId>${project.groupId}</groupId>
 		    <artifactId>common-app-boot</artifactId>
 		</dependency>
 	
@@ -82,7 +86,7 @@
         <!-- MEAL BUILDER -->
         <!-- =========================================================== -->
 		<dependency>
-			<groupId>org.sylrsykssoft</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>meal-builder-rest</artifactId>
 		</dependency>
 		
@@ -118,7 +122,15 @@
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
-			
+			<plugin>
+			   <groupId>com.github.ulisesbocchio</groupId>
+			   <artifactId>jasypt-maven-plugin</artifactId>
+			 </plugin>
+			 
+			 <plugin>
+			   <groupId>com.github.ulisesbocchio</groupId>
+			   <artifactId>jasypt-maven-plugin</artifactId>
+			 </plugin>
 		</plugins>
 		
 		<resources>

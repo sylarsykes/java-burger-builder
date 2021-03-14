@@ -2,7 +2,7 @@
  * IngredientDTO.java 10 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks;
+package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.sauces;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -45,7 +45,7 @@ public class IngredientDTO extends BaseNameModelDTO<Long> implements Serializabl
 	@JsonProperty(value = "IngredientType", required = true)
 	@Schema(name = "IngredientType", description = "Type IngredientType", required = true)
 	@Builder.Default
-	IngredientType type = IngredientType.COCKTAIL;
+	IngredientType type = IngredientType.SAUCE;
 	
 	@NotNull(message = "Price field is mandatory")
 	@JsonProperty(value = "Price", required = true)
@@ -56,7 +56,7 @@ public class IngredientDTO extends BaseNameModelDTO<Long> implements Serializabl
 	@JsonIgnore
 	@Hidden
 	@Singular
-	transient Set<CocktailIngredientDTO> cocktailIngredients;
+	transient Set<SauceIngredientDTO> sauceIngredients;
 	
 	@NotNull(message = "IngredientCreationData field is mandatory")
 	@Schema(name = "AuditModelDTO", description = "IngredientCreationData AuditModelDTO", required = true)

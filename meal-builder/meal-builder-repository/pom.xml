@@ -77,7 +77,7 @@
         <!-- COMMON -->
         <!-- =========================================================== -->
 		<dependency>
-		    <groupId>org.sylrsykssoft</groupId>
+		    <groupId>${project.groupId}</groupId>
 		    <artifactId>common-util</artifactId>
 		</dependency>
 		
@@ -85,7 +85,7 @@
         <!-- MEAL BUILDER -->
         <!-- =========================================================== -->
 		<dependency>
-			<groupId>org.sylrsykssoft</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>meal-builder-api</artifactId>
 		</dependency>
 		

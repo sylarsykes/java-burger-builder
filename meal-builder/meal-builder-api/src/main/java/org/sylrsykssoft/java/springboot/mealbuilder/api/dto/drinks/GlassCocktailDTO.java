@@ -13,9 +13,11 @@ import org.sylrsykssoft.springboot.common.api.dto.BaseModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -49,7 +51,8 @@ public class GlassCocktailDTO extends BaseModelDTO<Integer> implements Serializa
 	@Builder.Default
 	GlassCocktailSize size = GlassCocktailSize.MEDIUM;
 	
-	@JsonIgnore
+	@JsonBackReference
+	@Hidden
 	CocktailDTO cocktail;
 
 	@NotNull(message = "GlassCocktailCreationData field is mandatory")

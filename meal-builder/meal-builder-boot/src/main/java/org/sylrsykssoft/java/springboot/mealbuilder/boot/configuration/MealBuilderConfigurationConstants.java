@@ -25,5 +25,10 @@ public class MealBuilderConfigurationConstants {
 			+ "." + MEAL_SCHEMA_NAME;
 	public static final String MEAL_BUILDER_APP_BOOT_CONFIGURATION_PROPERTIES_DATASOURCE_SAUCES = COMMON_APP_BOOT_CONFIGURATION_PROPERTIES_DATASOURCE
 			+ "." + SAUCE_SCHEMA_NAME;
+	
+	// JASYPT //
+	public static final String COMMON_APP_BOOT_CONFIGURATION_PROPERTIES_JASYPT_UTIL_PASSWORD = "app.jasypt.encryptor.util.password";
+	public static final String COMMON_APP_BOOT_CONFIGURATION_PROPERTIES_JASYPT_UTIL_TEXT_BASIC = "app.jasypt.encryptor.util.text.basic";
+	public static final String COMMON_APP_BOOT_CONFIGURATION_PROPERTIES_JASYPT_UTIL_TEXT_STRONG = "app.jasypt.encryptor.util.text.strong";
 
 }

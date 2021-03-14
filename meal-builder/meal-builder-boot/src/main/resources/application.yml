@@ -36,6 +36,8 @@ spring:
 # ===============================
 server:
   port: 8084
+  servlet:
+    context-path: /MBApp
   error:
     whitelabel:
       enable: false
@@ -75,6 +77,12 @@ logging:
   pattern:
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%"
 
+# ===============================
+# = CREDENTIALS
+# ===============================
+jasypt:
+  encryptor:
+    password: Key-MBApp-v1
 
 # ===============================
 # = SPRING DOC
@@ -191,7 +199,25 @@ common:
               - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks.publicapi
               - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.meals.publicapi
               - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.sauces.publicapi
-
+        # ===============================
+        # = JASYPT
+        # ===============================
+        jasypt:
+          simple:
+            bean-name-properties: mealBuilderJasyptSimplePBEConfigurationProperties
+            bean-name: jasyptStringEncryptor
+            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_ALGORITHM
+            algorithm: PBEWithMD5AndDES
+            password: ${jasypt.encryptor.password}
+            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_KEY_OBTENTION_ITERATIONS
+            key-obtention-iterations: 1000
+            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html org.jasypt.salt.RandomSaltGenerator
+            salt-generator-className: org.jasypt.salt.RandomSaltGenerator
+            provider-name: SunJCE
+            pool-size: 1
+            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_STRING_OUTPUT_TYPE
+            string-output-type: base64
+                
 # ===============================
 # = APPLICATION
 # ===============================
@@ -205,22 +231,42 @@ app:
         driver-class-name: ${common.app.boot.configuration.datasource.common.driver-class-name}
         schema-name: meals
         url: jdbc:mariadb://localhost:3306/meals
-        username: root
-        password: root
         configuration:
           maximum-pool-size: 30
       drinks:
         driver-class-name: ${common.app.boot.configuration.datasource.common.driver-class-name}
         schema-name: drinks
         url: jdbc:mariadb://localhost:3306/drinks
-        username: root
-        password: root
       sauces:
         driver-class-name: ${common.app.boot.configuration.datasource.common.driver-class-name}
         schema-name: sauces
         url: jdbc:mariadb://localhost:3306/sauces
-        username: root
-        password: root
+  # ===============================
+  # = JASYPT
+  # ===============================
+  jasypt:
+    encryptor:
+      util:
+        password:
+          bean-name-properties: mealBuilderJasyptUtilPasswordEncryptorConfigurationProperties
+          bean-name: jasyptUtilPasswordEncryptor
+          # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_ALGORITHM
+          algorithm: PBEWithMD5AndDES
+          # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_KEY_OBTENTION_ITERATIONS
+          key-obtention-iterations: 1000
+          # http://www.jasypt.org/api/jasypt/1.8/constant-values.html org.jasypt.salt.RandomSaltGenerator
+          salt-generator-className: org.jasypt.salt.RandomSaltGenerator
+          provider-name: SunJCE
+          pool-size: 1
+          # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_STRING_OUTPUT_TYPE
+          string-output-type: base64
+        text:
+          basic:
+            bean-name-properties: mealBuilderJasyptUtilBasicTextEncryptorConfigurationProperties
+            bean-name: jasypUtiltBasicTextEncryptor
+          strong:
+            bean-name-properties: mealBuilderJasyptUtilStrongTextEncryptorConfigurationProperties
+            bean-name: jasypUtiltStrongTextEncryptor
   rest:
     public:
       base-path: ${spring.data.rest.base-path}/public/

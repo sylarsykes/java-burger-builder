@@ -77,12 +77,12 @@
         <!-- COMMON -->
         <!-- =========================================================== -->
 		<dependency>
-		    <groupId>org.sylrsykssoft</groupId>
+		    <groupId>${project.groupId}</groupId>
 		    <artifactId>common-util</artifactId>
 		</dependency>
 		
 		<dependency>
-		    <groupId>org.sylrsykssoft</groupId>
+		    <groupId>${project.groupId}</groupId>
 		    <artifactId>common-api</artifactId>
 		</dependency>
 		
