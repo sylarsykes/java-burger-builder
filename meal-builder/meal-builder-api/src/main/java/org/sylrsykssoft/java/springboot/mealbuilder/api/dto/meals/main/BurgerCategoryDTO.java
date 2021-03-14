@@ -37,6 +37,9 @@ public class BurgerCategoryDTO extends BaseModelDTO<Integer> implements Serializ
 	private static final long serialVersionUID = -799562128665955852L;
 
 	@JsonBackReference
+	BurgerDTO burger;
+	
+	@JsonBackReference
 	CategoryDTO category;
 	
 	@NotNull(message = "CreatedAt field is mandatory")

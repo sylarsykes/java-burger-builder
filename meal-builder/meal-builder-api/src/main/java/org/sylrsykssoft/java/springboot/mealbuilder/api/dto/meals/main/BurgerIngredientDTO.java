@@ -35,6 +35,8 @@ public class BurgerIngredientDTO extends BaseModelDTO<Integer> implements Serial
 
 	private static final long serialVersionUID = -4404659449398272826L;
 
+	@JsonBackReference
+	BurgerDTO burger;
 	
 	@JsonBackReference
 	IngredientDTO ingredient;

@@ -6,6 +6,12 @@ package org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.main;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.FOOD_SIZE_SIZE_COLUMN;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_TABLE_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.BURGER_BREAD_MAX_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.BURGER_BREAD_MIN_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.BURGER_CATEGORY_MAX_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.BURGER_CATEGORY_MIN_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.BURGER_INGREDIENT_MAX_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.BURGER_INGREDIENT_MIN_LENGTH;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.REPOSITORY_BURGER_ENTITY_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.BurgerApiConstants.REPOSITORY_BURGER_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEAL_SCHEMA_NAME;
@@ -24,6 +30,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PreparationData;
@@ -70,14 +77,17 @@ public class Burger extends BaseNameModel<Long> {
 	
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_CATEGORY_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@Size(min = BURGER_CATEGORY_MIN_LENGTH, max = BURGER_CATEGORY_MAX_LENGTH)
 	Set<BurgerCategory> burgerCategories;
 	
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_BURGER_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@Size(min = BURGER_BREAD_MIN_LENGTH, max = BURGER_BREAD_MAX_LENGTH)
 	List<BurgerBread> bugerBreads;
 	
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_INGREDIENT_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@Size(min = BURGER_INGREDIENT_MIN_LENGTH, max = BURGER_INGREDIENT_MAX_LENGTH)
 	Set<BurgerIngredient> burgerIngredients;
 	
 	@Embedded

@@ -33,6 +33,8 @@ public class CocktailApiConstants {
 	
 	public static final String REPOSITORY_COCKTAIL_INGREDIENT_TABLE_NAME = "cocktail_ingredient";
 	public static final String REPOSITORY_COCKTAIL_INGREDIENT_ENTITY_NAME = "CocktailIngredient";
+	public static final int COCKTAIL_INGREDIENT_MAX_LENGTH = 10;
+	public static final int COCKTAIL_INGREDIENT_MIN_LENGTH = 1;
 	
 	public static final String REPOSITORY_GLASS_COCKTAIL_TABLE_NAME = "glass_cocktail";
 	public static final String REPOSITORY_GLASS_COCKTAIL_ENTITY_NAME = "GlassCocktail";

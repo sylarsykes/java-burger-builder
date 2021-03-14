@@ -27,8 +27,12 @@ public class KebabApiConstants {
 	
 	public static final String REPOSITORY_KEBAB_INGREDIENT_TABLE_NAME = "kebab_ingredient";
 	public static final String REPOSITORY_KEBAB_INGREDIENT_ENTITY_NAME = "KebabIngredient";
+	public static final int KEBAB_INGREDIENT_MAX_LENGTH = 10;
+	public static final int KEBAB_INGREDIENT_MIN_LENGTH = 1;
 	
 	public static final String REPOSITORY_KEBAB_CATEGORY_TABLE_NAME = "kebab_category";
 	public static final String REPOSITORY_KEBAB_CATEGORY_ENTITY_NAME = "KebabCategory";
+	public static final int KEBAB_CATEGORY_MAX_LENGTH = 10;
+	public static final int KEBAB_CATEGORY_MIN_LENGTH = 1;
 	
 }

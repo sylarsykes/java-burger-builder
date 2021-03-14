@@ -7,6 +7,10 @@ package org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.main;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.FOOD_SIZE_SIZE_COLUMN;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.KebabApiConstants.KEBAB_BREAD_ID_JOIN_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.KebabApiConstants.KEBAB_CATEGORY_MAX_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.KebabApiConstants.KEBAB_CATEGORY_MIN_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.KebabApiConstants.KEBAB_INGREDIENT_MAX_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.KebabApiConstants.KEBAB_INGREDIENT_MIN_LENGTH;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.KebabApiConstants.REPOSITORY_KEBAB_ENTITY_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.KebabApiConstants.REPOSITORY_KEBAB_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals.MealsApiConstants.MEAL_SCHEMA_NAME;
@@ -27,6 +31,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PreparationData;
@@ -73,6 +78,7 @@ public class Kebab extends BaseNameModel<Long> {
 	
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_CATEGORY_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@Size(min = KEBAB_CATEGORY_MIN_LENGTH, max = KEBAB_CATEGORY_MAX_LENGTH)
 	Set<KebabCategory> kebabCategories;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -81,6 +87,7 @@ public class Kebab extends BaseNameModel<Long> {
 	
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_INGREDIENT_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@Size(min = KEBAB_INGREDIENT_MIN_LENGTH, max = KEBAB_INGREDIENT_MAX_LENGTH)
 	Set<KebabIngredient> kebabIngredients;
 	
 	@Embedded

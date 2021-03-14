@@ -47,7 +47,7 @@ public class DessertDTO extends BaseNameModelDTO<Long> implements Serializable {
 	PreparationDataDTO preparation;
 	
 	@NotNull(message = "Size field is mandatory")
-	@JsonProperty(value = "FoodSize", required = true)
+	@JsonProperty(value = "Size", required = true)
 	@Schema(name = "FoodSize", description = "Size FoodSize", required = true)
 	FoodSizeDataDTO size;
 	
@@ -57,7 +57,7 @@ public class DessertDTO extends BaseNameModelDTO<Long> implements Serializable {
 	PriceDataDTO price;
 	
 	@NotNull(message = "DessertIngredients field is mandatory")
-	@JsonProperty(value = "DessertIngredients", required = true)
+	@JsonProperty(value = "Ingredients", required = true)
 	@JsonManagedReference
 	@Schema(name = "DessertIngredients", description = "Ingredients of Dessert", required = true)
 	@Singular
