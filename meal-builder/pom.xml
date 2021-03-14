@@ -95,6 +95,9 @@
 		<!-- JUnit -->
 		<junit-jupiter.version>5.7.0</junit-jupiter.version>
 		
+		<!-- Jasypt -->
+		<jasypt-spring-boot-starter.version>3.0.3</jasypt-spring-boot-starter.version>
+		
 		<!-- Spring Boot -->
 		<spring-boot.version>2.4.3</spring-boot.version>
 		
@@ -224,6 +227,12 @@
 			    <groupId>org.springframework.boot</groupId>
 			    <artifactId>spring-boot-starter-data-rest</artifactId>
 			    <version>${spring-boot.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>com.github.ulisesbocchio</groupId>
+			    <artifactId>jasypt-spring-boot-starter</artifactId>
+			    <version>${jasypt-spring-boot-starter.version}</version>
 			</dependency>
             
             <!-- =========================================================== -->
@@ -480,6 +489,12 @@
 	                    <addVersionToProjectName>${maven-config.maven-eclipse-plugin.addVersionToProjectName}</addVersionToProjectName>
 	                </configuration>
 	            </plugin>
+	            
+	            <plugin>
+				   <groupId>com.github.ulisesbocchio</groupId>
+				   <artifactId>jasypt-maven-plugin</artifactId>
+				   <version>${jasypt-spring-boot-starter.version}</version>
+				 </plugin>
 			</plugins>
 		</pluginManagement>
 	</build>

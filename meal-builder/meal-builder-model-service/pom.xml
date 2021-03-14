@@ -72,12 +72,12 @@
         <!-- MEAL BUILDER -->
         <!-- =========================================================== -->
 		<dependency>
-			<groupId>org.sylrsykssoft</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>meal-builder-api</artifactId>
 		</dependency>
 		
 		<dependency>
-			<groupId>org.sylrsykssoft</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>meal-builder-repository</artifactId>
 		</dependency>
 		

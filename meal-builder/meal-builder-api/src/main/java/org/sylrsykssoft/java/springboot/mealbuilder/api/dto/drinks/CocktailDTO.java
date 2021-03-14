@@ -16,6 +16,7 @@ import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -59,11 +60,13 @@ public class CocktailDTO extends BaseNameModelDTO<Long> implements Serializable 
 	
 	@NotNull(message = "Glass field is mandatory")
 	@JsonProperty(value = "GlassCocktail", required = true)
+	@JsonManagedReference
 	@Schema(name = "GlassCocktail", description = "Glass of Cocktail", required = true)
 	GlassCocktailDTO glassCocktail;
 	
 	@NotNull(message = "CocktailIngredients field is mandatory")
 	@JsonProperty(value = "CocktailIngredients", required = true)
+	@JsonManagedReference
 	@Schema(name = "CocktailIngredients", description = "Ingredients of Cocktail", required = true)
 	@Singular
 	transient Set<CocktailIngredientDTO> cocktailIngredients;

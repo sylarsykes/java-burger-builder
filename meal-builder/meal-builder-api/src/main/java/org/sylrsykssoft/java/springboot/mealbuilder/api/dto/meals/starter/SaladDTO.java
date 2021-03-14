@@ -1,31 +1,33 @@
 /**
- * DrinkDTO.java 4 mar. 2021
+ * SaladDTO.java 11 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks;
+package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.meals.starter;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 
-import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DrinkType;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PreparationDataDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO;
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 import lombok.experimental.SuperBuilder;
 
 /**
- * Drink DTO
+ * SaladDTO
  * 
  * @author juan.gonzalez.fernandez.jgf
  *
@@ -34,16 +36,15 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
-@Schema(name = "DrinkDTO", description = "Model DrinkDTO")
-public class DrinkDTO extends BaseNameModelDTO<Long> implements Serializable {
-	
-	private static final long serialVersionUID = -7969741388969178253L;
+@Schema(name = "SaladDTO", description = "Model SaladDTO")
+public class SaladDTO extends BaseNameModelDTO<Long> implements Serializable {
 
-	@NotNull(message = "Type field is mandatory")
-	@JsonProperty(value = "DrinkType", required = true)
-	@Schema(name = "DrinkType", description = "Type DrinkType", required = true)
-	@Builder.Default
-	DrinkType type = DrinkType.NO_ALCOHOLIC;
+	private static final long serialVersionUID = 2747451096114720169L;
+	
+	@NotNull(message = "Preparation field is mandatory")
+	@JsonProperty(value = "Preparation", required = true)
+	@Schema(name = "Preparation", description = "Preparation of Salad", required = true)
+	PreparationDataDTO preparation;
 	
 	@NotNull(message = "Size field is mandatory")
 	@JsonProperty(value = "FoodSize", required = true)
@@ -55,9 +56,16 @@ public class DrinkDTO extends BaseNameModelDTO<Long> implements Serializable {
 	@Schema(name = "PriceDataDTO", description = "Price PriceDataDTO", required = true)
 	PriceDataDTO price;
 	
-	@NotNull(message = "DrinkCreationData field is mandatory")
-	@Schema(name = "AuditModelDTO", description = "DrinkCreationData AuditModelDTO", required = true)
+	@NotNull(message = "SaladIngredients field is mandatory")
+	@JsonProperty(value = "SaladIngredients", required = true)
+	@JsonManagedReference
+	@Schema(name = "SaladIngredients", description = "Ingredients of Salad", required = true)
+	@Singular
+	transient Set<SaladIngredientDTO> saladIngredients;
+	
+	@NotNull(message = "SaladCreationData field is mandatory")
+	@Schema(name = "AuditModelDTO", description = "SaladCreationData AuditModelDTO", required = true)
 	@JsonIgnore
-	AuditModelDTO drinkCreationData;
+	AuditModelDTO saladCreationData;
 	
 }
