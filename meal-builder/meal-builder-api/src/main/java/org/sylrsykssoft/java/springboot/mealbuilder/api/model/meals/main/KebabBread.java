@@ -17,7 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.BreadData;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.embeddable.BreadData;
 import org.sylrsykssoft.springboot.common.api.model.BaseNameModel;
 
 import lombok.EqualsAndHashCode;

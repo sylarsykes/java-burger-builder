@@ -12,13 +12,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.dto.drinks.DrinkDTOMapperConverter;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.model.drinks.DrinkMapperConverter;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.service.drinks.drink.find.IDrinkFindService;
 import org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks.DrinkRepository;
@@ -53,8 +54,11 @@ public class DrinkFindService implements IDrinkFindService {
 	DrinkRepository drinkRepository;
 
 	@Autowired
-	ModelMapper modelMapper;
-
+	DrinkDTOMapperConverter asDTOConverter;
+	
+	@Autowired
+	DrinkMapperConverter asModelConverter;
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -69,7 +73,7 @@ public class DrinkFindService implements IDrinkFindService {
 	@Override
 	@SneakyThrows(NullPointerException.class)
 	public DrinkDTO mapperToModel(@NonNull final Drink source) {
-		return modelMapper.map(source, DrinkDTO.class);
+		return asDTOConverter.convert(source);
 	}
 
 	/**
@@ -78,7 +82,7 @@ public class DrinkFindService implements IDrinkFindService {
 	@Override
 	@SneakyThrows(NullPointerException.class)
 	public Drink mapperToEntity(@NonNull final DrinkDTO source) {
-		return modelMapper.map(source, Drink.class);
+		return asModelConverter.convert(source);
 	}
 
 	/**

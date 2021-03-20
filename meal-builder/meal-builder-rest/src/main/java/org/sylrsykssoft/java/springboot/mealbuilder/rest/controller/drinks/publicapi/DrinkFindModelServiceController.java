@@ -132,7 +132,7 @@ public class DrinkFindModelServiceController implements IRestModelController<Dri
 			@ApiResponse(responseCode = "200", description = "DrinkDTO object"),
 			@ApiResponse(responseCode = "400", description = "Illegal argument"),
 			@ApiResponse(responseCode = "404", description = "DrinkDTO not exists") })
-	public @Valid DrinkDTO findById(
+	public @Valid DrinkDTO findByName(
 			@Parameter(name = "name", description = "The name of the drink object", required = true) @PathVariable @NonNull @NotBlank final String name) {
 		LOGGER.info("{} name {}", LOG_METHOD_FIND_BY_NAME, name);
 

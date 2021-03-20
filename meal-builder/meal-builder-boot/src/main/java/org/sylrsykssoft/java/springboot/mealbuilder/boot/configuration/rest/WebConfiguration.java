@@ -4,8 +4,9 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.rest;
 
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_MODEL_SERVICES_BASE_PACKAGE;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_REST_CONTROLLER_BASE_PACKAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_COMPONENT_MODEL_MAPPER_SCAN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_MODEL_SERVICES_BASE_PACKAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_REST_CONTROLLER_BASE_PACKAGE;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +19,11 @@ import org.springframework.context.annotation.Scope;
  *
  */
 @Configuration
-@ComponentScan(basePackages = { DRINKS_MODEL_SERVICES_BASE_PACKAGE, DRINKS_REST_CONTROLLER_BASE_PACKAGE })
+@ComponentScan(basePackages = { 
+	API_COMPONENT_MODEL_MAPPER_SCAN, 
+	API_MODEL_SERVICES_BASE_PACKAGE,
+	API_REST_CONTROLLER_BASE_PACKAGE 
+})
 public class WebConfiguration {
 
 	/**

@@ -4,14 +4,6 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.meals;
 
-import static java.util.Arrays.asList;
-
-import java.util.List;
-
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -37,18 +29,5 @@ public class BreadApiConstants {
 	
 	// @see https://en.wikipedia.org/wiki/List_of_breads
 	// @see https://en.wikipedia.org/wiki/List_of_sandwiches
-	@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-	@Getter
-	@RequiredArgsConstructor
-	public enum BreadType {
-		BURGER(BreadTypeMeal.BURGER, asList("chapata")),
-		SANDWICH(BreadTypeMeal.BURGER, asList("Baguette", "Arepa", "Bagel", "Mollete", "Barmbrack", "Sandwich bread"));
-		
-		BreadTypeMeal typeMeal;
-		
-		List<String> breads;
-		
-		// Check exists use EnumUtils.isValidEnum
-	}
 	
 }

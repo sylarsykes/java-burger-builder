@@ -10,10 +10,6 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.Api
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_DATA_SOURCE_HIBERNATE_PROPERTIES_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_DATA_SOURCE_PROPERTIES_BASE;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_JPA_REPOSITORIES_BASE_PACKAGE;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_MODEL_SERVICES_BASE_PACKAGE;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_REST_CONTROLLER_ADMIN_API_PACKAGE_NAME;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_REST_CONTROLLER_BASE_PACKAGE;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_REST_CONTROLLER_PUBLIC_API_PACKAGE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_ENTITY_NAME;
 
 import lombok.experimental.UtilityClass;
@@ -33,10 +29,6 @@ public class DrinksApiConstants {
 	// PACKAGES //
 	public static final String DRINKS_JPA_MODEL_BASE_PACKAGE = API_COMPONENT_MODEL_SCAN + "." + DRINK_SCHEMA_NAME;
 	public static final String DRINKS_JPA_REPOSITORIES_BASE_PACKAGE = API_JPA_REPOSITORIES_BASE_PACKAGE + "."
-			+ DRINK_SCHEMA_NAME;
-	public static final String DRINKS_MODEL_SERVICES_BASE_PACKAGE = API_MODEL_SERVICES_BASE_PACKAGE + "."
-			+ DRINK_SCHEMA_NAME;
-	public static final String DRINKS_REST_CONTROLLER_BASE_PACKAGE = API_REST_CONTROLLER_BASE_PACKAGE + "."
 			+ DRINK_SCHEMA_NAME;
 	
 	// DATASOURCE //
@@ -63,11 +55,5 @@ public class DrinksApiConstants {
 
 	// INGREDIENT //
 	public static final String DRINKS_REPOSITORY_INGREDIENT_ENTITY_NAME = "D" + REPOSITORY_INGREDIENT_ENTITY_NAME;
-
-	// REST CONTROLLER //
-	public static final String DRINKS_REST_CONTROLLER_PUBLIC_API_PACKAGE = DRINKS_REST_CONTROLLER_BASE_PACKAGE + "."
-			+ API_REST_CONTROLLER_PUBLIC_API_PACKAGE_NAME;
-	public static final String DRINKS_REST_CONTROLLER_ADMIN_API_PACKAGE = DRINKS_REST_CONTROLLER_BASE_PACKAGE + "."
-			+ API_REST_CONTROLLER_ADMIN_API_PACKAGE_NAME;
 
 }

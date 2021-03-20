@@ -26,8 +26,13 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.lang.Nullable;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
 
 /**
  * Embeddable audit model
@@ -37,8 +42,13 @@ import lombok.experimental.FieldDefaults;
  */
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@SuperBuilder(toBuilder = true)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
+@ToString(callSuper = true, includeFieldNames = true)
 @Embeddable
-public class AuditModel {
+public class AuditModel extends BaseEmbeddable {
 
 	@Column(name = BASE_AUDIT_MODEL_NAME_CREATED_BY_COLUMN, nullable = false, insertable = true, updatable = false, length = MAX_LENGTH_NICKNAME_USER)
 	@NotBlank(message = "CreatedBy field is mandatory")

@@ -18,6 +18,7 @@ public class DrinkApiConstants {
 	// DRINK //
 	public static final String REPOSITORY_DRINK_TABLE_NAME = "drink";
 	public static final String REPOSITORY_DRINK_ENTITY_NAME = "Drink";
+	public static final String DRINK_ID_JOIN_COLUMN = "drink_id";
 	
 	public enum DrinkType {
 		NO_ALCOHOLIC, ALCOHOLIC
@@ -28,5 +29,9 @@ public class DrinkApiConstants {
 	public static final String DRINK_TYPE_TYPE_COLUMN = "type";
 	public static final String DRINK_TYPE_TYPE_COLUMN_DEFAULT_VALUE = "varchar(20) default 'NO_ALCOHOLIC'";
 	public static final int DRINK_TYPE_TYPE_COLUMN_LENGTH = 20;
+	
+	// LOCALIZED DRINK //
+	public static final String REPOSITORY_LOCALIZED_DRINK_TABLE_NAME = "localized_drink";
+	public static final String REPOSITORY_LOCALIZED_DRINK_ENTITY_NAME = "LocalizedDrink";
 	
 }

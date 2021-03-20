@@ -17,8 +17,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.Value;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.SuperBuilder;
 
 /**
  * IngredientData
@@ -26,8 +30,12 @@ import lombok.experimental.FieldDefaults;
  * @author juan.gonzalez.fernandez.jgf
  *
  */
-@Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Value
+@FieldDefaults(level=AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@SuperBuilder(toBuilder = true)
+@EqualsAndHashCode(doNotUseGetters = true)
+@ToString(callSuper = true, includeFieldNames = true)
 @Embeddable
 public class IngredientData {
 

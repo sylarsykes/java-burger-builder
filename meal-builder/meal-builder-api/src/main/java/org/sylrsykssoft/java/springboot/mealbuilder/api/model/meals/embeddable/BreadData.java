@@ -2,12 +2,14 @@
  * BreadData.java 1 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable;
+package org.sylrsykssoft.java.springboot.mealbuilder.api.model.meals.embeddable;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.validation.constraints.NotNull;
 
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
 
 import lombok.AccessLevel;

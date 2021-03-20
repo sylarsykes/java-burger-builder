@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
 
 /**
@@ -23,6 +24,7 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
  * @see <a href="META-INF/drinks-mapping/drink.orm.xml">Repository queries</a>
  *
  */
+@Repository
 @RepositoryDefinition(domainClass = Drink.class, idClass = Long.class)
 public interface DrinkRepository extends JpaRepository<Drink, Long> {
 	
