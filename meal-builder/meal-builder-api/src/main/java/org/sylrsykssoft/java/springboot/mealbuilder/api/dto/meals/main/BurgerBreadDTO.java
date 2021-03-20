@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 
-import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.BreadDataDTO;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.meals.embeddable.BreadDataDTO;
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;

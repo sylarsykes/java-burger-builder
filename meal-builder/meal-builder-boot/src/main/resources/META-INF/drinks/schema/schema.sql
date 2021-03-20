@@ -34,6 +34,18 @@ CREATE TABLE `drink` (
   UNIQUE KEY `UKc47t6nxt7cn3fubrrtxj0traw` (`type`,`size`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- drinks.localized_drink definition
+
+CREATE TABLE `localized_drink` (
+  `drink_id` bigint(20) NOT NULL,
+  `locale` varchar(2) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `description` text DEFAULT NULL,
+  PRIMARY KEY (`drink_id`,`locale`),
+  UNIQUE KEY `UK_irlsjawdof4etm8pjtrpofhad` (`name`),
+  CONSTRAINT `FKrr1sqtlg8091odotp9im5nd3v` FOREIGN KEY (`drink_id`) REFERENCES `drink` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- drinks.cocktail definition
 
 CREATE TABLE `cocktail` (

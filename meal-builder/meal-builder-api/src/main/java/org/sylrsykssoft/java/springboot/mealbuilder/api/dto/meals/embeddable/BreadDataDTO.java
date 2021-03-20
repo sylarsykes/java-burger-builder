@@ -2,12 +2,14 @@
  * BreadDataDTO.java 1 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable;
+package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.meals.embeddable;
 
 import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 
+import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO;
 import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
 

@@ -34,6 +34,8 @@ public class ApiConstants {
 	
 	// PACKAGES //
 	public static final String API_APP_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder";
+	public static final String API_COMPONENT_MODEL_DTO_SCAN = API_APP_BASE_PACKAGE + ".api.dto";
+	public static final String API_COMPONENT_MODEL_MAPPER_SCAN = API_APP_BASE_PACKAGE + ".api.mapper";
 	public static final String API_COMPONENT_MODEL_SCAN = API_APP_BASE_PACKAGE + ".api.model";
 	public static final String API_JPA_REPOSITORIES_BASE_PACKAGE = API_APP_BASE_PACKAGE + ".repository";
 	public static final String API_MODEL_SERVICES_BASE_PACKAGE = API_APP_BASE_PACKAGE + ".model.service";
@@ -62,4 +64,5 @@ public class ApiConstants {
 	// REST CONTOLLER //
 	public static final String API_REST_CONTROLLER_PUBLIC_API_PACKAGE_NAME = "publicapi";
 	public static final String API_REST_CONTROLLER_ADMIN_API_PACKAGE_NAME = "adminapi";
+		
 }

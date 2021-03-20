@@ -22,6 +22,8 @@ public class CommonAPIConstants {
 	public static final String DESCRIPTION_FIELD_COLUMN_DEFINITION = "TEXT";
 	public static final int MAX_LENGTH_NICKNAME_USER = 60;
 	public static final int MIN_LENGTH_NICKNAME_USER = 2;
+	public static final int MAX_LENGTH_LOCALIZED_LOCALE = 2;
+	public static final int MIN_LENGTH_LOCALIZED_LOCALE = 2;
 
 	// COLUMN NAMES //
 	public static final String BASE_MODEL_NAME_ID_COLUMN = "id";
@@ -32,6 +34,7 @@ public class CommonAPIConstants {
 	public static final String BASE_AUDIT_MODEL_NAME_CREATED_DATE_COLUMN = "created_date";
 	public static final String BASE_AUDIT_MODEL_NAME_LAST_MODIFY_BY_COLUMN = "last_modify_by";
 	public static final String BASE_AUDIT_MODEL_NAME_LAST_MODIFIED_DATE_COLUMN = "last_modified_date";
+	public static final String BASE_LOCALIZED_MODEL_LOCALE_COLUMN = "locale";
 
 	// JPA QUERY OBJECTS NAMES //
 	public static final String BASE_NAME_MODEL_OBJECT_JPA = "name";
@@ -48,6 +51,7 @@ public class CommonAPIConstants {
 	public static final String BASE_AUDIT_MODEL_NAME_CREATED_DATE_JPA = "createdDate";
 	public static final String BASE_AUDIT_MODEL_NAME_LAST_MODIFY_BY_JPA = "lastModifiedBy";
 	public static final String BASE_AUDIT_MODEL_NAME_LAST_MODIFIED_DATE_JPA = "lastModifiedDate";
+	public static final String BASE_LOCALIZED_MODEL_LOCALE_JPA = "embeddedId." + BASE_LOCALIZED_MODEL_LOCALE_COLUMN;
 
 	// JPA QUERY FIELD NAMES //
 	// BASE NAME MODEL //
