@@ -46,4 +46,5 @@ public class CommonAppBootConstants {
 	public static final String COMMON_APP_BOOT_CONFIGURATION_PROPERTIES_JASYPT_UTIL_TEXT_STRONG = COMMON_APP_BOOT_CONFIGURATION_PROPERTIES_JASYPT
 			+ ".util.text.strong";
 
+	public static final String COMMON_APP_BOOT_API_MAPPER_PACKAGE = "org.sylrsykssoft.springboot.common.app.boot.configuration.modelmapper";
 }

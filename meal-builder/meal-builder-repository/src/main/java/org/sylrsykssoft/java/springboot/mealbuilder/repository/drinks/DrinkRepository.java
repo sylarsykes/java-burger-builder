@@ -7,6 +7,7 @@ package org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks;
 import static org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks.query.DrinkQueryFindRepository.REPOSITORY_DRINK_FIND_BY_NAME_NAMEQUERY_NAME_PARAM;
 import static org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks.query.DrinkQueryFindRepository.REPOSITORY_DRINK_FIND_BY_TYPE_NAMEQUERY_NAME_PARAM;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.constraints.NotBlank;
@@ -36,6 +37,36 @@ public interface DrinkRepository extends JpaRepository<Drink, Long> {
 	 * @see <a href="META-INF/drinks-mapping/drink.orm.xml">REPOSITORY_DRINK_FIND_BY_NAME_NAMEQUERY_NAME</a>
 	 */
 	Optional<Drink> findByName(@Param(REPOSITORY_DRINK_FIND_BY_NAME_NAMEQUERY_NAME_PARAM) @NotBlank final String name);
+	
+	// NAME LIKE METHODS
+	
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
+	List<Drink> findByNameContaining(@Param(REPOSITORY_DRINK_FIND_BY_NAME_NAMEQUERY_NAME_PARAM) @NotBlank final String name);
+	
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
+	List<Drink> findByNameContains(@Param(REPOSITORY_DRINK_FIND_BY_NAME_NAMEQUERY_NAME_PARAM) @NotBlank final String name);
+	
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
+	List<Drink> findByNameIsContaining(@Param(REPOSITORY_DRINK_FIND_BY_NAME_NAMEQUERY_NAME_PARAM) @NotBlank final String name);
+	
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
+	List<Drink> findByNameLike(@Param(REPOSITORY_DRINK_FIND_BY_NAME_NAMEQUERY_NAME_PARAM) @NotBlank final String name);
 	
 	/**
 	 * Find drink by name

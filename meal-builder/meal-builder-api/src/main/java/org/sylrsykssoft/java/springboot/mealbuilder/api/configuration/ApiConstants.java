@@ -46,6 +46,10 @@ public class ApiConstants {
 	public static final String API_DATA_SOURCE_CONFIGURATION_PROPERTIES_CONFIGURATION_NAME = "configuration";
 	public static final String API_DATA_SOURCE_CUSTOM_PROPERTIES_NAME = "custom";
 	public static final String API_DATA_SOURCE_HIBERNATE_PROPERTIES_NAME = "hibernate";
+	
+	// MODELMAPPER //
+	public static final String API_MODELMAPPER_COMMON_MODEL_MAPPER_BEAN_NAME = "commonModelMapper";
+	public static final String API_MODELMAPPER_MODEL_MODEL_MAPPER_BEAN_NAME = "mealBuilderModelMapper";
 
 	// JPA QUERY OBJECTS NAMES //
 	public static final String PRICE_MODEL_OBJECT_JPA = "price";

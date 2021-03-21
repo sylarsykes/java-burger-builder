@@ -1,5 +1,7 @@
 package org.sylrsykssoft.springboot.common.api.service;
 
+import javax.validation.Valid;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.model.BaseModel;
@@ -21,7 +23,7 @@ public interface ModelService<D extends BaseNameModelDTO<N>, E extends BaseModel
 	 * 
 	 * @return D
 	 */
-	D mapperToModel(E source);
+	D mapperToModel(@Valid E source);
 	
 	/**
 	 * Map model to entity
@@ -31,6 +33,6 @@ public interface ModelService<D extends BaseNameModelDTO<N>, E extends BaseModel
 	 * 
 	 * @return E
 	 */
-	E mapperToEntity(D source);
+	E mapperToEntity(@Valid D source);
 	
 }
