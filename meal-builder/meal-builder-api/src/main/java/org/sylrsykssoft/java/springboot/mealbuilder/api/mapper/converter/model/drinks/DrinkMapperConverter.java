@@ -35,7 +35,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public class DrinkMapperConverter implements Converter<DrinkDTO, Drink> {
-	
+
 	@NonNull
 	private ModelMapper commonModelMapper;
 
@@ -44,10 +44,10 @@ public class DrinkMapperConverter implements Converter<DrinkDTO, Drink> {
 
 	@NonNull
 	private PriceDataMapperConverter priceDataDTOConverter;
-	
+
 	@NonNull
 	private LocalizedDrinkMapperConverter localizedDrinDTOkConverter;
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -64,16 +64,14 @@ public class DrinkMapperConverter implements Converter<DrinkDTO, Drink> {
 
 		final Map<String, LocalizedDrink> localizations = new HashMap<>();
 		if (MapUtils.isNotEmpty(source.getLocalizations())) {
-			source.getLocalizations().forEach((key, value) -> {
-				localizations.put(key, localizedDrinDTOkConverter.convert(value));
-			});
+			source.getLocalizations()
+					.forEach((key, value) -> localizations.put(key, localizedDrinDTOkConverter.convert(value)));
 		}
 
-		final AuditModel drinkCreationData = commonModelMapper.map(source.getDrinkCreationData(),
-				AuditModel.class);
+		final AuditModel drinkCreationData = commonModelMapper.map(source.getDrinkCreationData(), AuditModel.class);
 
-		return Drink.builder().id(source.getId()).name(name).description(description).type(source.getType())
-				.size(size).price(price).localizations(localizations).drinkCreationData(drinkCreationData).build();
+		return Drink.builder().id(source.getId()).name(name).description(description).type(source.getType()).size(size)
+				.price(price).localizations(localizations).drinkCreationData(drinkCreationData).build();
 	}
 
 }

@@ -4,8 +4,8 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks;
 
-import org.sylrsykssoft.springboot.common.api.dto.embeddable.BaseEmbeddedNameModelDTO;
-import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.BaseEmbeddedLocalizedValueModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -29,7 +29,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
 @Schema(name = "LocalizedDrinkDTO", description = "Model LocalizedDrinkDTO")
-public class LocalizedDrinkDTO extends BaseEmbeddedNameModelDTO<LocalizedModelDTO> {
+public class LocalizedDrinkDTO extends BaseEmbeddedLocalizedValueModelDTO<LocalizedFieldNameModelDTO> {
 
 	@JsonBackReference
 	DrinkDTO drink;

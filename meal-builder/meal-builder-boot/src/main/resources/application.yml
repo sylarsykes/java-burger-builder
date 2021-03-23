@@ -170,6 +170,118 @@ common:
               - META-INF/sauces/mapping/sauce.orm.xml
               - META-INF/sauces/mapping/sauce_ingredient.orm.xml
         # ===============================
+        # = MODELMAPPER
+        # ===============================
+        modelmapper:
+          # ===============================
+          # = COMMON MODELMAPPER DEFINITION
+          # ===============================
+          bean-name-properties: commonModelMapperConfigurationProperties
+          bean-name: commonModelMapper
+          mapping-contexts:
+            - 
+              bean-name: auditModelDTOMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel
+              destination-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO
+              converters-propeties-configuration:
+                bean-name: auditModelDTOMapperConverter
+            - 
+              bean-name: auditModelMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO
+              destination-type: org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel
+              converters-propeties-configuration:
+                bean-name: auditModelMapperConverter
+            - 
+              bean-name: codeModelDTOMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.model.embeddable.CodeModel
+              destination-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.CodeModelDTO
+              converters-propeties-configuration:
+                bean-name: codeModelDTOMapperConverter
+            - 
+              bean-name: codeModelMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.CodeModelDTO
+              destination-type: org.sylrsykssoft.springboot.common.api.model.embeddable.CodeModel
+              converters-propeties-configuration:
+                bean-name: codeModelapperConverter
+            - 
+              bean-name: descriptionModelDTOMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.model.embeddable.DescriptionModel
+              destination-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.DescriptionModelDTO
+              converters-propeties-configuration:
+                bean-name: descriptionModelDTOMapperConverter
+            - 
+              bean-name: descriptionModelMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.DescriptionModelDTO
+              destination-type: org.sylrsykssoft.springboot.common.api.model.embeddable.DescriptionModel
+              converters-propeties-configuration:
+                bean-name: descriptionModelMapperConverter
+            - 
+              bean-name: localizedFieldNameModelDTOMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedFieldNameModel
+              destination-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO
+              converters-propeties-configuration:
+                bean-name: localizedFieldNameModelDTOMapperConverter
+            - 
+              bean-name: localizedFieldNameModelMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO
+              destination-type: org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedFieldNameModel
+              converters-propeties-configuration:
+                bean-name: localizedFieldNameModelMapperConverter
+            - 
+              bean-name: localizedModelDTOMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedModel
+              destination-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedModelDTO
+              converters-propeties-configuration:
+                bean-name: localizedModelDTOMapperConverter
+            - 
+              bean-name: localizedModelMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedModelDTO
+              destination-type: org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedModel
+              converters-propeties-configuration:
+                bean-name: localizedModelMapperConverter
+            - 
+              bean-name: localizedValueModelDTOMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedValueModel
+              destination-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedValueModelDTO
+              converters-propeties-configuration:
+                bean-name: localizedValueModelDTOMapperConverter
+            - 
+              bean-name: localizedValueModelMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedValueModelDTO
+              destination-type: org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedValueModel
+              converters-propeties-configuration:
+                bean-name: localizedValueModelMapperConverter
+            - 
+              bean-name: nameModelDTOMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.model.embeddable.NameModel
+              destination-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO
+              converters-propeties-configuration:
+                bean-name: nameModelDTOMapperConverter
+            - 
+              bean-name: nameModelMappingContextConverter
+              source-type: org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO
+              destination-type: org.sylrsykssoft.springboot.common.api.model.embeddable.NameModel
+              converters-propeties-configuration:
+                bean-name: nameModelMapperConverter
+        # ===============================
+        # = JASYPT
+        # ===============================
+        jasypt:
+          simple:
+            bean-name-properties: mealBuilderJasyptSimplePBEConfigurationProperties
+            bean-name: jasyptStringEncryptor
+            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_ALGORITHM
+            algorithm: PBEWithMD5AndDES
+            password: ${jasypt.encryptor.password}
+            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_KEY_OBTENTION_ITERATIONS
+            key-obtention-iterations: 1000
+            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html org.jasypt.salt.RandomSaltGenerator
+            salt-generator-className: org.jasypt.salt.RandomSaltGenerator
+            provider-name: SunJCE
+            pool-size: 1
+            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_STRING_OUTPUT_TYPE
+            string-output-type: base64
+        # ===============================
         # = SPRING DOC
         # ===============================
         springdoc:
@@ -199,24 +311,6 @@ common:
               - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks.publicapi
               - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.meals.publicapi
               - org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.sauces.publicapi
-        # ===============================
-        # = JASYPT
-        # ===============================
-        jasypt:
-          simple:
-            bean-name-properties: mealBuilderJasyptSimplePBEConfigurationProperties
-            bean-name: jasyptStringEncryptor
-            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_ALGORITHM
-            algorithm: PBEWithMD5AndDES
-            password: ${jasypt.encryptor.password}
-            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_KEY_OBTENTION_ITERATIONS
-            key-obtention-iterations: 1000
-            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html org.jasypt.salt.RandomSaltGenerator
-            salt-generator-className: org.jasypt.salt.RandomSaltGenerator
-            provider-name: SunJCE
-            pool-size: 1
-            # http://www.jasypt.org/api/jasypt/1.8/constant-values.html DEFAULT_STRING_OUTPUT_TYPE
-            string-output-type: base64
                 
 # ===============================
 # = APPLICATION
@@ -241,6 +335,61 @@ app:
         driver-class-name: ${common.app.boot.configuration.datasource.common.driver-class-name}
         schema-name: sauces
         url: jdbc:mariadb://localhost:3306/sauces
+  # ===============================
+  # = MODELMAPPER
+  # ===============================
+  modelmapper:
+    bean-name-properties: mealBuilderModelMapperConfigurationProperties
+    bean-name: mealBuilderModelMapper
+    mapping-contexts:
+      - 
+        bean-name: foodSizeDataDTOMappingContextConverter
+        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData
+        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO
+        converters-propeties-configuration:
+          bean-name: foodSizeDataDTOMapperConverter
+      - 
+        bean-name: foodSizeDataMappingContextConverter
+        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO
+        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData
+        converters-propeties-configuration:
+          bean-name: foodSizeDataMapperConverter
+      - 
+        bean-name: priceDataDTOMappingContextConverter
+        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData
+        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO
+        converters-propeties-configuration:
+          bean-name: priceDataDTOMapperConverter
+      - 
+        bean-name: priceDataMappingContextConverter
+        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO
+        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData
+        converters-propeties-configuration:
+          bean-name: priceDataMapperConverter
+      - 
+        bean-name: drinkDTOMappingContextConverter
+        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink
+        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO
+        converters-propeties-configuration:
+          bean-name: drinkDTOMapperConverter
+      - 
+        bean-name: drinkMappingContextConverter
+        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO
+        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink
+        converters-propeties-configuration:
+          bean-name: drinkMapperConverter
+      - 
+        bean-name: localizedDrinkDTOMappingContextConverter
+        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink
+        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO
+        converters-propeties-configuration:
+          bean-name: localizedDrinkDTOMapperConverter
+      - 
+        bean-name: localizedDrinkMappingContextConverter
+        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO
+        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink
+        converters-propeties-configuration:
+          bean-name: localizedDrinkMapperConverter
   # ===============================
   # = JASYPT
   # ===============================

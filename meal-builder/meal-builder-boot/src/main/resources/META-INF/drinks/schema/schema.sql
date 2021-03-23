@@ -39,10 +39,11 @@ CREATE TABLE `drink` (
 CREATE TABLE `localized_drink` (
   `drink_id` bigint(20) NOT NULL,
   `locale` varchar(2) NOT NULL,
-  `name` varchar(256) NOT NULL,
-  `description` text DEFAULT NULL,
-  PRIMARY KEY (`drink_id`,`locale`),
-  UNIQUE KEY `UK_irlsjawdof4etm8pjtrpofhad` (`name`),
+  `field_name` varchar(60) NOT NULL,
+  `value` text NOT NULL,
+  PRIMARY KEY (`field_name`,`drink_id`,`locale`),
+  UNIQUE KEY `UKgqvof7yiv8tcp1oow1nrc0y0o` (`locale`,`field_name`,`value`) USING HASH,
+  KEY `FKrr1sqtlg8091odotp9im5nd3v` (`drink_id`),
   CONSTRAINT `FKrr1sqtlg8091odotp9im5nd3v` FOREIGN KEY (`drink_id`) REFERENCES `drink` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

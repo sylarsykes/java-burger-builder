@@ -11,9 +11,8 @@ import org.modelmapper.Converters.Converter;
 import org.modelmapper.ModelMapper;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink;
-import org.sylrsykssoft.springboot.common.api.dto.embeddable.DescriptionModelDTO;
-import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedModelDTO;
-import org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedValueModelDTO;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -36,13 +35,10 @@ public final class LocalizedDrinkDTOMapperConverter implements Converter<Localiz
 	@Override
 	@Valid
 	public LocalizedDrinkDTO convert(@NotNull @Valid final LocalizedDrink source) {
-		final LocalizedModelDTO localizedId = commonModelMapper.map(source.getEmbeddedId(), LocalizedModelDTO.class);
-		final NameModelDTO localizedName = commonModelMapper.map(source.getName(), NameModelDTO.class);
-		final DescriptionModelDTO localizedDescription = (source.getDescription() != null)
-				? commonModelMapper.map(source.getDescription(), DescriptionModelDTO.class)
-				: null;
+		final LocalizedFieldNameModelDTO localizedId = commonModelMapper.map(source.getEmbeddedId(),
+				LocalizedFieldNameModelDTO.class);
+		final LocalizedValueModelDTO value = commonModelMapper.map(source.getValue(), LocalizedValueModelDTO.class);
 
-		return LocalizedDrinkDTO.builder().embeddedId(localizedId).name(localizedName).description(localizedDescription)
-				.build();
+		return LocalizedDrinkDTO.builder().embeddedId(localizedId).value(value).build();
 	}
 }
