@@ -11,37 +11,37 @@ import javax.validation.constraints.NotNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.CodeModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.DescriptionModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedValueModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.AuditModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.CodeModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.DescriptionModelDTOMappingContextConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.LocalizedFieldNameModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.LocalizedModelDTOMappingContextConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.LocalizedValueModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.NameModelDTOMappingContextConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.AuditModelDTOMapperConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.CodeModelDTOMapperConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.DescriptionModelDTOMapperConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.LocalizedModelDTOMapperConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.NameModelDTOMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.AuditModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.CodeModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.DescriptionModelMappingContextConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.model.LocalizedFieldNameModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.LocalizedModelMappingContextConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.model.LocalizedValueModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.NameModelMappingContextConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.AuditModelMapperConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.CodeModelMapperConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.DescriptionModelMapperConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.LocalizedModelMapperConverter;
-import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.NameModelMapperConverter;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.CodeModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.DescriptionModel;
+import org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedFieldNameModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedModel;
+import org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedValueModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.NameModel;
+import org.sylrsykssoft.springboot.common.app.boot.configuration.properties.modelmapper.ModelMapperPropertiesConfiguration;
 
 /**
  * Model mapper configuration
@@ -50,116 +50,16 @@ import org.sylrsykssoft.springboot.common.api.model.embeddable.NameModel;
  *
  */
 @Configuration
+@ComponentScan(basePackageClasses = CommonModelMapperMappingContextConverterConfiguration.class)
 public class CommonModelMapperConfiguration {
 
-	@Bean
-	public AuditModelDTOMapperConverter auditModelDTOMapperConverter() {
-		return new AuditModelDTOMapperConverter();
-	}
+//	@Autowired
+//	ApplicationContext context = new AnnotationConfigApplicationContext(
+//			CommonModelMapperMappingContextConverterConfiguration.class);
 
 	@Bean
-	public AuditModelDTOMappingContextConverter auditModelDTOMappingContextConverter(
-			@Qualifier("auditModelDTOMapperConverter") @NotNull final AuditModelDTOMapperConverter converter) {
-		return new AuditModelDTOMappingContextConverter(converter);
-	}
-
-	@Bean
-	public AuditModelMapperConverter auditModelMapperConverter() {
-		return new AuditModelMapperConverter();
-	}
-
-	@Bean
-	public AuditModelMappingContextConverter auditModelMappingContextConverter(
-			@Qualifier("auditModelMapperConverter") @NotNull final AuditModelMapperConverter converter) {
-		return new AuditModelMappingContextConverter(converter);
-	}
-
-	@Bean
-	public CodeModelDTOMapperConverter codeModelDTOMapperConverter() {
-		return new CodeModelDTOMapperConverter();
-	}
-
-	@Bean
-	public CodeModelDTOMappingContextConverter codeModelDTOMappingContextConverter(
-			@Qualifier("codeModelDTOMapperConverter") @NotNull final CodeModelDTOMapperConverter converter) {
-		return new CodeModelDTOMappingContextConverter(converter);
-	}
-
-	@Bean
-	public CodeModelMapperConverter codeModelapperConverter() {
-		return new CodeModelMapperConverter();
-	}
-
-	@Bean
-	public CodeModelMappingContextConverter codeModelMappingContextConverter(
-			@Qualifier("codeModelapperConverter") @NotNull final CodeModelMapperConverter converter) {
-		return new CodeModelMappingContextConverter(converter);
-	}
-
-	@Bean
-	public DescriptionModelDTOMapperConverter descriptionModelDTOMapperConverter() {
-		return new DescriptionModelDTOMapperConverter();
-	}
-
-	@Bean
-	public DescriptionModelDTOMappingContextConverter descriptionModelDTOMappingContextConverter(
-			@Qualifier("descriptionModelDTOMapperConverter") @NotNull final DescriptionModelDTOMapperConverter converter) {
-		return new DescriptionModelDTOMappingContextConverter(converter);
-	}
-
-	@Bean
-	public DescriptionModelMapperConverter descriptionModelMapperConverter() {
-		return new DescriptionModelMapperConverter();
-	}
-
-	@Bean
-	public DescriptionModelMappingContextConverter descriptionModelMappingContextConverter(
-			@Qualifier("descriptionModelMapperConverter") @NotNull final DescriptionModelMapperConverter converter) {
-		return new DescriptionModelMappingContextConverter(converter);
-	}
-
-	@Bean
-	public LocalizedModelDTOMapperConverter localizedModelDTOMapperConverter() {
-		return new LocalizedModelDTOMapperConverter();
-	}
-
-	@Bean
-	public LocalizedModelDTOMappingContextConverter localizedModelDTOMappingContextConverter(
-			@Qualifier("localizedModelDTOMapperConverter") @NotNull final LocalizedModelDTOMapperConverter converter) {
-		return new LocalizedModelDTOMappingContextConverter(converter);
-	}
-
-	@Bean
-	public LocalizedModelMapperConverter localizedModelMapperConverter() {
-		return new LocalizedModelMapperConverter();
-	}
-
-	@Bean
-	public LocalizedModelMappingContextConverter localizedModelMappingContextConverter(
-			@Qualifier("localizedModelMapperConverter") @NotNull final LocalizedModelMapperConverter converter) {
-		return new LocalizedModelMappingContextConverter(converter);
-	}
-
-	@Bean
-	public NameModelDTOMapperConverter nameModelDTOMapperConverter() {
-		return new NameModelDTOMapperConverter();
-	}
-
-	@Bean
-	public NameModelDTOMappingContextConverter nameModelDTOMappingContextConverter(
-			@Qualifier("nameModelDTOMapperConverter") @NotNull final NameModelDTOMapperConverter converter) {
-		return new NameModelDTOMappingContextConverter(converter);
-	}
-
-	@Bean
-	public NameModelMapperConverter nameModelMapperConverter() {
-		return new NameModelMapperConverter();
-	}
-
-	@Bean
-	public NameModelMappingContextConverter nameModelMappingContextConverter(
-			@Qualifier("nameModelMapperConverter") @NotNull final NameModelMapperConverter converter) {
-		return new NameModelMappingContextConverter(converter);
+	public ModelMapperPropertiesConfiguration commonModelMapperConfigurationProperties() {
+		return new ModelMapperPropertiesConfiguration();
 	}
 
 	/**
@@ -167,17 +67,22 @@ public class CommonModelMapperConfiguration {
 	 * 
 	 * @return ModelMapper
 	 */
+	@SuppressWarnings("squid:S107")
 	@Bean(API_MODELMAPPER_COMMON_MODEL_MAPPER_BEAN_NAME)
 	public ModelMapper commonModelMapper(
 			@Qualifier("auditModelDTOMappingContextConverter") @NotNull final AuditModelDTOMappingContextConverter auditModelDTOMappingContextConverter,
 			@Qualifier("codeModelDTOMappingContextConverter") @NotNull final CodeModelDTOMappingContextConverter codeModelDTOMappingContextConverter,
 			@Qualifier("descriptionModelDTOMappingContextConverter") @NotNull final DescriptionModelDTOMappingContextConverter descriptionModelDTOMappingContextConverter,
+			@Qualifier("localizedFieldNameModelDTOMappingContextConverter") @NotNull final LocalizedFieldNameModelDTOMappingContextConverter localizedFieldNameModelDTOMappingContextConverter,
 			@Qualifier("localizedModelDTOMappingContextConverter") @NotNull final LocalizedModelDTOMappingContextConverter localizedModelDTOMappingContextConverter,
+			@Qualifier("localizedValueModelDTOMappingContextConverter") @NotNull final LocalizedValueModelDTOMappingContextConverter localizedValueModelDTOMappingContextConverter,
 			@Qualifier("nameModelDTOMappingContextConverter") @NotNull final NameModelDTOMappingContextConverter nameModelDTOMappingContextConverter,
 			@Qualifier("auditModelMappingContextConverter") @NotNull final AuditModelMappingContextConverter auditModelMappingContextConverter,
 			@Qualifier("codeModelMappingContextConverter") @NotNull final CodeModelMappingContextConverter codeModelMappingContextConverter,
 			@Qualifier("descriptionModelMappingContextConverter") @NotNull final DescriptionModelMappingContextConverter descriptionModelMappingContextConverter,
+			@Qualifier("localizedFieldNameModelMappingContextConverter") @NotNull final LocalizedFieldNameModelMappingContextConverter localizedFieldNameModelMappingContextConverter,
 			@Qualifier("localizedModelMappingContextConverter") @NotNull final LocalizedModelMappingContextConverter localizedModelMappingContextConverter,
+			@Qualifier("localizedValueModelMappingContextConverter") @NotNull final LocalizedValueModelMappingContextConverter localizedValueModelMappingContextConverter,
 			@Qualifier("nameModelMappingContextConverter") @NotNull final NameModelMappingContextConverter nameModelMappingContextConverter) {
 		final ModelMapper mapper = new ModelMapper();
 
@@ -186,14 +91,22 @@ public class CommonModelMapperConfiguration {
 		mapper.addConverter(codeModelDTOMappingContextConverter, CodeModel.class, CodeModelDTO.class);
 		mapper.addConverter(descriptionModelDTOMappingContextConverter, DescriptionModel.class,
 				DescriptionModelDTO.class);
+		mapper.addConverter(localizedFieldNameModelDTOMappingContextConverter, LocalizedFieldNameModel.class,
+				LocalizedFieldNameModelDTO.class);
 		mapper.addConverter(localizedModelDTOMappingContextConverter, LocalizedModel.class, LocalizedModelDTO.class);
+		mapper.addConverter(localizedValueModelDTOMappingContextConverter, LocalizedValueModel.class,
+				LocalizedValueModelDTO.class);
 		mapper.addConverter(nameModelDTOMappingContextConverter, NameModel.class, NameModelDTO.class);
 
 		// Model converters
 		mapper.addConverter(auditModelMappingContextConverter, AuditModelDTO.class, AuditModel.class);
 		mapper.addConverter(codeModelMappingContextConverter, CodeModelDTO.class, CodeModel.class);
 		mapper.addConverter(descriptionModelMappingContextConverter, DescriptionModelDTO.class, DescriptionModel.class);
+		mapper.addConverter(localizedFieldNameModelMappingContextConverter, LocalizedFieldNameModelDTO.class,
+				LocalizedFieldNameModel.class);
 		mapper.addConverter(localizedModelMappingContextConverter, LocalizedModelDTO.class, LocalizedModel.class);
+		mapper.addConverter(localizedValueModelMappingContextConverter, LocalizedValueModelDTO.class,
+				LocalizedValueModel.class);
 		mapper.addConverter(nameModelMappingContextConverter, NameModelDTO.class, NameModel.class);
 
 		return mapper;

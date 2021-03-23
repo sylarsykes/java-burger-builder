@@ -69,17 +69,17 @@ public class Cocktail extends BaseNameModel<Long> {
 	@Embedded
 	@NotNull(message = "Price field is mandatory")
 	PriceData price;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = GLASS_COCKTAIL_ID_JOIN_COLUMN, referencedColumnName = BASE_MODEL_NAME_ID_COLUMN)
+	@JoinColumn(name = GLASS_COCKTAIL_ID_JOIN_COLUMN, referencedColumnName = BASE_MODEL_NAME_ID_COLUMN)
 	GlassCocktail glassCocktail;
-	
+
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_INGREDIENT_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Set<CocktailIngredient> cocktailIngredients;
-	
+
 	@Embedded
 	@NotNull(message = "CocktailCreationData field is mandatory")
 	AuditModel cocktailCreationData;
-	
+
 }

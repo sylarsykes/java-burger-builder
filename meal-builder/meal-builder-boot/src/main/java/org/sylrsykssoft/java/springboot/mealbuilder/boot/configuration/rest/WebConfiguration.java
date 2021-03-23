@@ -8,11 +8,8 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.Api
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_MODEL_SERVICES_BASE_PACKAGE;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_REST_CONTROLLER_BASE_PACKAGE;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 /**
  * @author juan.gonzalez.fernandez.jgf

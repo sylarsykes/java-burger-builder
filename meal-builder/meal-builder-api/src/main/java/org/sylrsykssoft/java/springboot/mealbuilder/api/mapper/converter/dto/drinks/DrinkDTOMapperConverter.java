@@ -44,11 +44,10 @@ public final class DrinkDTOMapperConverter implements Converter<Drink, DrinkDTO>
 
 	@NonNull
 	private PriceDataDTOMapperConverter priceDataDTOConverter;
-	
+
 	@NonNull
 	private LocalizedDrinkDTOMapperConverter localizedDrinDTOkConverter;
 
-	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -65,9 +64,8 @@ public final class DrinkDTOMapperConverter implements Converter<Drink, DrinkDTO>
 
 		final Map<String, LocalizedDrinkDTO> localizations = new HashMap<>();
 		if (MapUtils.isNotEmpty(source.getLocalizations())) {
-			source.getLocalizations().forEach((key, value) -> {
-				localizations.put(key, localizedDrinDTOkConverter.convert(value));
-			});
+			source.getLocalizations()
+					.forEach((key, value) -> localizations.put(key, localizedDrinDTOkConverter.convert(value)));
 		}
 
 		final AuditModelDTO drinkCreationData = commonModelMapper.map(source.getDrinkCreationData(),

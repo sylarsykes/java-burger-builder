@@ -24,6 +24,10 @@ public class CommonAPIConstants {
 	public static final int MIN_LENGTH_NICKNAME_USER = 2;
 	public static final int MAX_LENGTH_LOCALIZED_LOCALE = 2;
 	public static final int MIN_LENGTH_LOCALIZED_LOCALE = 2;
+	public static final int MAX_LENGTH_LOCALIZED_FIELD_NAME = 60;
+	public static final int MIN_LENGTH_LOCALIZED_FIELD_NAME = 1;
+	public static final int MAX_LENGTH_LOCALIZED_VALUE = 10000;
+	public static final int MIN_LENGTH_LOCALIZED_VALUE = 1;
 
 	// COLUMN NAMES //
 	public static final String BASE_MODEL_NAME_ID_COLUMN = "id";
@@ -35,6 +39,8 @@ public class CommonAPIConstants {
 	public static final String BASE_AUDIT_MODEL_NAME_LAST_MODIFY_BY_COLUMN = "last_modify_by";
 	public static final String BASE_AUDIT_MODEL_NAME_LAST_MODIFIED_DATE_COLUMN = "last_modified_date";
 	public static final String BASE_LOCALIZED_MODEL_LOCALE_COLUMN = "locale";
+	public static final String BASE_LOCALIZED_MODEL_NAME_FIELD_NAME_COLUMN = "field_name";
+	public static final String BASE_LOCALIZED_MODEL_NAME_VALUE_COLUMN = "value";
 
 	// JPA QUERY OBJECTS NAMES //
 	public static final String BASE_NAME_MODEL_OBJECT_JPA = "name";
