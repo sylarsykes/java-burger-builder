@@ -82,7 +82,13 @@ public class Drink extends BaseNameModel<Long> {
 	@MapKey(name = BASE_LOCALIZED_MODEL_LOCALE_JPA)
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	@Builder.Default
-	Map<String, LocalizedDrink> localizations = new HashMap<>();
+	Map<String, LocalizedNameDrink> localizationsName = new HashMap<>();
+	
+	@OneToMany(mappedBy = REPOSITORY_DRINK_TABLE_NAME, cascade = { CascadeType.ALL }, orphanRemoval = true)
+	@MapKey(name = BASE_LOCALIZED_MODEL_LOCALE_JPA)
+	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
+	@Builder.Default
+	Map<String, LocalizedDescriptionDrink> localizationsDescription = new HashMap<>();
 
 	@Embedded
 	@NotNull(message = "DrinkCreationData field is mandatory")

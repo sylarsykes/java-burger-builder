@@ -1,5 +1,5 @@
 /**
- * DrinkDTOMappingContextConverter.java 21 mar. 2021
+ * LocalizedNameDrinkDTOMappingContextConverter.java 21 mar. 2021
  *
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.dto.drinks;
@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 
 import org.modelmapper.Converter;
 import org.modelmapper.spi.MappingContext;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedNameDrinkDTO;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedNameDrink;
 
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -18,24 +18,26 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 /**
- * DrinkDTOMappingContextConverter
+ * LocalizedNameDrinkDTOMappingContextConverter
  * 
  * @author juan.gonzalez.fernandez.jgf
  *
  */
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public final class DrinkDTOMappingContextConverter implements Converter<Drink, DrinkDTO> {
+public final class LocalizedNameDrinkDTOMappingContextConverter
+		implements Converter<LocalizedNameDrink, LocalizedNameDrinkDTO> {
 
 	@NonNull
-	DrinkDTOMapperConverter converter;
+	LocalizedNameDrinkDTOMapperConverter converter;
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Valid
 	@Override
-	public DrinkDTO convert(@NotNull final MappingContext<Drink, DrinkDTO> context) {
+	public LocalizedNameDrinkDTO convert(
+			@NotNull final MappingContext<LocalizedNameDrink, LocalizedNameDrinkDTO> context) {
 		return converter.convert(context.getSource());
 	}
 }

@@ -34,17 +34,30 @@ CREATE TABLE `drink` (
   UNIQUE KEY `UKc47t6nxt7cn3fubrrtxj0traw` (`type`,`size`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- drinks.localized_drink definition
+-- drinks.localized_name_drink definition
 
-CREATE TABLE `localized_drink` (
+CREATE TABLE `localized_name_drink` (
   `drink_id` bigint(20) NOT NULL,
   `locale` varchar(2) NOT NULL,
   `field_name` varchar(60) NOT NULL,
   `value` text NOT NULL,
   PRIMARY KEY (`field_name`,`drink_id`,`locale`),
-  UNIQUE KEY `UKgqvof7yiv8tcp1oow1nrc0y0o` (`locale`,`field_name`,`value`) USING HASH,
-  KEY `FKrr1sqtlg8091odotp9im5nd3v` (`drink_id`),
-  CONSTRAINT `FKrr1sqtlg8091odotp9im5nd3v` FOREIGN KEY (`drink_id`) REFERENCES `drink` (`id`)
+  UNIQUE KEY `UKmxw10kl8j49htwu4lfrv9jrjm` (`locale`,`field_name`,`value`) USING HASH,
+  KEY `FK8s39i17pvpb6h82e7qi0h1m7q` (`drink_id`),
+  CONSTRAINT `FK8s39i17pvpb6h82e7qi0h1m7q` FOREIGN KEY (`drink_id`) REFERENCES `drink` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- drinks.localized_description_drink definition
+
+CREATE TABLE `localized_description_drink` (
+  `drink_id` bigint(20) NOT NULL,
+  `locale` varchar(2) NOT NULL,
+  `field_name` varchar(60) NOT NULL,
+  `value` text NOT NULL,
+  PRIMARY KEY (`field_name`,`drink_id`,`locale`),
+  UNIQUE KEY `UKqoay0c3pf0evvgnwfj7r74g5t` (`locale`,`field_name`,`value`) USING HASH,
+  KEY `FKspxw4x8calqkfhk7wwxsxpmik` (`drink_id`),
+  CONSTRAINT `FKspxw4x8calqkfhk7wwxsxpmik` FOREIGN KEY (`drink_id`) REFERENCES `drink` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- drinks.cocktail definition

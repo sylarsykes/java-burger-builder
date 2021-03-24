@@ -339,57 +339,81 @@ app:
   # = MODELMAPPER
   # ===============================
   modelmapper:
-    bean-name-properties: mealBuilderModelMapperConfigurationProperties
-    bean-name: mealBuilderModelMapper
-    mapping-contexts:
-      - 
-        bean-name: foodSizeDataDTOMappingContextConverter
-        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData
-        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO
-        converters-propeties-configuration:
-          bean-name: foodSizeDataDTOMapperConverter
-      - 
-        bean-name: foodSizeDataMappingContextConverter
-        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO
-        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData
-        converters-propeties-configuration:
-          bean-name: foodSizeDataMapperConverter
-      - 
-        bean-name: priceDataDTOMappingContextConverter
-        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData
-        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO
-        converters-propeties-configuration:
-          bean-name: priceDataDTOMapperConverter
-      - 
-        bean-name: priceDataMappingContextConverter
-        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO
-        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData
-        converters-propeties-configuration:
-          bean-name: priceDataMapperConverter
-      - 
-        bean-name: drinkDTOMappingContextConverter
-        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink
-        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO
-        converters-propeties-configuration:
-          bean-name: drinkDTOMapperConverter
-      - 
-        bean-name: drinkMappingContextConverter
-        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO
-        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink
-        converters-propeties-configuration:
-          bean-name: drinkMapperConverter
-      - 
-        bean-name: localizedDrinkDTOMappingContextConverter
-        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink
-        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO
-        converters-propeties-configuration:
-          bean-name: localizedDrinkDTOMapperConverter
-      - 
-        bean-name: localizedDrinkMappingContextConverter
-        source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO
-        destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink
-        converters-propeties-configuration:
-          bean-name: localizedDrinkMapperConverter
+    embeddable:
+      bean-name-properties: mealBuilderModelMapperConfigurationProperties
+      bean-name: mealBuilderModelMapper
+      mapping-contexts:
+        - 
+          bean-name: foodSizeDataDTOMappingContextConverter
+          source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData
+          destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO
+          converters-propeties-configuration:
+            bean-name: foodSizeDataDTOMapperConverter
+        - 
+          bean-name: foodSizeDataMappingContextConverter
+          source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO
+          destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData
+          converters-propeties-configuration:
+            bean-name: foodSizeDataMapperConverter
+        - 
+          bean-name: priceDataDTOMappingContextConverter
+          source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData
+          destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO
+          converters-propeties-configuration:
+            bean-name: priceDataDTOMapperConverter
+        - 
+          bean-name: priceDataMappingContextConverter
+          source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO
+          destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData
+          converters-propeties-configuration:
+            bean-name: priceDataMapperConverter
+    mealbuilder:
+      drinks:
+        localized-data:
+          bean-name-properties: mealBuilderDrinksLocalizedDataModelMapperConfigurationProperties
+          bean-name: mealBuilderDrinksLocalizedDataModelMapper
+          mapping-contexts:
+            - 
+              bean-name: drinksLocalizedNameDrinkDTOMappingContextConverter
+              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedNameDrink
+              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedNameDrinkDTO
+              converters-propeties-configuration:
+                bean-name: drinksLocalizedNameDrinkDTOMapperConverter
+            - 
+              bean-name: drinksLocalizedNameDrinkMapperConverter
+              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedNameDrinkDTO
+              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedNameDrink
+              converters-propeties-configuration:
+                bean-name: drinksLocalizedNameDrinkMapperConverter
+            - 
+              bean-name: drinksLocalizedDescriptionDrinkDTOMappingContextConverter
+              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDescriptionDrink
+              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDescriptionDrinkDTO
+              converters-propeties-configuration:
+                bean-name: drinksLocalizedDescriptionDrinkDTOMapperConverter
+            - 
+              bean-name: drinksLocalizedDescriptionDrinkMappingContextConverter
+              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDescriptionDrinkDTO
+              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDescriptionDrink
+              converters-propeties-configuration:
+                bean-name: drinksLocalizedDescriptionDrinkMapperConverter
+        model:
+          bean-name-properties: mealBuilderDrinksModelMapperConfigurationProperties
+          bean-name: mealBuilderDrinksModelMapper
+          mapping-contexts:
+            - 
+              bean-name: drinkDTOMappingContextConverter
+              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink
+              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO
+              converters-propeties-configuration:
+                bean-name: drinkDTOMapperConverter
+            - 
+              bean-name: drinkMappingContextConverter
+              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO
+              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink
+              converters-propeties-configuration:
+                bean-name: drinkMapperConverter
+                
   # ===============================
   # = JASYPT
   # ===============================
