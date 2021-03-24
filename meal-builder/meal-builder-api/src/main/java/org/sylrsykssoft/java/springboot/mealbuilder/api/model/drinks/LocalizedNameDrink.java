@@ -5,8 +5,8 @@
 package org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DRINK_ID_JOIN_COLUMN;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.REPOSITORY_LOCALIZED_DRINK_ENTITY_NAME;
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.REPOSITORY_LOCALIZED_DRINK_TABLE_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.REPOSITORY_LOCALIZED_NAME_DRINK_ENTITY_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.REPOSITORY_LOCALIZED_NAME_DRINK_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINK_SCHEMA_NAME;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_LOCALIZED_MODEL_LOCALE_COLUMN;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_LOCALIZED_MODEL_NAME_FIELD_NAME_COLUMN;
@@ -36,17 +36,17 @@ import lombok.experimental.SuperBuilder;
  * @author juan.gonzalez.fernandez.jgf
  *
  */
-@Table(name = REPOSITORY_LOCALIZED_DRINK_TABLE_NAME, schema = DRINK_SCHEMA_NAME, catalog = DRINK_SCHEMA_NAME, uniqueConstraints = {
+@Table(name = REPOSITORY_LOCALIZED_NAME_DRINK_TABLE_NAME, schema = DRINK_SCHEMA_NAME, catalog = DRINK_SCHEMA_NAME, uniqueConstraints = {
 		@UniqueConstraint(columnNames = { BASE_LOCALIZED_MODEL_LOCALE_COLUMN,
 				BASE_LOCALIZED_MODEL_NAME_FIELD_NAME_COLUMN, BASE_LOCALIZED_MODEL_NAME_VALUE_COLUMN }) })
-@Entity(name = REPOSITORY_LOCALIZED_DRINK_ENTITY_NAME)
+@Entity(name = REPOSITORY_LOCALIZED_NAME_DRINK_ENTITY_NAME)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-public class LocalizedDrink extends BaseEmbeddedLocalizedValueModel<LocalizedFieldNameModel> {
+public class LocalizedNameDrink extends BaseEmbeddedLocalizedValueModel<LocalizedFieldNameModel> {
 
 	@ManyToOne
 	@MapsId(BASE_MODEL_NAME_ID_COLUMN)

@@ -14,18 +14,19 @@ import org.apache.commons.collections4.MapUtils;
 import org.modelmapper.Converters.Converter;
 import org.modelmapper.ModelMapper;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.model.embeddable.FoodSizeDataMapperConverter;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.model.embeddable.PriceDataMapperConverter;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDescriptionDrink;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedNameDrink;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.DescriptionModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.NameModel;
 
+import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 /**
  * DrinkMapperConverter
@@ -33,20 +34,18 @@ import lombok.RequiredArgsConstructor;
  * @author juan.gonzalez.fernandez.jgf
  *
  */
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 public class DrinkMapperConverter implements Converter<DrinkDTO, Drink> {
 
 	@NonNull
-	private ModelMapper commonModelMapper;
+	ModelMapper commonModelMapper;
 
 	@NonNull
-	private FoodSizeDataMapperConverter foodSizeDataDTOConverter;
+	ModelMapper embeddableModelMapper;
 
 	@NonNull
-	private PriceDataMapperConverter priceDataDTOConverter;
-
-	@NonNull
-	private LocalizedDrinkMapperConverter localizedDrinDTOkConverter;
+	ModelMapper localizedDataModelMapper;
 
 	/**
 	 * {@inheritDoc}
@@ -55,23 +54,28 @@ public class DrinkMapperConverter implements Converter<DrinkDTO, Drink> {
 	@Valid
 	public Drink convert(@NotNull @Valid final DrinkDTO source) {
 		final NameModel name = commonModelMapper.map(source.getName(), NameModel.class);
-		final DescriptionModel description = (source.getDescription() != null)
-				? commonModelMapper.map(source.getDescription(), DescriptionModel.class)
-				: null;
+		final DescriptionModel description = commonModelMapper.map(source.getDescription(), DescriptionModel.class);
 
-		final FoodSizeData size = foodSizeDataDTOConverter.convert(source.getSize());
-		final PriceData price = priceDataDTOConverter.convert(source.getPrice());
+		final FoodSizeData size = embeddableModelMapper.map(source.getSize(), FoodSizeData.class);
+		final PriceData price = embeddableModelMapper.map(source.getPrice(), PriceData.class);
 
-		final Map<String, LocalizedDrink> localizations = new HashMap<>();
-		if (MapUtils.isNotEmpty(source.getLocalizations())) {
-			source.getLocalizations()
-					.forEach((key, value) -> localizations.put(key, localizedDrinDTOkConverter.convert(value)));
+		final Map<String, LocalizedNameDrink> localizationsName = new HashMap<>();
+		if (MapUtils.isNotEmpty(source.getLocalizationsName())) {
+			source.getLocalizationsName().forEach((key, value) -> localizationsName.put(key,
+					localizedDataModelMapper.map(value, LocalizedNameDrink.class)));
+		}
+
+		final Map<String, LocalizedDescriptionDrink> localizationsDescription = new HashMap<>();
+		if (MapUtils.isNotEmpty(source.getLocalizationsDescription())) {
+			source.getLocalizationsDescription().forEach((key, value) -> localizationsDescription.put(key,
+					localizedDataModelMapper.map(value, LocalizedDescriptionDrink.class)));
 		}
 
 		final AuditModel drinkCreationData = commonModelMapper.map(source.getDrinkCreationData(), AuditModel.class);
 
 		return Drink.builder().id(source.getId()).name(name).description(description).type(source.getType()).size(size)
-				.price(price).localizations(localizations).drinkCreationData(drinkCreationData).build();
+				.price(price).localizationsName(localizationsName).localizationsDescription(localizationsDescription)
+				.drinkCreationData(drinkCreationData).build();
 	}
 
 }

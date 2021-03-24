@@ -2,7 +2,7 @@
  * CommonModelMapperMappingContextConverterConfiguration.java 21 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.modelmapper;
+package org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.modelmapper.common;
 
 import javax.validation.constraints.NotNull;
 

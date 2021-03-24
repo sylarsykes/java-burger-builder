@@ -2,7 +2,7 @@
  * CommonAppBootModelMapperConfiguration.java 21 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.modelmapper;
+package org.sylrsykssoft.java.springboot.mealbuilder.boot.configuration.modelmapper.common;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_MODELMAPPER_COMMON_MODEL_MAPPER_BEAN_NAME;
 

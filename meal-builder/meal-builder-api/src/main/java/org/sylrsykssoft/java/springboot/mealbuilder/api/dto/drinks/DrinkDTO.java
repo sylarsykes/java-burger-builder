@@ -63,11 +63,17 @@ public class DrinkDTO extends BaseNameModelDTO<Long> implements Serializable {
 	@Schema(name = "PriceDataDTO", description = "Price PriceDataDTO", required = true)
 	PriceDataDTO price;
 	
-	@JsonProperty(value = "Localizations", required = true)
+	@JsonProperty(value = "LocalizationsName", required = true)
 	@JsonManagedReference
-	@Schema(name = "LocalizedDrinkDTO", description = "Localizations of DrinkDTO", required = true)
+	@Schema(name = "LocalizedNameDrinkDTO", description = "Localizations of the name of DrinkDTO", required = true)
 	@Builder.Default
-	transient Map<String, LocalizedDrinkDTO> localizations = new HashMap<>();
+	transient Map<String, LocalizedNameDrinkDTO> localizationsName = new HashMap<>();
+	
+	@JsonProperty(value = "LocalizationsDescription", required = true)
+	@JsonManagedReference
+	@Schema(name = "LocalizedDescriptionDrinkDTO", description = "Localizations of the description of DrinkDTO", required = true)
+	@Builder.Default
+	transient Map<String, LocalizedDescriptionDrinkDTO> localizationsDescription = new HashMap<>();
 	
 	@NotNull(message = "DrinkCreationData field is mandatory")
 	@Schema(name = "AuditModelDTO", description = "DrinkCreationData AuditModelDTO", required = true)

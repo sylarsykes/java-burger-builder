@@ -29,7 +29,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
 @Schema(name = "LocalizedDrinkDTO", description = "Model LocalizedDrinkDTO")
-public class LocalizedDrinkDTO extends BaseEmbeddedLocalizedValueModelDTO<LocalizedFieldNameModelDTO> {
+public class LocalizedNameDrinkDTO extends BaseEmbeddedLocalizedValueModelDTO<LocalizedFieldNameModelDTO> {
 
 	@JsonBackReference
 	DrinkDTO drink;

@@ -4,7 +4,7 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.model.service.drinks.drink.find;
 
-import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_MODELMAPPER_MODEL_MODEL_MAPPER_BEAN_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_MODELMAPPER_MODEL_DRINKS_MODEL_MAPPER_BEAN_NAME;
 
 import java.text.MessageFormat;
 import java.util.Optional;
@@ -27,8 +27,10 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.service.drinks.drink.find.IDrinkFindService;
 import org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks.DrinkRepository;
 
+import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.SneakyThrows;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -40,6 +42,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Validated
 @Service("drinkFindServiceImpl")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
 public class DrinkFindService implements IDrinkFindService {
 
@@ -57,7 +60,7 @@ public class DrinkFindService implements IDrinkFindService {
 	DrinkRepository drinkRepository;
 
 	@Autowired
-	@Qualifier(API_MODELMAPPER_MODEL_MODEL_MAPPER_BEAN_NAME)
+	@Qualifier(API_MODELMAPPER_MODEL_DRINKS_MODEL_MAPPER_BEAN_NAME)
 	ModelMapper mapper;
 
 	/**

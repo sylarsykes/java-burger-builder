@@ -31,7 +31,10 @@ public class DrinkApiConstants {
 	public static final int DRINK_TYPE_TYPE_COLUMN_LENGTH = 20;
 	
 	// LOCALIZED DRINK //
-	public static final String REPOSITORY_LOCALIZED_DRINK_TABLE_NAME = "localized_drink";
-	public static final String REPOSITORY_LOCALIZED_DRINK_ENTITY_NAME = "LocalizedDrink";
+	public static final String REPOSITORY_LOCALIZED_NAME_DRINK_TABLE_NAME = "localized_name_drink";
+	public static final String REPOSITORY_LOCALIZED_NAME_DRINK_ENTITY_NAME = "LocalizedNameDrink";
+	
+	public static final String REPOSITORY_LOCALIZED_DESCRIPTION_DRINK_TABLE_NAME = "localized_description_drink";
+	public static final String REPOSITORY_LOCALIZED_DESCRIPTION_DRINK_ENTITY_NAME = "LocalizedDescriptionDrink";
 	
 }

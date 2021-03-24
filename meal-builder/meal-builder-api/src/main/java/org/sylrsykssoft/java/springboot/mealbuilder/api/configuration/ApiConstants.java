@@ -49,7 +49,10 @@ public class ApiConstants {
 	
 	// MODELMAPPER //
 	public static final String API_MODELMAPPER_COMMON_MODEL_MAPPER_BEAN_NAME = "commonModelMapper";
-	public static final String API_MODELMAPPER_MODEL_MODEL_MAPPER_BEAN_NAME = "mealBuilderModelMapper";
+	public static final String API_MODELMAPPER_EMBEDDABLE_MODEL_MODEL_MAPPER_BEAN_NAME = "mealBuilderEmbeddableModelMapper";
+	
+	public static final String API_MODELMAPPER_MODEL_DRINKS_LOCALIZED_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksLocalizedDataModelMapper";
+	public static final String API_MODELMAPPER_MODEL_DRINKS_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksModelMapper";
 
 	// JPA QUERY OBJECTS NAMES //
 	public static final String PRICE_MODEL_OBJECT_JPA = "price";
