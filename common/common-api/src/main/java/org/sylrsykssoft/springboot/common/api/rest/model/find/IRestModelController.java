@@ -2,11 +2,11 @@
  * IRestController.java 4 mar. 2021
  *
  */
-package org.sylrsykssoft.springboot.common.api.rest;
+package org.sylrsykssoft.springboot.common.api.rest.model.find;
 
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.model.BaseModel;
-import org.sylrsykssoft.springboot.common.api.service.ModelService;
+import org.sylrsykssoft.springboot.common.api.service.model.ModelService;
 
 /**
  * @author juan.gonzalez.fernandez.jgf

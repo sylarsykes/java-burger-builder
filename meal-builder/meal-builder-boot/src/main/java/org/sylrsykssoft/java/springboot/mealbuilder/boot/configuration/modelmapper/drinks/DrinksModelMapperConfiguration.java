@@ -22,6 +22,8 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
 import org.sylrsykssoft.springboot.common.app.boot.configuration.properties.modelmapper.ModelMapperPropertiesConfiguration;
 
 /**
+ * DrinksModelMapperConfiguration
+ * 
  * @author juan.gonzalez.fernandez.jgf
  *
  */

@@ -2,9 +2,9 @@
  * DrinkFindByIDService.java 4 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.api.service.drinks.drink.find.dto;
+package org.sylrsykssoft.java.springboot.mealbuilder.api.service.model.drinks.drink.find.dto;
 
-import org.sylrsykssoft.springboot.common.api.service.dto.FindByIDServiceDTO;
+import org.sylrsykssoft.springboot.common.api.service.model.find.dto.FindByIDServiceDTO;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

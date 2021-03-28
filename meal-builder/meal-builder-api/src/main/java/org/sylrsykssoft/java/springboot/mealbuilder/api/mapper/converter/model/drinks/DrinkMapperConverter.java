@@ -71,7 +71,9 @@ public class DrinkMapperConverter implements Converter<DrinkDTO, Drink> {
 					localizedDataModelMapper.map(value, LocalizedDescriptionDrink.class)));
 		}
 
-		final AuditModel drinkCreationData = commonModelMapper.map(source.getDrinkCreationData(), AuditModel.class);
+		final AuditModel drinkCreationData = (source.getDrinkCreationData() != null)
+				? commonModelMapper.map(source.getDrinkCreationData(), AuditModel.class)
+				: AuditModel.builder().build();
 
 		return Drink.builder().id(source.getId()).name(name).description(description).type(source.getType()).size(size)
 				.price(price).localizationsName(localizationsName).localizationsDescription(localizationsDescription)

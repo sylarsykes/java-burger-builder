@@ -49,34 +49,33 @@ public class DrinkDTO extends BaseNameModelDTO<Long> implements Serializable {
 
 	@NotNull(message = "Type field is mandatory")
 	@JsonProperty(value = "Type", required = true)
-	@Schema(name = "DrinkType", description = "Type DrinkType", required = true)
+	@Schema(name = "Type", description = "Type DrinkType", required = true)
 	@Builder.Default
 	DrinkType type = DrinkType.NO_ALCOHOLIC;
 	
 	@NotNull(message = "Size field is mandatory")
 	@JsonProperty(value = "Size", required = true)
-	@Schema(name = "FoodSize", description = "Size FoodSize", required = true)
+	@Schema(name = "Size", description = "Size FoodSize", required = true)
 	FoodSizeDataDTO size;
 	
 	@NotNull(message = "Price field is mandatory")
 	@JsonProperty(value = "Price", required = true)
-	@Schema(name = "PriceDataDTO", description = "Price PriceDataDTO", required = true)
+	@Schema(name = "Price", description = "Price PriceDataDTO", required = true)
 	PriceDataDTO price;
 	
-	@JsonProperty(value = "LocalizationsName", required = true)
+	@JsonProperty(value = "LocalizationsName")
 	@JsonManagedReference
-	@Schema(name = "LocalizedNameDrinkDTO", description = "Localizations of the name of DrinkDTO", required = true)
+	@Schema(name = "LocalizationsName", description = "Localizations of the name of DrinkDTO")
 	@Builder.Default
 	transient Map<String, LocalizedNameDrinkDTO> localizationsName = new HashMap<>();
 	
-	@JsonProperty(value = "LocalizationsDescription", required = true)
+	@JsonProperty(value = "LocalizationsDescription")
 	@JsonManagedReference
-	@Schema(name = "LocalizedDescriptionDrinkDTO", description = "Localizations of the description of DrinkDTO", required = true)
+	@Schema(name = "LocalizationsDescription", description = "Localizations of the description of DrinkDTO")
 	@Builder.Default
 	transient Map<String, LocalizedDescriptionDrinkDTO> localizationsDescription = new HashMap<>();
 	
-	@NotNull(message = "DrinkCreationData field is mandatory")
-	@Schema(name = "AuditModelDTO", description = "DrinkCreationData AuditModelDTO", required = true)
+	@Schema(name = "AuditModelDTO", description = "DrinkCreationData AuditModelDTO")
 	@JsonIgnore
 	AuditModelDTO drinkCreationData;
 	

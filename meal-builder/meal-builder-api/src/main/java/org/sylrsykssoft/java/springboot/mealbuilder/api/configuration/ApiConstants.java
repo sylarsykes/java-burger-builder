@@ -53,6 +53,7 @@ public class ApiConstants {
 	
 	public static final String API_MODELMAPPER_MODEL_DRINKS_LOCALIZED_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksLocalizedDataModelMapper";
 	public static final String API_MODELMAPPER_MODEL_DRINKS_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksModelMapper";
+	public static final String API_MODELMAPPER_MODEL_DRINKS_CRUD_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksCRUDModelMapper";
 
 	// JPA QUERY OBJECTS NAMES //
 	public static final String PRICE_MODEL_OBJECT_JPA = "price";

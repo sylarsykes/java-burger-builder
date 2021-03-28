@@ -25,6 +25,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,6 +33,7 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PreparationData;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
@@ -57,6 +59,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
+@EntityListeners(AuditingEntityListener.class)
 public class Burger extends BaseNameModel<Long> {
 	
 	@Embedded
