@@ -16,6 +16,7 @@ import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPICons
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
@@ -23,6 +24,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.CocktailApiConstants.GlassCocktailSize;
 import org.sylrsykssoft.springboot.common.api.model.BaseModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
@@ -46,6 +48,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
+@EntityListeners(AuditingEntityListener.class)
 public class GlassCocktail extends BaseModel<Integer> {
 
 	@Embedded

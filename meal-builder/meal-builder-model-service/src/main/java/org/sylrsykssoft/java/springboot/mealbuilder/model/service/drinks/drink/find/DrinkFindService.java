@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.service.drinks.drink.find.IDrinkFindService;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.service.model.drinks.drink.find.IDrinkFindService;
 import org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks.DrinkRepository;
 
 import lombok.AccessLevel;

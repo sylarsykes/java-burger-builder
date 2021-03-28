@@ -2,7 +2,7 @@
  * FindByService.java 4 mar. 2021
  *
  */
-package org.sylrsykssoft.springboot.common.api.service;
+package org.sylrsykssoft.springboot.common.api.service.model.find;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotNull;
@@ -10,10 +10,13 @@ import javax.validation.constraints.Positive;
 
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.model.BaseModel;
+import org.sylrsykssoft.springboot.common.api.service.model.ModelService;
 
 import lombok.NonNull;
 
 /**
+ * FindByService
+ * 
  * @author juan.gonzalez.fernandez.jgf
  *
  */

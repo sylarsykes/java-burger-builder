@@ -2,7 +2,7 @@
  * DrinkFindModelServiceController.java 4 mar. 2021
  *
  */
-package org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks.publicapi;
+package org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks.publicapi.find;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.CONTROLLER_GET_EXISTS_BY_ID;
 import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.CONTROLLER_GET_FIND_BY_ID;
@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.service.drinks.drink.find.IDrinkFindService;
-import org.sylrsykssoft.springboot.common.api.rest.IRestModelController;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.service.model.drinks.drink.find.IDrinkFindService;
+import org.sylrsykssoft.springboot.common.api.rest.model.find.IRestModelController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -37,6 +37,8 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * DrinkFindModelServiceController
+ * 
  * @author juan.gonzalez.fernandez.jgf
  *
  */

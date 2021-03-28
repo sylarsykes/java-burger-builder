@@ -18,6 +18,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -26,6 +27,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.IngredientType;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
 import org.sylrsykssoft.springboot.common.api.model.BaseNameModel;
@@ -50,6 +52,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
+@EntityListeners(AuditingEntityListener.class)
 public class Ingredient extends BaseNameModel<Long> {
 
 	@Enumerated(EnumType.STRING)

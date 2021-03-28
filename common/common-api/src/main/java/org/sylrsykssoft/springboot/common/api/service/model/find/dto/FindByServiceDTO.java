@@ -2,7 +2,7 @@
  * FindServiceDTO.java 04 mar. 2021
  *
  */
-package org.sylrsykssoft.springboot.common.api.service.dto;
+package org.sylrsykssoft.springboot.common.api.service.model.find.dto;
 
 import lombok.AccessLevel;
 import lombok.Data;

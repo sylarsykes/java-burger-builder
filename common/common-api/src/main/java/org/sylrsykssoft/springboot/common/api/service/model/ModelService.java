@@ -1,4 +1,4 @@
-package org.sylrsykssoft.springboot.common.api.service;
+package org.sylrsykssoft.springboot.common.api.service.model;
 
 import javax.validation.Valid;
 

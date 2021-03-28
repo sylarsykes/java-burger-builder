@@ -2,7 +2,7 @@
  * FindByNameFindServiceDTO.java 4 mar. 2021
  *
  */
-package org.sylrsykssoft.springboot.common.api.service.dto;
+package org.sylrsykssoft.springboot.common.api.service.model.find.dto;
 
 import java.io.Serializable;
 

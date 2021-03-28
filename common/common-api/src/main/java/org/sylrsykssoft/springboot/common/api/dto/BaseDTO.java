@@ -6,6 +6,7 @@ package org.sylrsykssoft.springboot.common.api.dto;
 
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
@@ -16,6 +17,7 @@ import lombok.experimental.SuperBuilder;
  * @param <N> Class type than extends of Number
  */
 @Data
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @FieldDefaults(level = AccessLevel.PROTECTED)
 @SuperBuilder(toBuilder = true)
 public class BaseDTO {

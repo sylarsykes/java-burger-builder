@@ -26,4 +26,19 @@ public class DrinkRestControllerConstants {
 	public static final String CONTROLLER_GET_FIND_BY_ID = "/id/{id}";
 	public static final String CONTROLLER_GET_EXISTS_BY_ID = "/id/{id}/exists";
 	public static final String CONTROLLER_GET_FIND_BY_NAME = "/name/{name}";
+	
+	// CREATE CONTROLLER //
+	public static final String CREATE_MODEL_CONTROLLER_TAG_NAME = "DrinkCreateModelServiceController";
+	public static final String CREATE_MODEL_CONTROLLER_TAG_DESCRIPTION = "Rest Controller to create Drink";
+	public static final String CREATE_MODEL_CONTROLLER_REQUEST_MAPPING = CONTROLLER_REQUEST_MAPPING + "/create";
+	
+	// UPDATE CONTROLLER //
+	public static final String UPDATE_MODEL_CONTROLLER_TAG_NAME = "DrinkUpdateModelServiceController";
+	public static final String UPDATE_MODEL_CONTROLLER_TAG_DESCRIPTION = "Rest Controller to update Drink";
+	public static final String UPDATE_MODEL_CONTROLLER_REQUEST_MAPPING = CONTROLLER_REQUEST_MAPPING + "/update";
+		
+	// DELETE CONTROLLER //
+	public static final String DELETE_MODEL_CONTROLLER_TAG_NAME = "DrinkDeleteModelServiceController";
+	public static final String DELETE_MODEL_CONTROLLER_TAG_DESCRIPTION = "Rest Controller to delete Drink";
+	public static final String DELETE_MODEL_CONTROLLER_REQUEST_MAPPING = CONTROLLER_REQUEST_MAPPING + "/delete";
 }

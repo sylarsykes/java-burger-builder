@@ -21,6 +21,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MapKey;
@@ -31,6 +32,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DrinkType;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
@@ -62,6 +64,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
+@EntityListeners(AuditingEntityListener.class)
 public class Drink extends BaseNameModel<Long> {
 	
 	@Enumerated(EnumType.STRING)
@@ -91,7 +94,6 @@ public class Drink extends BaseNameModel<Long> {
 	Map<String, LocalizedDescriptionDrink> localizationsDescription = new HashMap<>();
 
 	@Embedded
-	@NotNull(message = "DrinkCreationData field is mandatory")
 	AuditModel drinkCreationData;
 
 }
