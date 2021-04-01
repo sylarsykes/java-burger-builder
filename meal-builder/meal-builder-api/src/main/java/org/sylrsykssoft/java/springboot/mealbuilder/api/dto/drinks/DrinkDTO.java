@@ -15,6 +15,7 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeD
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO;
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.StartEndDateModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -69,17 +70,11 @@ public class DrinkDTO extends BaseNameModelDTO<Long> implements Serializable {
 	@Schema(name = "DrinkStartEndDateData", description = "DrinkStartEndDateData StartEndDateModelDTO", required = true)
 	StartEndDateModelDTO drinkStartEndDateData;
 	
-	@JsonProperty(value = "LocalizationsName")
+	@JsonProperty(value = "LocalizationsData")
 	@JsonManagedReference
-	@Schema(name = "LocalizationsName", description = "Localizations of the name of DrinkDTO")
+	@Schema(name = "LocalizationsData", description = "Localizations of the name of DrinkDTO")
 	@Builder.Default
-	transient Map<String, LocalizedNameDrinkDTO> localizationsName = new HashMap<>();
-	
-	@JsonProperty(value = "LocalizationsDescription")
-	@JsonManagedReference
-	@Schema(name = "LocalizationsDescription", description = "Localizations of the description of DrinkDTO")
-	@Builder.Default
-	transient Map<String, LocalizedDescriptionDrinkDTO> localizationsDescription = new HashMap<>();
+	transient Map<LocalizedFieldNameModelDTO, LocalizedDrinkDTO> localizationsData = new HashMap<>();
 	
 	@Schema(name = "AuditModelDTO", description = "DrinkCreationData AuditModelDTO")
 	@JsonIgnore

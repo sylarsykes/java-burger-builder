@@ -8,6 +8,8 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.dri
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.CocktailApiConstants.COCKTAIL_INGREDIENT_MIN_LENGTH;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.validation.constraints.NotNull;
@@ -18,6 +20,7 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.Preparati
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO;
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.StartEndDateModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -51,12 +54,12 @@ public class CocktailDTO extends BaseNameModelDTO<Long> implements Serializable 
 	@Schema(name = "Type", description = "Classification CocktailClassification", required = true)
 	@Builder.Default
 	CocktailClassification type = CocktailClassification.APPETIZER;
-	
+
 	@NotNull(message = "Preparation field is mandatory")
 	@JsonProperty(value = "Preparation", required = true)
 	@Schema(name = "Preparation", description = "Preparation of Cocktail", required = true)
 	PreparationDataDTO preparation;
-	
+
 	@NotNull(message = "Price field is mandatory")
 	@JsonProperty(value = "Price", required = true)
 	@Schema(name = "Price", description = "Price PriceDataDTO", required = true)
@@ -66,13 +69,13 @@ public class CocktailDTO extends BaseNameModelDTO<Long> implements Serializable 
 	@JsonProperty(value = "CocktailStartEndDateData", required = true)
 	@Schema(name = "CocktailStartEndDateData", description = "CocktailStartEndDateData StartEndDateModelDTO", required = true)
 	StartEndDateModelDTO cocktailStartEndDateData;
-	
+
 	@NotNull(message = "Glass field is mandatory")
 	@JsonProperty(value = "Glass", required = true)
 	@JsonManagedReference
 	@Schema(name = "Glass", description = "Glass of Cocktail", required = true)
 	GlassCocktailDTO glassCocktail;
-	
+
 	@NotNull(message = "CocktailIngredients field is mandatory")
 	@Size(min = COCKTAIL_INGREDIENT_MIN_LENGTH, max = COCKTAIL_INGREDIENT_MAX_LENGTH)
 	@JsonProperty(value = "Ingredients", required = true)
@@ -80,10 +83,16 @@ public class CocktailDTO extends BaseNameModelDTO<Long> implements Serializable 
 	@Schema(name = "Ingredients", description = "Ingredients of Cocktail", required = true)
 	@EqualsAndHashCode.Exclude
 	transient Set<CocktailIngredientDTO> cocktailIngredients;
-	
+
+	@JsonProperty(value = "LocalizationsData")
+	@JsonManagedReference
+	@Schema(name = "LocalizationsData", description = "Localizations of the name of CocktailDTO")
+	@Builder.Default
+	transient Map<LocalizedFieldNameModelDTO, LocalizedCocktailDTO> localizationsData = new HashMap<>();
+
 	@NotNull(message = "CocktailCreationData field is mandatory")
 	@Schema(name = "AuditModelDTO", description = "CocktailCreationData AuditModelDTO", required = true)
 	@JsonIgnore
 	AuditModelDTO cocktailCreationData;
-	
+
 }

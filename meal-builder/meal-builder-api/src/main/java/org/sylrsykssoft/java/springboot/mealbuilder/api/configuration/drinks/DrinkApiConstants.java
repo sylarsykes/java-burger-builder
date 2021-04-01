@@ -5,10 +5,8 @@
 package org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks;
 
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_MODEL_NAME_ID_COLUMN;
-import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.REPOSITORY_LOCALIZED_DESCRIPTION_ENTITY_NAME;
-import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.REPOSITORY_LOCALIZED_DESCRIPTION_TABLE_NAME;
-import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.REPOSITORY_LOCALIZED_NAME_ENTITY_NAME;
-import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.REPOSITORY_LOCALIZED_NAME_TABLE_NAME;
+import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.REPOSITORY_LOCALIZED_ENTITY_NAME;
+import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.REPOSITORY_LOCALIZED_TABLE_NAME;
 
 import lombok.experimental.UtilityClass;
 
@@ -38,13 +36,8 @@ public class DrinkApiConstants {
 			+ ") DEFAULT 'NO_ALCOHOLIC'";
 
 	// LOCALIZED DRINK //
-	public static final String REPOSITORY_LOCALIZED_NAME_DRINK_TABLE_NAME = REPOSITORY_LOCALIZED_NAME_TABLE_NAME
+	public static final String REPOSITORY_LOCALIZED_DRINK_TABLE_NAME = REPOSITORY_LOCALIZED_TABLE_NAME
 			+ REPOSITORY_DRINK_TABLE_NAME;
-	public static final String REPOSITORY_LOCALIZED_NAME_DRINK_ENTITY_NAME = REPOSITORY_LOCALIZED_NAME_ENTITY_NAME
+	public static final String REPOSITORY_LOCALIZED_DRINK_ENTITY_NAME = REPOSITORY_LOCALIZED_ENTITY_NAME
 			+ REPOSITORY_DRINK_ENTITY_NAME;
-	public static final String REPOSITORY_LOCALIZED_DESCRIPTION_DRINK_TABLE_NAME = REPOSITORY_LOCALIZED_DESCRIPTION_TABLE_NAME
-			+ REPOSITORY_DRINK_TABLE_NAME;
-	public static final String REPOSITORY_LOCALIZED_DESCRIPTION_DRINK_ENTITY_NAME = REPOSITORY_LOCALIZED_DESCRIPTION_ENTITY_NAME
-			+ REPOSITORY_DRINK_ENTITY_NAME;
-
 }

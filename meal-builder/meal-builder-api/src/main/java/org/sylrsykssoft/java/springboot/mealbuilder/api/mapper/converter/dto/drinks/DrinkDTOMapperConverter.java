@@ -14,13 +14,13 @@ import org.apache.commons.collections4.MapUtils;
 import org.modelmapper.Converters.Converter;
 import org.modelmapper.ModelMapper;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDescriptionDrinkDTO;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedNameDrinkDTO;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.DescriptionModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.StartEndDateModelDTO;
 
@@ -63,16 +63,12 @@ public final class DrinkDTOMapperConverter implements Converter<Drink, DrinkDTO>
 		final StartEndDateModelDTO drinkStartEndDateData = commonModelMapper.map(source.getDrinkStartEndDateData(),
 				StartEndDateModelDTO.class);
 
-		final Map<String, LocalizedNameDrinkDTO> localizationsName = new HashMap<>();
-		if (MapUtils.isNotEmpty(source.getLocalizationsName())) {
-			source.getLocalizationsName().forEach((key, value) -> localizationsName.put(key,
-					localizedDataModelMapper.map(value, LocalizedNameDrinkDTO.class)));
-		}
-
-		final Map<String, LocalizedDescriptionDrinkDTO> localizationsDescription = new HashMap<>();
-		if (MapUtils.isNotEmpty(source.getLocalizationsDescription())) {
-			source.getLocalizationsDescription().forEach((key, value) -> localizationsDescription.put(key,
-					localizedDataModelMapper.map(value, LocalizedDescriptionDrinkDTO.class)));
+		final Map<LocalizedFieldNameModelDTO, LocalizedDrinkDTO> localizationsData = new HashMap<>();
+		if (MapUtils.isNotEmpty(source.getLocalizationsData())) {
+			source.getLocalizationsData()
+					.forEach((key, value) -> localizationsData.put(
+							commonModelMapper.map(key, LocalizedFieldNameModelDTO.class),
+							localizedDataModelMapper.map(value, LocalizedDrinkDTO.class)));
 		}
 
 		final AuditModelDTO drinkCreationData = commonModelMapper.map(source.getDrinkCreationData(),
@@ -80,7 +76,6 @@ public final class DrinkDTOMapperConverter implements Converter<Drink, DrinkDTO>
 
 		return DrinkDTO.builder().id(source.getId()).name(name).description(description).type(source.getType())
 				.size(size).price(price).drinkStartEndDateData(drinkStartEndDateData)
-				.localizationsName(localizationsName).localizationsDescription(localizationsDescription)
-				.drinkCreationData(drinkCreationData).build();
+				.localizationsData(localizationsData).drinkCreationData(drinkCreationData).build();
 	}
 }

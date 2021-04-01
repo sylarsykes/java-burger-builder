@@ -12,6 +12,7 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.dri
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.CocktailApiConstants.REPOSITORY_COCKTAIL_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINK_SCHEMA_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.REPOSITORY_INGREDIENT_TABLE_NAME;
+import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_LOCALIZED_MODEL_FIELD_NAME_JPA;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_LOCALIZED_MODEL_LOCALE_JPA;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_MODEL_NAME_ID_COLUMN;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_NAME_MODEL_NAME_NAME_COLUMN;
@@ -29,7 +30,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapKey;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -44,6 +45,7 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.Prepara
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
 import org.sylrsykssoft.springboot.common.api.model.BaseNameModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
+import org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedFieldNameModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.StartEndDateModel;
 
 import lombok.Builder;
@@ -94,22 +96,11 @@ public class Cocktail extends BaseNameModel<Long> {
 	Set<CocktailIngredient> cocktailIngredients;
 
 	@OneToMany(mappedBy = REPOSITORY_COCKTAIL_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	@MapKey(name = BASE_LOCALIZED_MODEL_LOCALE_JPA)
+	@MapKeyJoinColumn(name = BASE_LOCALIZED_MODEL_LOCALE_JPA)
+	@MapKeyJoinColumn(name = BASE_LOCALIZED_MODEL_FIELD_NAME_JPA)
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	@Builder.Default
-	Map<String, LocalizedNameCocktail> localizationsName = new HashMap<>();
-
-	@OneToMany(mappedBy = REPOSITORY_COCKTAIL_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	@MapKey(name = BASE_LOCALIZED_MODEL_LOCALE_JPA)
-	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-	@Builder.Default
-	Map<String, LocalizedDescriptionCocktail> localizationsDescription = new HashMap<>();
-
-	@OneToMany(mappedBy = REPOSITORY_COCKTAIL_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	@MapKey(name = BASE_LOCALIZED_MODEL_LOCALE_JPA)
-	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-	@Builder.Default
-	Map<String, LocalizedPreparationCocktail> localizationsPreparation = new HashMap<>();
+	Map<LocalizedFieldNameModel, LocalizedCocktail> localizationsData = new HashMap<>();
 
 	@Embedded
 	@NotNull(message = "CocktailCreationData field is mandatory")

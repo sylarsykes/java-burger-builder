@@ -58,10 +58,8 @@ public class CommonAPIConstants {
 			+ LENGTH_PRECISION_START_DATE + ") DEFAULT CURRENT_TIMESTAMP(" + LENGTH_PRECISION_START_DATE + ")";
 
 	// LOCALIZED_DATA //
-	public static final String REPOSITORY_LOCALIZED_NAME_TABLE_NAME = "localized_" + BASE_NAME_MODEL_NAME_NAME_COLUMN + "_";
-	public static final String REPOSITORY_LOCALIZED_NAME_ENTITY_NAME = "LocalizedName";
-	public static final String REPOSITORY_LOCALIZED_DESCRIPTION_TABLE_NAME = "localized_" + BASE_NAME_MODEL_NAME_DESCRIPTION_COLUMN + "_";
-	public static final String REPOSITORY_LOCALIZED_DESCRIPTION_ENTITY_NAME = "LocalizedDescription";
+	public static final String REPOSITORY_LOCALIZED_TABLE_NAME = "localized_";
+	public static final String REPOSITORY_LOCALIZED_ENTITY_NAME = "Localized";
 	
 	// JPA QUERY OBJECTS NAMES //
 	public static final String BASE_NAME_MODEL_OBJECT_JPA = "name";
@@ -79,6 +77,7 @@ public class CommonAPIConstants {
 	public static final String BASE_AUDIT_MODEL_NAME_LAST_MODIFY_BY_JPA = "lastModifiedBy";
 	public static final String BASE_AUDIT_MODEL_NAME_LAST_MODIFIED_DATE_JPA = "lastModifiedDate";
 	public static final String BASE_LOCALIZED_MODEL_LOCALE_JPA = "embeddedId." + BASE_LOCALIZED_MODEL_LOCALE_COLUMN;
+	public static final String BASE_LOCALIZED_MODEL_FIELD_NAME_JPA = "embeddedId." + BASE_LOCALIZED_MODEL_NAME_FIELD_NAME_COLUMN;
 
 	// JPA QUERY FIELD NAMES //
 	// BASE NAME MODEL //

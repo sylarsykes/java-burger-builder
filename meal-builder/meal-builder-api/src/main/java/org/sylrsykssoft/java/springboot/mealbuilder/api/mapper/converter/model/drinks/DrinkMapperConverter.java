@@ -15,12 +15,12 @@ import org.modelmapper.Converters.Converter;
 import org.modelmapper.ModelMapper;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDescriptionDrink;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedNameDrink;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSizeData;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.DescriptionModel;
+import org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedFieldNameModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.NameModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.StartEndDateModel;
 
@@ -62,16 +62,12 @@ public class DrinkMapperConverter implements Converter<DrinkDTO, Drink> {
 		final StartEndDateModel drinkStartEndDateData = commonModelMapper.map(source.getDrinkStartEndDateData(),
 				StartEndDateModel.class);
 
-		final Map<String, LocalizedNameDrink> localizationsName = new HashMap<>();
-		if (MapUtils.isNotEmpty(source.getLocalizationsName())) {
-			source.getLocalizationsName().forEach((key, value) -> localizationsName.put(key,
-					localizedDataModelMapper.map(value, LocalizedNameDrink.class)));
-		}
-
-		final Map<String, LocalizedDescriptionDrink> localizationsDescription = new HashMap<>();
-		if (MapUtils.isNotEmpty(source.getLocalizationsDescription())) {
-			source.getLocalizationsDescription().forEach((key, value) -> localizationsDescription.put(key,
-					localizedDataModelMapper.map(value, LocalizedDescriptionDrink.class)));
+		final Map<LocalizedFieldNameModel, LocalizedDrink> localizationsData = new HashMap<>();
+		if (MapUtils.isNotEmpty(source.getLocalizationsData())) {
+			source.getLocalizationsData()
+					.forEach((key, value) -> localizationsData.put(
+							commonModelMapper.map(key, LocalizedFieldNameModel.class),
+							localizedDataModelMapper.map(value, LocalizedDrink.class)));
 		}
 
 		final AuditModel drinkCreationData = (source.getDrinkCreationData() != null)
@@ -79,8 +75,8 @@ public class DrinkMapperConverter implements Converter<DrinkDTO, Drink> {
 				: AuditModel.builder().build();
 
 		return Drink.builder().id(source.getId()).name(name).description(description).type(source.getType()).size(size)
-				.price(price).drinkStartEndDateData(drinkStartEndDateData).localizationsName(localizationsName)
-				.localizationsDescription(localizationsDescription).drinkCreationData(drinkCreationData).build();
+				.price(price).drinkStartEndDateData(drinkStartEndDateData).localizationsData(localizationsData)
+				.drinkCreationData(drinkCreationData).build();
 	}
 
 }
