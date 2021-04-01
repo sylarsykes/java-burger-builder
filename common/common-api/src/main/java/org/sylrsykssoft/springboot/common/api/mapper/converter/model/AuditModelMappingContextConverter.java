@@ -13,8 +13,10 @@ import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.AuditModelMapperConverter;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
 
+import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 /**
  * AuditModelDTOMapperConverter
@@ -22,11 +24,12 @@ import lombok.RequiredArgsConstructor;
  * @author juan.gonzalez.fernandez.jgf
  *
  */
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 public final class AuditModelMappingContextConverter implements Converter<AuditModelDTO, AuditModel> {
 	
 	@NonNull
-	private AuditModelMapperConverter converter;
+	AuditModelMapperConverter converter;
 	
 	/**
 	 * {@inheritDoc}

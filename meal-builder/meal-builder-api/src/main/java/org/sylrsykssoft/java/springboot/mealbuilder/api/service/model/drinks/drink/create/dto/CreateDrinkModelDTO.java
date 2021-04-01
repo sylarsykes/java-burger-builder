@@ -14,6 +14,7 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.DescriptionModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.StartEndDateModelDTO;
 import org.sylrsykssoft.springboot.common.api.service.model.create.dto.CreateModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -72,5 +73,10 @@ public class CreateDrinkModelDTO extends CreateModelDTO<DrinkDTO, Long> implemen
 	@JsonProperty(value = "Price", required = true)
 	@Schema(name = "Price", description = "Price PriceDataDTO", required = true)
 	PriceDataDTO price;
+	
+	@NotNull(message = "CreateDrinkModelDTO::DrinkStartEndDateData field is mandatory")
+	@JsonProperty(value = "DrinkStartEndDateData", required = true)
+	@Schema(name = "DrinkStartEndDateData", description = "DrinkStartEndDateData StartEndDateModelDTO", required = true)
+	StartEndDateModelDTO drinkStartEndDateData;
 	
 }

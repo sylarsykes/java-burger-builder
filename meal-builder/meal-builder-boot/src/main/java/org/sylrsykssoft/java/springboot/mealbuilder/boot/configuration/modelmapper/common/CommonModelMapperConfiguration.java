@@ -20,6 +20,7 @@ import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameM
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedValueModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.StartEndDateModelDTO;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.AuditModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.CodeModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.DescriptionModelDTOMappingContextConverter;
@@ -27,6 +28,7 @@ import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.LocalizedFiel
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.LocalizedModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.LocalizedValueModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.NameModelDTOMappingContextConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.StartEndDateModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.AuditModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.CodeModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.DescriptionModelMappingContextConverter;
@@ -34,6 +36,7 @@ import org.sylrsykssoft.springboot.common.api.mapper.converter.model.LocalizedFi
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.LocalizedModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.LocalizedValueModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.NameModelMappingContextConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.model.StartEndDateModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.CodeModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.DescriptionModel;
@@ -41,6 +44,7 @@ import org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedFieldNam
 import org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.LocalizedValueModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.NameModel;
+import org.sylrsykssoft.springboot.common.api.model.embeddable.StartEndDateModel;
 import org.sylrsykssoft.springboot.common.app.boot.configuration.properties.modelmapper.ModelMapperPropertiesConfiguration;
 
 /**
@@ -71,6 +75,7 @@ public class CommonModelMapperConfiguration {
 	@Bean(API_MODELMAPPER_COMMON_MODEL_MAPPER_BEAN_NAME)
 	public ModelMapper commonModelMapper(
 			@Qualifier("auditModelDTOMappingContextConverter") @NotNull final AuditModelDTOMappingContextConverter auditModelDTOMappingContextConverter,
+			@Qualifier("startEndDateModelDTOMappingContextConverter") @NotNull final StartEndDateModelDTOMappingContextConverter startEndDateModelDTOMappingContextConverter,
 			@Qualifier("codeModelDTOMappingContextConverter") @NotNull final CodeModelDTOMappingContextConverter codeModelDTOMappingContextConverter,
 			@Qualifier("descriptionModelDTOMappingContextConverter") @NotNull final DescriptionModelDTOMappingContextConverter descriptionModelDTOMappingContextConverter,
 			@Qualifier("localizedFieldNameModelDTOMappingContextConverter") @NotNull final LocalizedFieldNameModelDTOMappingContextConverter localizedFieldNameModelDTOMappingContextConverter,
@@ -78,6 +83,7 @@ public class CommonModelMapperConfiguration {
 			@Qualifier("localizedValueModelDTOMappingContextConverter") @NotNull final LocalizedValueModelDTOMappingContextConverter localizedValueModelDTOMappingContextConverter,
 			@Qualifier("nameModelDTOMappingContextConverter") @NotNull final NameModelDTOMappingContextConverter nameModelDTOMappingContextConverter,
 			@Qualifier("auditModelMappingContextConverter") @NotNull final AuditModelMappingContextConverter auditModelMappingContextConverter,
+			@Qualifier("startEndDateModelMappingContextConverter") @NotNull final StartEndDateModelMappingContextConverter startEndDateModelMappingContextConverter,
 			@Qualifier("codeModelMappingContextConverter") @NotNull final CodeModelMappingContextConverter codeModelMappingContextConverter,
 			@Qualifier("descriptionModelMappingContextConverter") @NotNull final DescriptionModelMappingContextConverter descriptionModelMappingContextConverter,
 			@Qualifier("localizedFieldNameModelMappingContextConverter") @NotNull final LocalizedFieldNameModelMappingContextConverter localizedFieldNameModelMappingContextConverter,
@@ -88,6 +94,7 @@ public class CommonModelMapperConfiguration {
 
 		// DTO converters
 		mapper.addConverter(auditModelDTOMappingContextConverter, AuditModel.class, AuditModelDTO.class);
+		mapper.addConverter(startEndDateModelDTOMappingContextConverter, StartEndDateModel.class, StartEndDateModelDTO.class);
 		mapper.addConverter(codeModelDTOMappingContextConverter, CodeModel.class, CodeModelDTO.class);
 		mapper.addConverter(descriptionModelDTOMappingContextConverter, DescriptionModel.class,
 				DescriptionModelDTO.class);
@@ -100,6 +107,7 @@ public class CommonModelMapperConfiguration {
 
 		// Model converters
 		mapper.addConverter(auditModelMappingContextConverter, AuditModelDTO.class, AuditModel.class);
+		mapper.addConverter(startEndDateModelMappingContextConverter, StartEndDateModelDTO.class, StartEndDateModel.class);
 		mapper.addConverter(codeModelMappingContextConverter, CodeModelDTO.class, CodeModel.class);
 		mapper.addConverter(descriptionModelMappingContextConverter, DescriptionModelDTO.class, DescriptionModel.class);
 		mapper.addConverter(localizedFieldNameModelMappingContextConverter, LocalizedFieldNameModelDTO.class,

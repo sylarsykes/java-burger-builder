@@ -24,6 +24,7 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,6 +39,7 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.FoodSiz
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable.PriceData;
 import org.sylrsykssoft.springboot.common.api.model.BaseNameModel;
 import org.sylrsykssoft.springboot.common.api.model.embeddable.AuditModel;
+import org.sylrsykssoft.springboot.common.api.model.embeddable.StartEndDateModel;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -81,13 +83,17 @@ public class Drink extends BaseNameModel<Long> {
 	@NotNull(message = "Price field is mandatory")
 	PriceData price;
 	
-	@OneToMany(mappedBy = REPOSITORY_DRINK_TABLE_NAME, cascade = { CascadeType.ALL }, orphanRemoval = true)
+	@Embedded
+	@NotNull(message = "DrinkStartEndDateData field is mandatory")
+	StartEndDateModel drinkStartEndDateData;
+	
+	@OneToMany(mappedBy = REPOSITORY_DRINK_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@MapKey(name = BASE_LOCALIZED_MODEL_LOCALE_JPA)
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	@Builder.Default
 	Map<String, LocalizedNameDrink> localizationsName = new HashMap<>();
 	
-	@OneToMany(mappedBy = REPOSITORY_DRINK_TABLE_NAME, cascade = { CascadeType.ALL }, orphanRemoval = true)
+	@OneToMany(mappedBy = REPOSITORY_DRINK_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@MapKey(name = BASE_LOCALIZED_MODEL_LOCALE_JPA)
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	@Builder.Default

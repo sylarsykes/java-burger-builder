@@ -6,6 +6,7 @@ package org.sylrsykssoft.java.springboot.mealbuilder.api.model.embeddable;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_COUNT_NAME_COLUMN;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_CREATED_AT_NAME_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_CREATED_AT_NAME_COLUMN_DEFAULT_VALUE;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ingredients.IngredientApiConstants.INGREDIENT_POSITION_NAME_COLUMN;
 
 import java.time.LocalDateTime;
@@ -31,7 +32,7 @@ import lombok.experimental.SuperBuilder;
  *
  */
 @Value
-@FieldDefaults(level=AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(doNotUseGetters = true)
@@ -42,14 +43,14 @@ public class IngredientData {
 	@Column(name = INGREDIENT_COUNT_NAME_COLUMN, nullable = false)
 	@NotBlank(message = "Count field is mandatory")
 	String count;
-	
+
 	@Column(name = INGREDIENT_POSITION_NAME_COLUMN, nullable = false)
 	@NotNull(message = "Position field is mandatory")
 	@Positive
 	Short position;
-	
-	@Column(name = INGREDIENT_CREATED_AT_NAME_COLUMN, nullable = false)
+
+	@Column(name = INGREDIENT_CREATED_AT_NAME_COLUMN, columnDefinition = INGREDIENT_CREATED_AT_NAME_COLUMN_DEFAULT_VALUE, nullable = false)
 	@NotNull(message = "CreatedAt field is mandatory")
 	LocalDateTime createdAt;
-	
+
 }

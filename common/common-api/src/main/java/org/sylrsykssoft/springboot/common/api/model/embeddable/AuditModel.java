@@ -6,7 +6,9 @@ package org.sylrsykssoft.springboot.common.api.model.embeddable;
 
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_AUDIT_MODEL_NAME_CREATED_BY_COLUMN;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_AUDIT_MODEL_NAME_CREATED_DATE_COLUMN;
+import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_AUDIT_MODEL_NAME_CREATED_DATE_COLUMN_DEFAULT_VALUE;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_AUDIT_MODEL_NAME_LAST_MODIFIED_DATE_COLUMN;
+import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_AUDIT_MODEL_NAME_LAST_MODIFIED_DATE_COLUMN_DEFAULT_VALUE;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_AUDIT_MODEL_NAME_LAST_MODIFY_BY_COLUMN;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_NICKNAME_USER;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_NICKNAME_USER;
@@ -56,7 +58,7 @@ public class AuditModel extends BaseEmbeddable {
 	@CreatedBy
 	String createdBy;
 
-	@Column(name = BASE_AUDIT_MODEL_NAME_CREATED_DATE_COLUMN, nullable = false, insertable = true, updatable = false)
+	@Column(name = BASE_AUDIT_MODEL_NAME_CREATED_DATE_COLUMN, columnDefinition = BASE_AUDIT_MODEL_NAME_CREATED_DATE_COLUMN_DEFAULT_VALUE, nullable = false, insertable = true, updatable = false)
 	@NotNull(message = "CreatedDate field is mandatory")
 	@CreatedDate
 	LocalDateTime createdDate;
@@ -66,7 +68,7 @@ public class AuditModel extends BaseEmbeddable {
 	@LastModifiedBy
 	String lastModifiedBy;
 
-	@Column(name = BASE_AUDIT_MODEL_NAME_LAST_MODIFIED_DATE_COLUMN, nullable = true, insertable = false, updatable = true)
+	@Column(name = BASE_AUDIT_MODEL_NAME_LAST_MODIFIED_DATE_COLUMN, columnDefinition = BASE_AUDIT_MODEL_NAME_LAST_MODIFIED_DATE_COLUMN_DEFAULT_VALUE, nullable = true, insertable = false, updatable = true)
 	@Nullable
 	@LastModifiedDate
 	LocalDateTime lastModifiedDate;

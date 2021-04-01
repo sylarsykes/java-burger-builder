@@ -22,6 +22,7 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.DescriptionModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.StartEndDateModelDTO;
 
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -59,6 +60,8 @@ public final class DrinkDTOMapperConverter implements Converter<Drink, DrinkDTO>
 
 		final FoodSizeDataDTO size = embeddableModelMapper.map(source.getSize(), FoodSizeDataDTO.class);
 		final PriceDataDTO price = embeddableModelMapper.map(source.getPrice(), PriceDataDTO.class);
+		final StartEndDateModelDTO drinkStartEndDateData = commonModelMapper.map(source.getDrinkStartEndDateData(),
+				StartEndDateModelDTO.class);
 
 		final Map<String, LocalizedNameDrinkDTO> localizationsName = new HashMap<>();
 		if (MapUtils.isNotEmpty(source.getLocalizationsName())) {
@@ -76,7 +79,8 @@ public final class DrinkDTOMapperConverter implements Converter<Drink, DrinkDTO>
 				AuditModelDTO.class);
 
 		return DrinkDTO.builder().id(source.getId()).name(name).description(description).type(source.getType())
-				.size(size).price(price).localizationsName(localizationsName)
-				.localizationsDescription(localizationsDescription).drinkCreationData(drinkCreationData).build();
+				.size(size).price(price).drinkStartEndDateData(drinkStartEndDateData)
+				.localizationsName(localizationsName).localizationsDescription(localizationsDescription)
+				.drinkCreationData(drinkCreationData).build();
 	}
 }

@@ -12,8 +12,6 @@ import java.io.Serializable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
@@ -31,7 +29,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
-public class LocalizedValueModelDTO extends BaseDTO implements Serializable {
+public class LocalizedValueModelDTO extends BaseEmbeddableDTO implements Serializable {
 
 	private static final long serialVersionUID = 1721699098779609535L;
 	
