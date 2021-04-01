@@ -16,6 +16,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -46,16 +48,17 @@ public class LocalizedFieldNameModel extends BaseEmbeddable implements Serializa
 
 	private static final long serialVersionUID = -3567111343891297525L;
 
-	@Column(name = BASE_MODEL_NAME_ID_COLUMN, updatable = false, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = BASE_MODEL_NAME_ID_COLUMN, insertable = false, updatable = false, nullable = false)
 	Long id;
-	
+
 	@Column(name = BASE_LOCALIZED_MODEL_LOCALE_COLUMN, nullable = false, length = MAX_LENGTH_LOCALIZED_LOCALE)
 	@Size(min = MIN_LENGTH_LOCALIZED_LOCALE, max = MAX_LENGTH_LOCALIZED_LOCALE)
 	String locale;
-	
+
 	@Column(name = BASE_LOCALIZED_MODEL_NAME_FIELD_NAME_COLUMN, nullable = false, length = MAX_LENGTH_LOCALIZED_FIELD_NAME)
 	@NotBlank(message = "Field name field is mandatory")
 	@Size(min = MIN_LENGTH_LOCALIZED_FIELD_NAME, max = MAX_LENGTH_LOCALIZED_FIELD_NAME)
 	String fieldName;
-	
+
 }

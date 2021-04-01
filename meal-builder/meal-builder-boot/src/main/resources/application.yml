@@ -374,29 +374,17 @@ app:
           bean-name: mealBuilderDrinksLocalizedDataModelMapper
           mapping-contexts:
             - 
-              bean-name: drinksLocalizedNameDrinkDTOMappingContextConverter
-              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedNameDrink
-              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedNameDrinkDTO
+              bean-name: localizedDrinkDTOMappingContextConverter
+              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink
+              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO
               converters-propeties-configuration:
-                bean-name: drinksLocalizedNameDrinkDTOMapperConverter
+                bean-name: localizedDrinkDTOMapperConverter
             - 
-              bean-name: drinksLocalizedNameDrinkMapperConverter
-              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedNameDrinkDTO
-              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedNameDrink
+              bean-name: localizedDrinkMapperConverter
+              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO
+              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink
               converters-propeties-configuration:
-                bean-name: drinksLocalizedNameDrinkMapperConverter
-            - 
-              bean-name: drinksLocalizedDescriptionDrinkDTOMappingContextConverter
-              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDescriptionDrink
-              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDescriptionDrinkDTO
-              converters-propeties-configuration:
-                bean-name: drinksLocalizedDescriptionDrinkDTOMapperConverter
-            - 
-              bean-name: drinksLocalizedDescriptionDrinkMappingContextConverter
-              source-type: org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDescriptionDrinkDTO
-              destination-type: org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDescriptionDrink
-              converters-propeties-configuration:
-                bean-name: drinksLocalizedDescriptionDrinkMapperConverter
+                bean-name: localizedDrinkMapperConverter
         model:
           bean-name-properties: mealBuilderDrinksModelMapperConfigurationProperties
           bean-name: mealBuilderDrinksModelMapper

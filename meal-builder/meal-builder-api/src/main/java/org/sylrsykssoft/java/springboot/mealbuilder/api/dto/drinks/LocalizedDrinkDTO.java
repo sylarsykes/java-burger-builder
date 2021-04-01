@@ -19,6 +19,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
 /**
+ * LocalizedDrinkDTO
+ * 
  * @author juan.gonzalez.fernandez.jgf
  *
  */
@@ -29,7 +31,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
 @Schema(name = "LocalizedDrinkDTO", description = "Model LocalizedDrinkDTO")
-public class LocalizedDescriptionDrinkDTO extends BaseEmbeddedLocalizedValueModelDTO<LocalizedFieldNameModelDTO> {
+public class LocalizedDrinkDTO extends BaseEmbeddedLocalizedValueModelDTO<LocalizedFieldNameModelDTO> {
 
 	@JsonBackReference
 	DrinkDTO drink;

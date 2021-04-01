@@ -15,14 +15,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDescriptionDrinkDTO;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedNameDrinkDTO;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.dto.drinks.LocalizedDescriptionDrinkDTOMappingContextConverter;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.dto.drinks.LocalizedNameDrinkDTOMappingContextConverter;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.model.drinks.LocalizedDescriptionDrinkMappingContextConverter;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.model.drinks.LocalizedNameDrinkMappingContextConverter;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDescriptionDrink;
-import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedNameDrink;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.dto.drinks.LocalizedDrinkDTOMappingContextConverter;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.model.drinks.LocalizedDrinkMappingContextConverter;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.LocalizedDrink;
 import org.sylrsykssoft.springboot.common.app.boot.configuration.properties.modelmapper.ModelMapperPropertiesConfiguration;
 
 /**
@@ -47,23 +43,15 @@ public class DrinksLocalizedDataModelMapperConfiguration {
 	@SuppressWarnings("squid:S107")
 	@Bean(API_MODELMAPPER_MODEL_DRINKS_LOCALIZED_MODEL_MAPPER_BEAN_NAME)
 	public ModelMapper mealBuilderDrinksLocalizedDataModelMapper(
-			@Qualifier("drinksLocalizedNameDrinkDTOMappingContextConverter") @NotNull final LocalizedNameDrinkDTOMappingContextConverter drinksLocalizedNameDrinkDTOMappingContextConverter,
-			@Qualifier("drinksLocalizedDescriptionDrinkDTOMappingContextConverter") @NotNull final LocalizedDescriptionDrinkDTOMappingContextConverter drinksLocalizedDescriptionDrinkDTOMappingContextConverter,
-			@Qualifier("drinksLocalizedNameDrinkMappingContextConverter") @NotNull LocalizedNameDrinkMappingContextConverter drinksLocalizedNameDrinkMappingContextConverter,
-			@Qualifier("drinksLocalizedDescriptionDrinkMappingContextConverter") @NotNull LocalizedDescriptionDrinkMappingContextConverter drinksLocalizedDescriptionDrinkMappingContextConverter) {
+			@Qualifier("localizedDrinkDTOMappingContextConverter") @NotNull final LocalizedDrinkDTOMappingContextConverter localizedDrinkDTOMappingContextConverter,
+			@Qualifier("localizedDrinkMappingContextConverter") @NotNull final LocalizedDrinkMappingContextConverter localizedDrinkMappingContextConverter) {
 		final ModelMapper mapper = new ModelMapper();
 
 		// DTO converters
-		mapper.addConverter(drinksLocalizedNameDrinkDTOMappingContextConverter, LocalizedNameDrink.class,
-				LocalizedNameDrinkDTO.class);
-		mapper.addConverter(drinksLocalizedDescriptionDrinkDTOMappingContextConverter, LocalizedDescriptionDrink.class,
-				LocalizedDescriptionDrinkDTO.class);
+		mapper.addConverter(localizedDrinkDTOMappingContextConverter, LocalizedDrink.class, LocalizedDrinkDTO.class);
 
 		// Model converters
-		mapper.addConverter(drinksLocalizedNameDrinkMappingContextConverter, LocalizedNameDrinkDTO.class,
-				LocalizedNameDrink.class);
-		mapper.addConverter(drinksLocalizedDescriptionDrinkMappingContextConverter, LocalizedDescriptionDrinkDTO.class,
-				LocalizedDescriptionDrink.class);
+		mapper.addConverter(localizedDrinkMappingContextConverter, LocalizedDrinkDTO.class, LocalizedDrink.class);
 
 		return mapper;
 	}

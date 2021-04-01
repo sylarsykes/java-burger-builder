@@ -1,5 +1,5 @@
 /**
- * LocalizedDrinkDTO.java 20 mar. 2021
+ * LocalizedCocktailDTO.java 20 mar. 2021
  *
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks;
@@ -23,15 +23,15 @@ import lombok.experimental.SuperBuilder;
  *
  */
 @Value
-@FieldDefaults(level=AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
-@Schema(name = "LocalizedDrinkDTO", description = "Model LocalizedDrinkDTO")
-public class LocalizedNameDrinkDTO extends BaseEmbeddedLocalizedValueModelDTO<LocalizedFieldNameModelDTO> {
+@Schema(name = "LocalizedCocktailDTO", description = "Model LocalizedCocktailDTO")
+public class LocalizedCocktailDTO extends BaseEmbeddedLocalizedValueModelDTO<LocalizedFieldNameModelDTO> {
 
 	@JsonBackReference
-	DrinkDTO drink;
-		
+	CocktailDTO cocktail;
+
 }

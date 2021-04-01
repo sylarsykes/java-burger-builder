@@ -35,7 +35,7 @@ import lombok.experimental.SuperBuilder;
 public class LocalizedFieldNameModelDTO extends BaseEmbeddableDTO implements Serializable {
 
 	private static final long serialVersionUID = 2058578079561061396L;
-	
+
 	@NotNull(message = "Locale field is mandatory")
 	@JsonProperty(value = "Id", required = true)
 	Long id;
@@ -44,10 +44,10 @@ public class LocalizedFieldNameModelDTO extends BaseEmbeddableDTO implements Ser
 	@Size(min = MIN_LENGTH_LOCALIZED_LOCALE, max = MAX_LENGTH_LOCALIZED_LOCALE)
 	@JsonProperty(value = "Locale", required = true)
 	String locale;
-	
+
 	@NotBlank(message = "FieldName field is mandatory")
 	@Size(min = MIN_LENGTH_LOCALIZED_FIELD_NAME, max = MAX_LENGTH_LOCALIZED_FIELD_NAME)
 	@JsonProperty(value = "FieldName", required = true)
 	String fieldName;
-	
+
 }
