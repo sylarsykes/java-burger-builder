@@ -1,16 +1,15 @@
-
 -- drinks.ingredient definition
 
 CREATE TABLE `ingredient` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
   `description` text DEFAULT NULL,
-  `price` decimal(7,2) NOT NULL,
   `type` varchar(20) NOT NULL DEFAULT 'COCKTAIL',
+  `price` decimal(7,2) NOT NULL,
   `created_by` varchar(60) NOT NULL,
-  `created_date` datetime(6) NOT NULL,
+  `created_date` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   `last_modify_by` varchar(60) DEFAULT NULL,
-  `last_modified_date` datetime(6) DEFAULT NULL,
+  `last_modified_date` datetime(6) DEFAULT NULL ON UPDATE current_timestamp(6),
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK26hp93dj37w9wgo55l9aw0ohx` (`type`,`name`),
   UNIQUE KEY `UK_bcuaj97y3iu3t2vj26jg6hijj` (`name`)
@@ -25,10 +24,12 @@ CREATE TABLE `drink` (
   `type` varchar(20) NOT NULL DEFAULT 'NO_ALCOHOLIC',
   `size` varchar(10) DEFAULT 'MEDIUM',
   `price` decimal(7,2) NOT NULL,
+  `start_date` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `end_date` datetime(6) DEFAULT NULL,
   `created_by` varchar(60) NOT NULL,
-  `created_date` datetime(6) NOT NULL,
+  `created_date` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   `last_modify_by` varchar(60) DEFAULT NULL,
-  `last_modified_date` datetime(6) DEFAULT NULL,
+  `last_modified_date` datetime(6) DEFAULT NULL ON UPDATE current_timestamp(6),
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_gf07vui7f23acsy3j161804ej` (`name`),
   UNIQUE KEY `UKc47t6nxt7cn3fubrrtxj0traw` (`type`,`size`,`name`)
@@ -60,6 +61,21 @@ CREATE TABLE `localized_description_drink` (
   CONSTRAINT `FKspxw4x8calqkfhk7wwxsxpmik` FOREIGN KEY (`drink_id`) REFERENCES `drink` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- drinks.glass_cocktail definition
+
+CREATE TABLE `glass_cocktail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  `size` varchar(10) NOT NULL DEFAULT 'MEDIUM',
+  `created_by` varchar(60) NOT NULL,
+  `created_date` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `last_modify_by` varchar(60) DEFAULT NULL,
+  `last_modified_date` datetime(6) DEFAULT NULL ON UPDATE current_timestamp(6),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKt7pkyt6ja4pi0857kx0x0h6xh` (`size`,`name`),
+  UNIQUE KEY `UK_i4a9nwku6weu6lq0gvqxtmyqc` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- drinks.cocktail definition
 
 CREATE TABLE `cocktail` (
@@ -68,12 +84,14 @@ CREATE TABLE `cocktail` (
   `description` text DEFAULT NULL,
   `preparation` text NOT NULL,
   `glass_cocktail_id` int(11) DEFAULT NULL,
-  `type` varchar(20) NOT NULL DEFAULT 'NO_ALCOHOLIC',
+  `type` varchar(20) NOT NULL DEFAULT 'APPETIZER',
   `price` decimal(7,2) NOT NULL,
+  `start_date` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `end_date` datetime(6) DEFAULT NULL,
   `created_by` varchar(60) NOT NULL,
-  `created_date` datetime(6) NOT NULL,
+  `created_date` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   `last_modify_by` varchar(60) DEFAULT NULL,
-  `last_modified_date` datetime(6) DEFAULT NULL,
+  `last_modified_date` datetime(6) DEFAULT NULL ON UPDATE current_timestamp(6),
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK8djt9f6w2ogabcfub62nobuqa` (`type`,`name`),
   UNIQUE KEY `UK_idg61yo32m6skd39pl3unjjjv` (`name`),
@@ -81,6 +99,44 @@ CREATE TABLE `cocktail` (
   CONSTRAINT `FK9g38s7di8qni33keiiovpde6m` FOREIGN KEY (`glass_cocktail_id`) REFERENCES `glass_cocktail` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- drinks.localized_name_cocktail definition
+
+CREATE TABLE `localized_name_cocktail` (
+  `cocktail_id` bigint(20) NOT NULL,
+  `locale` varchar(2) NOT NULL,
+  `field_name` varchar(60) NOT NULL,
+  `value` text NOT NULL,
+  PRIMARY KEY (`field_name`,`cocktail_id`,`locale`),
+  UNIQUE KEY `UKlim0kydtr01ca0l4cnj4l26tq` (`locale`,`field_name`,`value`) USING HASH,
+  KEY `FK3vx1nxgfikybyuu0l76yjj5ty` (`cocktail_id`),
+  CONSTRAINT `FK3vx1nxgfikybyuu0l76yjj5ty` FOREIGN KEY (`cocktail_id`) REFERENCES `cocktail` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- drinks.localized_description_cocktail definition
+
+CREATE TABLE `localized_description_cocktail` (
+  `cocktail_id` bigint(20) NOT NULL,
+  `locale` varchar(2) NOT NULL,
+  `field_name` varchar(60) NOT NULL,
+  `value` text NOT NULL,
+  PRIMARY KEY (`field_name`,`cocktail_id`,`locale`),
+  UNIQUE KEY `UK8gsq495fuh08lh44hxv8qv7g` (`locale`,`field_name`,`value`) USING HASH,
+  KEY `FKp3b473rfin8cn1gkmk5nbhts6` (`cocktail_id`),
+  CONSTRAINT `FKp3b473rfin8cn1gkmk5nbhts6` FOREIGN KEY (`cocktail_id`) REFERENCES `cocktail` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- drinks.localized_preparation_cocktail definition
+
+CREATE TABLE `localized_preparation_cocktail` (
+  `cocktail_id` bigint(20) NOT NULL,
+  `locale` varchar(2) NOT NULL,
+  `field_name` varchar(60) NOT NULL,
+  `value` text NOT NULL,
+  PRIMARY KEY (`field_name`,`cocktail_id`,`locale`),
+  UNIQUE KEY `UKpgjoy10hkoi1um2tdo561w11n` (`locale`,`field_name`,`value`) USING HASH,
+  KEY `FK50aslufl4nq89u3s8gibicq3j` (`cocktail_id`),
+  CONSTRAINT `FK50aslufl4nq89u3s8gibicq3j` FOREIGN KEY (`cocktail_id`) REFERENCES `cocktail` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- drinks.cocktail_ingredient definition
 
@@ -90,7 +146,7 @@ CREATE TABLE `cocktail_ingredient` (
   `cocktail_id` bigint(20) NOT NULL,
   `position` smallint(6) NOT NULL,
   `count` varchar(255) NOT NULL,
-  `created_at` datetime(6) NOT NULL,
+  `created_at` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   PRIMARY KEY (`id`),
   KEY `FKdtpdp8nx2opyj5ylwk60f915v` (`cocktail_id`),
   KEY `FKjmwkmu750duaxxgvge2qj1dy1` (`ingredient_id`),

@@ -15,6 +15,7 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeD
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO;
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.StartEndDateModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -62,6 +63,11 @@ public class DrinkDTO extends BaseNameModelDTO<Long> implements Serializable {
 	@JsonProperty(value = "Price", required = true)
 	@Schema(name = "Price", description = "Price PriceDataDTO", required = true)
 	PriceDataDTO price;
+	
+	@NotNull(message = "DrinkStartEndDateData field is mandatory")
+	@JsonProperty(value = "DrinkStartEndDateData", required = true)
+	@Schema(name = "DrinkStartEndDateData", description = "DrinkStartEndDateData StartEndDateModelDTO", required = true)
+	StartEndDateModelDTO drinkStartEndDateData;
 	
 	@JsonProperty(value = "LocalizationsName")
 	@JsonManagedReference

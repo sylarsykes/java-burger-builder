@@ -16,6 +16,7 @@ import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.LocalizedFiel
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.LocalizedModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.LocalizedValueModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.NameModelDTOMappingContextConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.StartEndDateModelDTOMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.AuditModelDTOMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.CodeModelDTOMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.DescriptionModelDTOMapperConverter;
@@ -23,6 +24,7 @@ import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.Lo
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.LocalizedModelDTOMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.LocalizedValueModelDTOMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.NameModelDTOMapperConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.dto.embeddable.StartEndDateModelDTOMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.AuditModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.CodeModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.DescriptionModelMappingContextConverter;
@@ -30,6 +32,7 @@ import org.sylrsykssoft.springboot.common.api.mapper.converter.model.LocalizedFi
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.LocalizedModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.LocalizedValueModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.NameModelMappingContextConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.model.StartEndDateModelMappingContextConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.AuditModelMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.CodeModelMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.DescriptionModelMapperConverter;
@@ -37,6 +40,7 @@ import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.LocalizedModelMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.LocalizedValueModelMapperConverter;
 import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.NameModelMapperConverter;
+import org.sylrsykssoft.springboot.common.api.mapper.converter.model.embeddable.StartEndDateModelMapperConverter;
 
 /**
  * Model mapper configuration
@@ -67,6 +71,28 @@ public class CommonModelMapperMappingContextConverterConfiguration {
 	public AuditModelMappingContextConverter auditModelMappingContextConverter(
 			@Qualifier("auditModelMapperConverter") @NotNull final AuditModelMapperConverter converter) {
 		return new AuditModelMappingContextConverter(converter);
+	}
+	
+	@Bean
+	public StartEndDateModelDTOMapperConverter startEndDateModelDTOMapperConverter() {
+		return new StartEndDateModelDTOMapperConverter();
+	}
+	
+	@Bean
+	public StartEndDateModelDTOMappingContextConverter startEndDateModelDTOMappingContextConverter(
+			@Qualifier("startEndDateModelDTOMapperConverter") @NotNull final StartEndDateModelDTOMapperConverter converter) {
+		return new StartEndDateModelDTOMappingContextConverter(converter);
+	}
+	
+	@Bean
+	public StartEndDateModelMapperConverter startEndDateModelMapperConverter() {
+		return new StartEndDateModelMapperConverter();
+	}
+	
+	@Bean
+	public StartEndDateModelMappingContextConverter startEndDateModelMappingContextConverter(
+			@Qualifier("startEndDateModelMapperConverter") @NotNull final StartEndDateModelMapperConverter converter) {
+		return new StartEndDateModelMappingContextConverter(converter);
 	}
 
 	@Bean

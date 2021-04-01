@@ -18,6 +18,7 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.Preparati
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.PriceDataDTO;
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.StartEndDateModelDTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -47,7 +48,7 @@ public class CocktailDTO extends BaseNameModelDTO<Long> implements Serializable 
 
 	@NotNull(message = "Type field is mandatory")
 	@JsonProperty(value = "Type", required = true)
-	@Schema(name = "CocktailClassification", description = "Classification CocktailClassification", required = true)
+	@Schema(name = "Type", description = "Classification CocktailClassification", required = true)
 	@Builder.Default
 	CocktailClassification type = CocktailClassification.APPETIZER;
 	
@@ -58,20 +59,25 @@ public class CocktailDTO extends BaseNameModelDTO<Long> implements Serializable 
 	
 	@NotNull(message = "Price field is mandatory")
 	@JsonProperty(value = "Price", required = true)
-	@Schema(name = "PriceDataDTO", description = "Price PriceDataDTO", required = true)
+	@Schema(name = "Price", description = "Price PriceDataDTO", required = true)
 	PriceDataDTO price;
+
+	@NotNull(message = "CocktailStartEndDateData field is mandatory")
+	@JsonProperty(value = "CocktailStartEndDateData", required = true)
+	@Schema(name = "CocktailStartEndDateData", description = "CocktailStartEndDateData StartEndDateModelDTO", required = true)
+	StartEndDateModelDTO cocktailStartEndDateData;
 	
 	@NotNull(message = "Glass field is mandatory")
 	@JsonProperty(value = "Glass", required = true)
 	@JsonManagedReference
-	@Schema(name = "GlassCocktail", description = "Glass of Cocktail", required = true)
+	@Schema(name = "Glass", description = "Glass of Cocktail", required = true)
 	GlassCocktailDTO glassCocktail;
 	
 	@NotNull(message = "CocktailIngredients field is mandatory")
 	@Size(min = COCKTAIL_INGREDIENT_MIN_LENGTH, max = COCKTAIL_INGREDIENT_MAX_LENGTH)
 	@JsonProperty(value = "Ingredients", required = true)
 	@JsonManagedReference
-	@Schema(name = "CocktailIngredients", description = "Ingredients of Cocktail", required = true)
+	@Schema(name = "Ingredients", description = "Ingredients of Cocktail", required = true)
 	@EqualsAndHashCode.Exclude
 	transient Set<CocktailIngredientDTO> cocktailIngredients;
 	

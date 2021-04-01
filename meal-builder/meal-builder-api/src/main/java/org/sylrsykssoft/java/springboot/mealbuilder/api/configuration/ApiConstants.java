@@ -28,8 +28,8 @@ public class ApiConstants {
 	}
 	
 	public static final String FOOD_SIZE_SIZE_COLUMN = "size";
-	public static final String FOOD_SIZE_SIZE_COLUMN_DEFAULT_VALUE = "varchar(10) default 'MEDIUM'";
 	public static final int FOOD_SIZE_SIZE_COLUMN_LENGTH = 10;
+	public static final String FOOD_SIZE_SIZE_COLUMN_DEFAULT_VALUE = "VARCHAR(" + FOOD_SIZE_SIZE_COLUMN_LENGTH + ") DEFAULT 'MEDIUM'";
 	
 	
 	// PACKAGES //
@@ -55,7 +55,7 @@ public class ApiConstants {
 	public static final String API_MODELMAPPER_MODEL_DRINKS_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksModelMapper";
 	public static final String API_MODELMAPPER_MODEL_DRINKS_CRUD_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksCRUDModelMapper";
 
-	// JPA QUERY OBJECTS NAMES //
+	// JPA QUERY OBJECTS NAMES // 
 	public static final String PRICE_MODEL_OBJECT_JPA = "price";
 
 	// JPA FIELD NAMES //
@@ -64,6 +64,8 @@ public class ApiConstants {
 	public static final String PRICE_PRICE_NAME_COLUMN = "price";
 	// PREPARATION //
 	public static final String PREPARATION_PREPARATION_NAME_COLUMN = "preparation";
+	public static final String REPOSITORY_LOCALIZED_PREPARATION_TABLE_NAME = "localized_" + PREPARATION_PREPARATION_NAME_COLUMN + "_";
+	public static final String REPOSITORY_LOCALIZED_PREPARATION_ENTITY_NAME = "LocalizedPreparation";
 
 	// JPA QUERY FIELD NAMES //
 	// PRICE //

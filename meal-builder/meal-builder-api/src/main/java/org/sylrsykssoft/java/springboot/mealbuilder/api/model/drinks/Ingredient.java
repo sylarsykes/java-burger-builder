@@ -4,6 +4,7 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.CocktailApiConstants.COCKTAIL_INGREDIENT_NAME_TYPE_COLUMN_DEFAULT_VALUE;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.CocktailApiConstants.REPOSITORY_COCKTAIL_TABLE_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINKS_REPOSITORY_INGREDIENT_ENTITY_NAME;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinksApiConstants.DRINK_SCHEMA_NAME;
@@ -56,21 +57,21 @@ import lombok.experimental.SuperBuilder;
 public class Ingredient extends BaseNameModel<Long> {
 
 	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = "varchar(20) default 'COCKTAIL'", length = INGREDIENT_TYPE_NAME_COLUMN_LENGTH)
+	@Column(columnDefinition = COCKTAIL_INGREDIENT_NAME_TYPE_COLUMN_DEFAULT_VALUE, length = INGREDIENT_TYPE_NAME_COLUMN_LENGTH)
 	@NotNull(message = "Type field is mandatory")
 	@Builder.Default
 	IngredientType type = IngredientType.COCKTAIL;
-	
+
 	@Embedded
 	@NotNull(message = "Price field is mandatory")
 	PriceData price;
-	
+
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = REPOSITORY_COCKTAIL_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	Set<CocktailIngredient> cocktailIngredients;
-	
+
 	@Embedded
 	@NotNull(message = "IngredientCreationData field is mandatory")
 	AuditModel ingredientCreationData;
-	
+
 }

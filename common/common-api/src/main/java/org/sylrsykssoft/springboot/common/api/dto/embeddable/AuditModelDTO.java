@@ -15,7 +15,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.lang.Nullable;
-import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -34,7 +33,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
-public class AuditModelDTO extends BaseDTO implements Serializable {
+public class AuditModelDTO extends BaseEmbeddableDTO implements Serializable {
 
 	private static final long serialVersionUID = -8640731493307745895L;
 

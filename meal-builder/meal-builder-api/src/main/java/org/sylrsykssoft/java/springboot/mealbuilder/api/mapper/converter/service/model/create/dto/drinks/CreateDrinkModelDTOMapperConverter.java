@@ -56,6 +56,6 @@ public final class CreateDrinkModelDTOMapperConverter implements Converter<Creat
 		final FoodSizeDataDTO size = FoodSizeDataDTO.builder().size(FoodSize.valueOf(source.getSize())).build();
 
 		return DrinkDTO.builder().name(name).description(description).type(type).size(size).price(source.getPrice())
-				.build();
+				.drinkStartEndDateData(source.getDrinkStartEndDateData()).build();
 	}
 }

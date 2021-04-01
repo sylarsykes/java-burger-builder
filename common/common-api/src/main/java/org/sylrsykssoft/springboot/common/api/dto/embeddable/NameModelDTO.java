@@ -12,8 +12,6 @@ import java.io.Serializable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.sylrsykssoft.springboot.common.api.dto.BaseDTO;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AccessLevel;
@@ -40,7 +38,7 @@ import lombok.extern.jackson.Jacksonized;
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
-public class NameModelDTO extends BaseDTO implements Serializable {
+public class NameModelDTO extends BaseEmbeddableDTO implements Serializable {
 
 	private static final long serialVersionUID = 2058578079561061396L;
 	
