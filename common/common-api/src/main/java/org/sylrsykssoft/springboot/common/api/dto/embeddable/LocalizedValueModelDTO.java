@@ -6,6 +6,9 @@ package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_LOCALIZED_VALUE;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_LOCALIZED_VALUE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nLocalizedModelMessages.LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nLocalizedModelMessages.LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonLocalizedModelProperties.LOCALIZED_MODEL_VALUE_JSON_PROPERTY;
 
 import java.io.Serializable;
 
@@ -32,10 +35,10 @@ import lombok.experimental.SuperBuilder;
 public class LocalizedValueModelDTO extends BaseEmbeddableDTO implements Serializable {
 
 	private static final long serialVersionUID = 1721699098779609535L;
-	
-	@NotBlank(message = "Value field is mandatory")
-	@Size(min = MIN_LENGTH_LOCALIZED_VALUE, max = MAX_LENGTH_LOCALIZED_VALUE)
-	@JsonProperty(value = "Value", required = false)
+
+	@NotBlank(message = LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE)
+	@Size(min = MIN_LENGTH_LOCALIZED_VALUE, max = MAX_LENGTH_LOCALIZED_VALUE, message = LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
+	@JsonProperty(value = LOCALIZED_MODEL_VALUE_JSON_PROPERTY, required = false)
 	String value;
-	
+
 }

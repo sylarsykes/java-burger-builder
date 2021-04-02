@@ -4,6 +4,10 @@
  */
 package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nStartEndDateModelMessages.START_END_DATE_MODEL_STARTDATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonStartEndDateModelProperties.START_END_DATE_MODEL_END_DATE_JSON_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonStartEndDateModelProperties.START_END_DATE_MODEL_START_DATE_JSON_PROPERTY;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -32,12 +36,12 @@ public class StartEndDateModelDTO extends BaseEmbeddableDTO implements Serializa
 
 	private static final long serialVersionUID = -1631463981404407319L;
 
-	@NotNull(message = "StartDate field is mandatory")
-	@JsonProperty(value = "StartDate", required = true)
+	@NotNull(message = START_END_DATE_MODEL_STARTDATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = START_END_DATE_MODEL_START_DATE_JSON_PROPERTY, required = true)
 	LocalDateTime startDate;
-	
+
 	@Nullable
-	@JsonProperty(value = "EndDate")
+	@JsonProperty(value = START_END_DATE_MODEL_END_DATE_JSON_PROPERTY)
 	LocalDateTime endDate;
-	
+
 }

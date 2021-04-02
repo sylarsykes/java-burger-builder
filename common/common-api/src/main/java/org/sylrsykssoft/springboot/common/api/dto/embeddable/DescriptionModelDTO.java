@@ -5,6 +5,8 @@
 package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_DESCRIPTION;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nDescriptionModelMessages.DESCRIPTION_MODEL_DESCRIPTION_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonDescriptionModelProperties.DESCRIPTION_MODEL_DESCRIPTION_JSON_PROPERTY;
 
 import java.io.Serializable;
 
@@ -41,10 +43,10 @@ import lombok.extern.jackson.Jacksonized;
 public class DescriptionModelDTO extends BaseEmbeddableDTO implements Serializable {
 
 	private static final long serialVersionUID = 1721699098779609535L;
-	
+
 	@Nullable
-	@Size(max = MAX_LENGTH_DESCRIPTION)
-	@JsonProperty(value = "Description", required = false)
+	@Size(max = MAX_LENGTH_DESCRIPTION, message = DESCRIPTION_MODEL_DESCRIPTION_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
+	@JsonProperty(value = DESCRIPTION_MODEL_DESCRIPTION_JSON_PROPERTY, required = false)
 	String description;
-	
+
 }

@@ -6,6 +6,10 @@ package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.LENGTH_DIGITS_PRECISION_PRICE;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.LENGTH_DIGITS_SCALE_PRICE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.PriceDataI18nMessages.PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_DIGITS_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.PriceDataI18nMessages.PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.PriceDataI18nMessages.PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_POSITIVE_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.embeddable.PriceDataJsonProperties.PRICE_DATA_MODEL_PRICE_JSON_PROPERTY;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -47,12 +51,12 @@ import lombok.extern.jackson.Jacksonized;
 public class PriceDataDTO extends BaseDTO implements Serializable {
 
 	private static final long serialVersionUID = 6566937445829466200L;
-	
-	@NotNull(message = "Price field is mandatory")
-	@Positive
-	@Digits(integer = LENGTH_DIGITS_PRECISION_PRICE, fraction = LENGTH_DIGITS_SCALE_PRICE)
-	@JsonProperty(value = "Price", required = true)
-	@Schema(name = "Price", description = "Price", required = true)
+
+	@NotNull(message = PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@Positive(message = PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_POSITIVE_MESSAGE)
+	@Digits(integer = LENGTH_DIGITS_PRECISION_PRICE, fraction = LENGTH_DIGITS_SCALE_PRICE, message = PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_DIGITS_MESSAGE)
+	@JsonProperty(value = PRICE_DATA_MODEL_PRICE_JSON_PROPERTY, required = true)
+	@Schema(name = PRICE_DATA_MODEL_PRICE_JSON_PROPERTY, description = "Price", required = true)
 	BigDecimal price;
-	
+
 }

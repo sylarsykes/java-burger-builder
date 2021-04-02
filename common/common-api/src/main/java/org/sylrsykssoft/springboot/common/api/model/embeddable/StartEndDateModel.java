@@ -7,6 +7,7 @@ package org.sylrsykssoft.springboot.common.api.model.embeddable;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_START_END_DATE_MODEL_NAME_END_DATE_COLUMN;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_START_END_DATE_MODEL_NAME_START_DATE_COLUMN;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_START_END_DATE_MODEL_NAME_START_DATE_COLUMN_DEFAULT_VALUE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nStartEndDateModelMessages.START_END_DATE_MODEL_STARTDATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
 
 import java.time.LocalDateTime;
 
@@ -42,7 +43,7 @@ import lombok.experimental.SuperBuilder;
 public class StartEndDateModel extends BaseEmbeddable {
 
 	@Column(name = BASE_START_END_DATE_MODEL_NAME_START_DATE_COLUMN, columnDefinition = BASE_START_END_DATE_MODEL_NAME_START_DATE_COLUMN_DEFAULT_VALUE, nullable = false)
-	@NotNull(message = "StartDate field is mandatory")
+	@NotNull(message = START_END_DATE_MODEL_STARTDATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
 	LocalDateTime startDate;
 	
 	@Column(name = BASE_START_END_DATE_MODEL_NAME_END_DATE_COLUMN, nullable = true)

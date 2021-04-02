@@ -4,6 +4,8 @@
  */
 package org.sylrsykssoft.springboot.common.api.model;
 
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nNameModelMessages.NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+
 import javax.persistence.Embedded;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
@@ -38,11 +40,11 @@ import lombok.experimental.SuperBuilder;
 public class BaseNameModel<N extends Number> extends BaseModel<N> {
 
 	@Embedded
-	@NotNull(message = "Name field is mandatory")
+	@NotNull(message = NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
 	NameModel name;
-	
+
 	@Embedded
 	@Nullable
 	DescriptionModel description;
-	
+
 }

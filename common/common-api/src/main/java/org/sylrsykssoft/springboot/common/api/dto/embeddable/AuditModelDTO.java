@@ -6,6 +6,14 @@ package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_NICKNAME_USER;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_NICKNAME_USER;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nAuditModelMessages.AUDIT_MODEL_CREATEBY_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nAuditModelMessages.AUDIT_MODEL_CREATEBY_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nAuditModelMessages.AUDIT_MODEL_CREATED_DATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nAuditModelMessages.AUDIT_MODEL_LAST_MODIFIED_BY_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonAuditModelProperties.AUDIT_MODEL_CREATE_BY_JSON_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonAuditModelProperties.AUDIT_MODEL_CREATE_DATE_JSON_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonAuditModelProperties.AUDIT_MODEL_LAST_MODIFIED_BY_JSON_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonAuditModelProperties.AUDIT_MODEL_LAST_MODIFIED_DATE_JSON_PROPERTY;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -37,22 +45,22 @@ public class AuditModelDTO extends BaseEmbeddableDTO implements Serializable {
 
 	private static final long serialVersionUID = -8640731493307745895L;
 
-	@NotBlank(message = "CreatedBy field is mandatory")
-	@Size(min = MIN_LENGTH_NICKNAME_USER, max = MAX_LENGTH_NICKNAME_USER)
-	@JsonProperty(value = "CreatedBy", required = true)
+	@NotBlank(message = AUDIT_MODEL_CREATEBY_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE)
+	@Size(min = MIN_LENGTH_NICKNAME_USER, max = MAX_LENGTH_NICKNAME_USER, message = AUDIT_MODEL_CREATEBY_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
+	@JsonProperty(value = AUDIT_MODEL_CREATE_BY_JSON_PROPERTY, required = true)
 	String createdBy;
 
-	@NotNull(message = "CreatedDate field is mandatory")
-	@JsonProperty(value = "CreatedDate", required = true)
+	@NotNull(message = AUDIT_MODEL_CREATED_DATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = AUDIT_MODEL_CREATE_DATE_JSON_PROPERTY, required = true)
 	LocalDateTime createdDate;
 
 	@Nullable
-	@Size(min = MIN_LENGTH_NICKNAME_USER, max = MAX_LENGTH_NICKNAME_USER)
-	@JsonProperty(value = "LastModifiedBy")
+	@Size(min = MIN_LENGTH_NICKNAME_USER, max = MAX_LENGTH_NICKNAME_USER, message = AUDIT_MODEL_LAST_MODIFIED_BY_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
+	@JsonProperty(value = AUDIT_MODEL_LAST_MODIFIED_BY_JSON_PROPERTY)
 	String lastModifiedBy;
 
 	@Nullable
-	@JsonProperty(value = "LastModifiedDate")
+	@JsonProperty(value = AUDIT_MODEL_LAST_MODIFIED_DATE_JSON_PROPERTY)
 	LocalDateTime lastModifiedDate;
-	
+
 }

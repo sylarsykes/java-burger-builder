@@ -4,6 +4,8 @@
  */
 package org.sylrsykssoft.springboot.common.api.model;
 
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nCodeModelMessages.CODE_MODEL_CODE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+
 import javax.persistence.Embedded;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
@@ -39,7 +41,7 @@ import lombok.experimental.SuperBuilder;
 public class BaseCodeModel<N extends Number> extends BaseModel<N> {
 
 	@Embedded
-	@NotNull(message = "Code field is mandatory")
+	@NotNull(message = CODE_MODEL_CODE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
 	CodeModel code;
 	
 	@Embedded
@@ -47,7 +49,6 @@ public class BaseCodeModel<N extends Number> extends BaseModel<N> {
 	DescriptionModel description;
 	
 	@Embedded
-	@NotNull(message = "AuditData field is mandatory")
 	AuditModel auditData;
 	
 }

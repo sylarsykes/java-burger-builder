@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.sylrsykssoft.java.springboot.mealbuilder.rest.controller.drinks.publicapi.create.DrinkCreateModelServiceController;
 import org.sylrsykssoft.springboot.common.api.dto.error.ErrorTO;
 
 /**
@@ -19,7 +20,7 @@ import org.sylrsykssoft.springboot.common.api.dto.error.ErrorTO;
  * @author juan.gonzalez.fernandez.jgf
  *
  */
-@RestControllerAdvice
+@RestControllerAdvice(assignableTypes = { DrinkCreateModelServiceController.class })
 public class DrinksCUDControllerAdvice {
 
 	@ResponseBody

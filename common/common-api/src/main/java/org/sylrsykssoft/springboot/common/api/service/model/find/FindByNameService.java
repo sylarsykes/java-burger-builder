@@ -4,8 +4,11 @@
  */
 package org.sylrsykssoft.springboot.common.api.service.model.find;
 
+import java.util.Locale;
+
 import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.model.BaseModel;
@@ -22,10 +25,11 @@ public interface FindByNameService<D extends BaseNameModelDTO<N>, E extends Base
 	 * Retrieves an entity by its name.
 	 *
 	 * @param name must not be {@literal null}.
+	 * @param locale the locale in which to do the lookup.
 	 * @return the entity with the given name.
 	 * @throws IllegalArgumentException if {@literal name} is {@literal null}.
 	 * @throws EntityNotFoundException if entity not exists.
 	 */
-	D findByName(@NonNull @NotBlank String name) throws IllegalArgumentException, EntityNotFoundException;
+	D findByName(@NonNull @NotBlank String name, @NonNull @NotNull Locale locale) throws IllegalArgumentException, EntityNotFoundException;
 	
 }

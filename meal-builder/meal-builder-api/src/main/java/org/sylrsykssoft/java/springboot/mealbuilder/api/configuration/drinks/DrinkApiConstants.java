@@ -30,6 +30,10 @@ public class DrinkApiConstants {
 		// Check exists use EnumUtils.isValidEnum
 	}
 
+	public static final String DRINK_TYPE_JSON_ALLOWED_VALUES_NO_ALCOHOLIC = "NO_ALCOHOLIC";
+	public static final String DRINK_TYPE_JSON_ALLOWED_VALUES_ALCOHOLIC = "ALCOHOLIC";
+	public static final String DRINK_TYPE_JSON_DEFAULT_VALUE = DRINK_TYPE_JSON_ALLOWED_VALUES_NO_ALCOHOLIC;
+
 	public static final String DRINK_TYPE_TYPE_COLUMN = "type";
 	public static final int DRINK_TYPE_TYPE_COLUMN_LENGTH = 20;
 	public static final String DRINK_TYPE_TYPE_COLUMN_DEFAULT_VALUE = "VARCHAR(" + DRINK_TYPE_TYPE_COLUMN_LENGTH

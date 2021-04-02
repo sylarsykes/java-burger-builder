@@ -40,8 +40,8 @@ public class MealsApiConstants {
 		// Check exists use EnumUtils.isValidEnum
 	}
 	public static final String MEAL_TYPE_TYPE_COLUMN = "type";
-	public static final String MEAL_TYPE_TYPE_COLUMN_DEFAULT_VALUE = "varchar(10) default 'MEAT'";
 	public static final int MEAL_TYPE_TYPE_COLUMN_LENGTH = 10;
+	public static final String MEAL_TYPE_TYPE_COLUMN_DEFAULT_VALUE = "VARCHAR(" + MEAL_TYPE_TYPE_COLUMN_LENGTH + ") DEFAULT 'MEAT'";
 	
 	public static final String REPOSITORY_CATEGORY_TABLE_NAME = "category";
 	public static final String REPOSITORY_CATEGORY_ENTITY_NAME = "MealCategory";

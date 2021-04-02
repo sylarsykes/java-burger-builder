@@ -6,6 +6,9 @@ package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_CODE;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_CODE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nCodeModelMessages.CODE_MODEL_CODE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nCodeModelMessages.CODE_MODEL_CODE_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonCodeModelProperties.CODE_MODEL_NAME_JSON_PROPERTY;
 
 import java.io.Serializable;
 
@@ -32,10 +35,10 @@ import lombok.experimental.SuperBuilder;
 public class CodeModelDTO extends BaseEmbeddableDTO implements Serializable {
 
 	private static final long serialVersionUID = -4216933576851395499L;
-	
-	@NotBlank(message = "Code field is mandatory")
-	@Size(min = MIN_LENGTH_CODE, max = MAX_LENGTH_CODE)
-	@JsonProperty(value = "Code", required = true)
+
+	@NotBlank(message = CODE_MODEL_CODE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE)
+	@Size(min = MIN_LENGTH_CODE, max = MAX_LENGTH_CODE, message = CODE_MODEL_CODE_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
+	@JsonProperty(value = CODE_MODEL_NAME_JSON_PROPERTY, required = true)
 	String code;
-	
+
 }

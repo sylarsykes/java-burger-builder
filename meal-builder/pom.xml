@@ -85,6 +85,7 @@
 		
 		<!-- Maven -->
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+		<maven-filtering.version>3.2.0</maven-filtering.version>
 		
 		<!-- Modelmapper -->
 		<modelmapper-spring.version>2.3.9</modelmapper-spring.version>
@@ -273,6 +274,12 @@
 		        <artifactId>mariadb-java-client</artifactId>
 		        <version>${mariadb.version}</version>
 		    </dependency>
+		    
+		    <dependency>
+		    	<groupId>org.apache.maven.shared</groupId>
+		      	<artifactId>maven-filtering</artifactId>
+		      	<version>${maven-filtering.version}</version>
+		  	</dependency>
 			
 			<!-- =========================================================== -->
 	        <!-- COMMON -->
@@ -398,7 +405,6 @@
         </testResources>
 		<pluginManagement>
 			<plugins>
-			
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>

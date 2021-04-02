@@ -4,6 +4,8 @@
  */
 package org.sylrsykssoft.springboot.common.api.model.embeddable;
 
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nLocalizedModelMessages.LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+
 import javax.persistence.Embedded;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
@@ -32,7 +34,7 @@ import lombok.experimental.SuperBuilder;
 public class BaseEmbeddedLocalizedValueModel<I extends BaseEmbeddable> extends BaseEmbeddedId<I> {
 
 	@Embedded
-	@NotNull(message = "Value field is mandatory")
+	@NotNull(message = LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
 	LocalizedValueModel value;
-	
+
 }

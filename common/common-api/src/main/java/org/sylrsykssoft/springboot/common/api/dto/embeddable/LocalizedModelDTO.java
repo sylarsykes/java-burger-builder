@@ -6,6 +6,11 @@ package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_LOCALIZED_LOCALE;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_LOCALIZED_LOCALE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nLocalizedModelMessages.LOCALIZED_MODEL_ID_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nLocalizedModelMessages.LOCALIZED_MODEL_LOCALE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nLocalizedModelMessages.LOCALIZED_MODEL_LOCALE_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonBaseModelProperties.BASE_MODEL_ID_JSON_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonLocalizedModelProperties.LOCALIZED_MODEL_LOCALE_JSON_PROPERTY;
 
 import java.io.Serializable;
 
@@ -34,16 +39,16 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
 public class LocalizedModelDTO extends BaseEmbeddableDTO implements Serializable {
-	
+
 	private static final long serialVersionUID = -811000266636508172L;
 
-	@NotNull(message = "Locale field is mandatory")
-	@JsonProperty(value = "Id", required = true)
+	@NotNull(message = LOCALIZED_MODEL_ID_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = BASE_MODEL_ID_JSON_PROPERTY, required = true)
 	Long id;
-	
-	@NotBlank(message = "Locale field is mandatory")
-	@Size(min = MIN_LENGTH_LOCALIZED_LOCALE, max = MAX_LENGTH_LOCALIZED_LOCALE)
-	@JsonProperty(value = "Locale", required = true)
+
+	@NotBlank(message = LOCALIZED_MODEL_LOCALE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE)
+	@Size(min = MIN_LENGTH_LOCALIZED_LOCALE, max = MAX_LENGTH_LOCALIZED_LOCALE, message = LOCALIZED_MODEL_LOCALE_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
+	@JsonProperty(value = LOCALIZED_MODEL_LOCALE_JSON_PROPERTY, required = true)
 	String locale;
-	
+
 }

@@ -26,12 +26,17 @@ public class ApiConstants {
 
 		// Check exists use EnumUtils.isValidEnum
 	}
-	
+
+	public static final String FOODSIZE_SIZE_JSON_ALLOWED_VALUES_SMALL = "SMALL";
+	public static final String FOODSIZE_SIZE_JSON_ALLOWED_VALUES_MEDIUM = "MEDIUM";
+	public static final String FOODSIZE_SIZE_JSON_ALLOWED_VALUES_LARGE = "LARGE";
+	public static final String FOODSIZE_SIZE_JSON_DEFAULT_VALUE = FOODSIZE_SIZE_JSON_ALLOWED_VALUES_MEDIUM;
+
 	public static final String FOOD_SIZE_SIZE_COLUMN = "size";
 	public static final int FOOD_SIZE_SIZE_COLUMN_LENGTH = 10;
-	public static final String FOOD_SIZE_SIZE_COLUMN_DEFAULT_VALUE = "VARCHAR(" + FOOD_SIZE_SIZE_COLUMN_LENGTH + ") DEFAULT 'MEDIUM'";
-	
-	
+	public static final String FOOD_SIZE_SIZE_COLUMN_DEFAULT_VALUE = "VARCHAR(" + FOOD_SIZE_SIZE_COLUMN_LENGTH
+			+ ") DEFAULT 'MEDIUM'";
+
 	// PACKAGES //
 	public static final String API_APP_BASE_PACKAGE = "org.sylrsykssoft.java.springboot.mealbuilder";
 	public static final String API_COMPONENT_MODEL_DTO_SCAN = API_APP_BASE_PACKAGE + ".api.dto";
@@ -46,16 +51,16 @@ public class ApiConstants {
 	public static final String API_DATA_SOURCE_CONFIGURATION_PROPERTIES_CONFIGURATION_NAME = "configuration";
 	public static final String API_DATA_SOURCE_CUSTOM_PROPERTIES_NAME = "custom";
 	public static final String API_DATA_SOURCE_HIBERNATE_PROPERTIES_NAME = "hibernate";
-	
+
 	// MODELMAPPER //
 	public static final String API_MODELMAPPER_COMMON_MODEL_MAPPER_BEAN_NAME = "commonModelMapper";
 	public static final String API_MODELMAPPER_EMBEDDABLE_MODEL_MODEL_MAPPER_BEAN_NAME = "mealBuilderEmbeddableModelMapper";
-	
+
 	public static final String API_MODELMAPPER_MODEL_DRINKS_LOCALIZED_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksLocalizedDataModelMapper";
 	public static final String API_MODELMAPPER_MODEL_DRINKS_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksModelMapper";
 	public static final String API_MODELMAPPER_MODEL_DRINKS_CRUD_MODEL_MAPPER_BEAN_NAME = "mealBuilderDrinksCRUDModelMapper";
 
-	// JPA QUERY OBJECTS NAMES // 
+	// JPA QUERY OBJECTS NAMES //
 	public static final String PRICE_MODEL_OBJECT_JPA = "price";
 
 	// JPA FIELD NAMES //
@@ -64,7 +69,8 @@ public class ApiConstants {
 	public static final String PRICE_PRICE_NAME_COLUMN = "price";
 	// PREPARATION //
 	public static final String PREPARATION_PREPARATION_NAME_COLUMN = "preparation";
-	public static final String REPOSITORY_LOCALIZED_PREPARATION_TABLE_NAME = "localized_" + PREPARATION_PREPARATION_NAME_COLUMN + "_";
+	public static final String REPOSITORY_LOCALIZED_PREPARATION_TABLE_NAME = "localized_"
+			+ PREPARATION_PREPARATION_NAME_COLUMN + "_";
 	public static final String REPOSITORY_LOCALIZED_PREPARATION_ENTITY_NAME = "LocalizedPreparation";
 
 	// JPA QUERY FIELD NAMES //
@@ -74,5 +80,5 @@ public class ApiConstants {
 	// REST CONTOLLER //
 	public static final String API_REST_CONTROLLER_PUBLIC_API_PACKAGE_NAME = "publicapi";
 	public static final String API_REST_CONTROLLER_ADMIN_API_PACKAGE_NAME = "adminapi";
-		
+
 }
