@@ -4,6 +4,17 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.drinks.DrinkI18nMessages.DRINK_TYPE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.FoodSizeI18nMessages.FOOD_SIZE_MODEL_SIZE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.PriceDataI18nMessages.PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.drinks.DrinkJsonProperties.DRINK_MODEL_TYPE_JSON_PROPERTY;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.embeddable.FoodSizeJsonProperties.FOOD_SIZE_MODEL_SIZE_JSON_OBJECT_PROPERTY;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.embeddable.PriceDataJsonProperties.PRICE_DATA_MODEL_PRICE_JSON_OBJECT_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nStartEndDateModelMessages.START_END_DATE_MODEL_STARTENDDATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonAuditModelProperties.AUDIT_MODEL_AUDIT_JSON_OBJECT_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonLocalizedModelProperties.LOCALIZED_MODEL_LOCALIZATIONS_DATA_JSON_OBJECT_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonStartEndDateModelProperties.START_END_DATE_MODEL_START_DATE_JSON_OBJECT_PROPERTY;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,45 +50,46 @@ import lombok.experimental.SuperBuilder;
  *
  */
 @Value
-@FieldDefaults(level=AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
 @Schema(name = "DrinkDTO", description = "Model DrinkDTO")
 public class DrinkDTO extends BaseNameModelDTO<Long> implements Serializable {
-	
+
 	private static final long serialVersionUID = -7969741388969178253L;
 
-	@NotNull(message = "Type field is mandatory")
-	@JsonProperty(value = "Type", required = true)
-	@Schema(name = "Type", description = "Type DrinkType", required = true)
+	@NotNull(message = DRINK_TYPE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = DRINK_MODEL_TYPE_JSON_PROPERTY, required = true)
+	@Schema(name = DRINK_MODEL_TYPE_JSON_PROPERTY, description = "Type DrinkType", required = true)
 	@Builder.Default
 	DrinkType type = DrinkType.NO_ALCOHOLIC;
-	
-	@NotNull(message = "Size field is mandatory")
-	@JsonProperty(value = "Size", required = true)
-	@Schema(name = "Size", description = "Size FoodSize", required = true)
+
+	@NotNull(message = FOOD_SIZE_MODEL_SIZE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = FOOD_SIZE_MODEL_SIZE_JSON_OBJECT_PROPERTY, required = true)
+	@Schema(name = FOOD_SIZE_MODEL_SIZE_JSON_OBJECT_PROPERTY, description = "Size FoodSize", required = true)
 	FoodSizeDataDTO size;
-	
-	@NotNull(message = "Price field is mandatory")
-	@JsonProperty(value = "Price", required = true)
-	@Schema(name = "Price", description = "Price PriceDataDTO", required = true)
+
+	@NotNull(message = PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = PRICE_DATA_MODEL_PRICE_JSON_OBJECT_PROPERTY, required = true)
+	@Schema(name = PRICE_DATA_MODEL_PRICE_JSON_OBJECT_PROPERTY, description = "Price PriceDataDTO", required = true)
 	PriceDataDTO price;
-	
-	@NotNull(message = "DrinkStartEndDateData field is mandatory")
-	@JsonProperty(value = "DrinkStartEndDateData", required = true)
-	@Schema(name = "DrinkStartEndDateData", description = "DrinkStartEndDateData StartEndDateModelDTO", required = true)
+
+	@NotNull(message = START_END_DATE_MODEL_STARTENDDATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = START_END_DATE_MODEL_START_DATE_JSON_OBJECT_PROPERTY, required = true)
+	@Schema(name = START_END_DATE_MODEL_START_DATE_JSON_OBJECT_PROPERTY, description = "DrinkStartEndDateData StartEndDateModelDTO", required = true)
 	StartEndDateModelDTO drinkStartEndDateData;
-	
-	@JsonProperty(value = "LocalizationsData")
+
+	@JsonProperty(value = LOCALIZED_MODEL_LOCALIZATIONS_DATA_JSON_OBJECT_PROPERTY)
 	@JsonManagedReference
-	@Schema(name = "LocalizationsData", description = "Localizations of the name of DrinkDTO")
+	@Schema(name = LOCALIZED_MODEL_LOCALIZATIONS_DATA_JSON_OBJECT_PROPERTY, description = "Localizations of the name of DrinkDTO")
 	@Builder.Default
+	@EqualsAndHashCode.Exclude
 	transient Map<LocalizedFieldNameModelDTO, LocalizedDrinkDTO> localizationsData = new HashMap<>();
-	
-	@Schema(name = "AuditModelDTO", description = "DrinkCreationData AuditModelDTO")
+
+	@Schema(name = AUDIT_MODEL_AUDIT_JSON_OBJECT_PROPERTY, description = "DrinkCreationData AuditModelDTO")
 	@JsonIgnore
 	AuditModelDTO drinkCreationData;
-	
+
 }

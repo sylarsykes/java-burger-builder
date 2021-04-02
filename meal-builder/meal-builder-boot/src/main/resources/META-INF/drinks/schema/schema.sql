@@ -1,6 +1,6 @@
 -- drinks.ingredient definition
 
-CREATE TABLE `ingredient` (
+CREATE TABLE IF NOT EXISTS `ingredient` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(256) NOT NULL,
   `description` TEXT DEFAULT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE `ingredient` (
 
 -- drinks.drink definition
 
-CREATE TABLE `drink` (
+CREATE TABLE IF NOT EXISTS `drink` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(256) NOT NULL,
   `description` TEXT DEFAULT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `drink` (
 
 -- drinks.localized_drink definition
 
-CREATE TABLE `localized_drink` (  
+CREATE TABLE IF NOT EXISTS `localized_drink` (  
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `drink_id` BIGINT(20) NOT NULL,
   `field_name` VARCHAR(60) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `localized_drink` (
 
 -- drinks.glass_cocktail definition
 
-CREATE TABLE `glass_cocktail` (
+CREATE TABLE IF NOT EXISTS `glass_cocktail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(256) NOT NULL,
   `size` VARCHAR(10) NOT NULL DEFAULT 'MEDIUM',
@@ -66,7 +66,7 @@ CREATE TABLE `glass_cocktail` (
 
 -- drinks.cocktail definition
 
-CREATE TABLE `cocktail` (
+CREATE TABLE IF NOT EXISTS `cocktail` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(256) NOT NULL,
   `description` TEXT DEFAULT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE `cocktail` (
 
 -- drinks.localized_cocktail definition
 
-CREATE TABLE `localized_cocktail` (
+CREATE TABLE IF NOT EXISTS `localized_cocktail` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `cocktail_id` BIGINT(20) NOT NULL,
   `field_name` VARCHAR(60) NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE `localized_cocktail` (
 
 -- drinks.cocktail_ingredient definition
 
-CREATE TABLE `cocktail_ingredient` (
+CREATE TABLE IF NOT EXISTS `cocktail_ingredient` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `ingredient_id` BIGINT(20) NOT NULL,
   `cocktail_id` BIGINT(20) NOT NULL,

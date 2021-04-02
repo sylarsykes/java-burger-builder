@@ -14,6 +14,7 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.dri
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_LOCALIZED_MODEL_FIELD_NAME_JPA;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_LOCALIZED_MODEL_LOCALE_JPA;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_NAME_MODEL_NAME_NAME_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.drinks.DrinkI18nMessages.DRINK_TYPE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,7 +74,7 @@ public class Drink extends BaseNameModel<Long> {
 
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = DRINK_TYPE_TYPE_COLUMN_DEFAULT_VALUE, length = DRINK_TYPE_TYPE_COLUMN_LENGTH)
-	@NotNull(message = "Type field is mandatory")
+	@NotNull(message = DRINK_TYPE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
 	@Builder.Default
 	DrinkType type = DrinkType.NO_ALCOHOLIC;
 
@@ -89,11 +90,12 @@ public class Drink extends BaseNameModel<Long> {
 	@NotNull(message = "DrinkStartEndDateData field is mandatory")
 	StartEndDateModel drinkStartEndDateData;
 
-	@OneToMany(mappedBy = REPOSITORY_DRINK_TABLE_NAME, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = REPOSITORY_DRINK_TABLE_NAME, fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@MapKeyJoinColumn(name = BASE_LOCALIZED_MODEL_LOCALE_JPA)
 	@MapKeyJoinColumn(name = BASE_LOCALIZED_MODEL_FIELD_NAME_JPA)
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	@Builder.Default
+	@EqualsAndHashCode.Exclude
 	Map<LocalizedFieldNameModel, LocalizedDrink> localizationsData = new HashMap<>();
 
 	@Embedded

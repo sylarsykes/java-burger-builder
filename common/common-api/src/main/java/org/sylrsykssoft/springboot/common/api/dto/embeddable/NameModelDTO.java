@@ -6,6 +6,9 @@ package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_NAME;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_NAME;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nNameModelMessages.NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nNameModelMessages.NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonNameModelProperties.NAME_MODEL_NAME_JSON_PROPERTY;
 
 import java.io.Serializable;
 
@@ -41,10 +44,10 @@ import lombok.extern.jackson.Jacksonized;
 public class NameModelDTO extends BaseEmbeddableDTO implements Serializable {
 
 	private static final long serialVersionUID = 2058578079561061396L;
-	
-	@NotBlank(message = "Name field is mandatory")
-	@Size(min = MIN_LENGTH_NAME, max = MAX_LENGTH_NAME)
-	@JsonProperty(value = "Name", required = true)
+
+	@NotBlank(message = NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE)
+	@Size(min = MIN_LENGTH_NAME, max = MAX_LENGTH_NAME, message = NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
+	@JsonProperty(value = NAME_MODEL_NAME_JSON_PROPERTY, required = true)
 	String name;
-	
+
 }

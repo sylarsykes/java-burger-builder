@@ -4,6 +4,8 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.embeddable.FoodSizeJsonProperties.FOOD_SIZE_MODEL_SIZE_JSON_PROPERTY;
+
 import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
@@ -42,10 +44,10 @@ import lombok.extern.jackson.Jacksonized;
 public class FoodSizeDataDTO extends BaseDTO implements Serializable {
 
 	private static final long serialVersionUID = 2876418255242892482L;
-	
+
 	@NotNull(message = "Size field is mandatory")
-	@JsonProperty(value = "Size", required = true)
-	@Schema(name = "Size", description = "Size", required = true)
+	@JsonProperty(value = FOOD_SIZE_MODEL_SIZE_JSON_PROPERTY, required = true)
+	@Schema(name = FOOD_SIZE_MODEL_SIZE_JSON_PROPERTY, description = "Size", required = true)
 	FoodSize size;
-	
+
 }

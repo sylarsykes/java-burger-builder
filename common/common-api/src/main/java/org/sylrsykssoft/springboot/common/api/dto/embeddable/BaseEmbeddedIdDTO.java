@@ -4,7 +4,12 @@
  */
 package org.sylrsykssoft.springboot.common.api.dto.embeddable;
 
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonBaseModelProperties.BASE_MODEL_EMBEDDED_ID_JSON_PROPERTY;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,12 +26,14 @@ import lombok.experimental.SuperBuilder;
  */
 @Data
 @FieldDefaults(level = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 @SuperBuilder(toBuilder = true)
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = false, doNotUseGetters = true)
-@ToString(callSuper = true, includeFieldNames = true)
+@EqualsAndHashCode(doNotUseGetters = true)
+@ToString(includeFieldNames = true, callSuper = true)
 public class BaseEmbeddedIdDTO<I extends BaseEmbeddableDTO> {
 
-    I embeddedId;
+	@JsonProperty(value = BASE_MODEL_EMBEDDED_ID_JSON_PROPERTY, required = true)
+	I embeddedId;
 
 }

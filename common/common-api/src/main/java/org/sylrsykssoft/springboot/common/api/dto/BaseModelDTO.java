@@ -4,7 +4,8 @@
  */
 package org.sylrsykssoft.springboot.common.api.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonBaseModelProperties.BASE_MODEL_ID_JSON_PROPERTY;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AccessLevel;
@@ -23,11 +24,11 @@ import lombok.experimental.SuperBuilder;
 @Data
 @FieldDefaults(level = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-@AllArgsConstructor(access = AccessLevel.PUBLIC, onConstructor = @__(@JsonCreator))
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 @SuperBuilder(toBuilder = true)
 public class BaseModelDTO<N extends Number> {
 
-	@JsonProperty(value = "Id", required = true)
+	@JsonProperty(value = BASE_MODEL_ID_JSON_PROPERTY, required = true)
 	N id;
-	
+
 }

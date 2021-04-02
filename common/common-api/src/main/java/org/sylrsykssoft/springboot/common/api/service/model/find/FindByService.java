@@ -4,6 +4,8 @@
  */
 package org.sylrsykssoft.springboot.common.api.service.model.find;
 
+import java.util.Locale;
+
 import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -26,11 +28,12 @@ public interface FindByService<D extends BaseNameModelDTO<N>, E extends BaseMode
 	 * Retrieves an entity by its id.
 	 *
 	 * @param id must not be {@literal null}.
+	 * @param locale the locale in which to do the lookup.
 	 * @return the entity with the given id.
 	 * @throws IllegalArgumentException if {@literal id} is {@literal null}.
 	 * @throws EntityNotFoundException if entity not exists.
 	 */
-	D findById(@NonNull @NotNull @Positive N id) throws IllegalArgumentException, EntityNotFoundException;
+	D findById(@NonNull @NotNull @Positive N id, @NonNull @NotNull Locale locale) throws IllegalArgumentException, EntityNotFoundException;
 	
 	/**
 	 * Returns whether an entity with the given id exists.

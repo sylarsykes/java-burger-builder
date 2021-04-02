@@ -11,9 +11,12 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.dr
 import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.FIND_MODEL_CONTROLLER_TAG_DESCRIPTION;
 import static org.sylrsykssoft.java.springboot.mealbuilder.rest.configuration.drinks.DrinkRestControllerConstants.FIND_MODEL_CONTROLLER_TAG_NAME;
 
+import java.util.Locale;
+
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,10 +89,11 @@ public class DrinkFindModelServiceController implements IRestModelController<Dri
 			@ApiResponse(responseCode = "400", description = "Illegal argument"),
 			@ApiResponse(responseCode = "404", description = "DrinkDTO not exists") })
 	public @Valid DrinkDTO findById(
-			@Parameter(name = "id", description = "The id of the drink object", required = true) @PathVariable @NonNull @Positive final Long id) {
-		LOGGER.info("{} id {}", LOG_METHOD_FIND_BY_ID, id);
+			@Parameter(name = "id", description = "The id of the drink object", required = true) @PathVariable @NonNull @Positive final Long id,
+			@NonNull @NotNull final Locale locale) {
+		LOGGER.info("{} id {} locale {}", LOG_METHOD_FIND_BY_ID, id, locale);
 
-		final DrinkDTO result = getModelService().findById(id);
+		final DrinkDTO result = getModelService().findById(id, locale);
 
 		LOGGER.info("{} result {}", LOG_METHOD_FIND_BY_ID, result);
 
@@ -135,14 +139,15 @@ public class DrinkFindModelServiceController implements IRestModelController<Dri
 			@ApiResponse(responseCode = "400", description = "Illegal argument"),
 			@ApiResponse(responseCode = "404", description = "DrinkDTO not exists") })
 	public @Valid DrinkDTO findByName(
-			@Parameter(name = "name", description = "The name of the drink object", required = true) @PathVariable @NonNull @NotBlank final String name) {
-		LOGGER.info("{} name {}", LOG_METHOD_FIND_BY_NAME, name);
+			@Parameter(name = "name", description = "The name of the drink object", required = true) @PathVariable @NonNull @NotBlank final String name,
+			@NonNull @NotNull final Locale locale) {
+		LOGGER.info("{} name {} locale {}", LOG_METHOD_FIND_BY_NAME, name, locale);
 
-		final DrinkDTO result = getModelService().findByName(name);
+		final DrinkDTO result = getModelService().findByName(name, locale);
 
 		LOGGER.info("{} result {}", LOG_METHOD_FIND_BY_NAME, result);
 
 		return result;
 	}
-	
+
 }

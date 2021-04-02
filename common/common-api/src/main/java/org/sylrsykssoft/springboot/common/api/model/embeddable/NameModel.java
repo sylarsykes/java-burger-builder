@@ -7,6 +7,8 @@ package org.sylrsykssoft.springboot.common.api.model.embeddable;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_NAME_MODEL_NAME_NAME_COLUMN;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_NAME;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_NAME;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nNameModelMessages.NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nNameModelMessages.NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -39,8 +41,8 @@ import lombok.experimental.SuperBuilder;
 public class NameModel extends BaseEmbeddable {
 
 	@Column(name = BASE_NAME_MODEL_NAME_NAME_COLUMN, nullable = false, unique = true, length = MAX_LENGTH_NAME)
-	@NotBlank(message = "Name field is mandatory")
-	@Size(min = MIN_LENGTH_NAME, max = MAX_LENGTH_NAME)
+	@NotBlank(message = NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE)
+	@Size(min = MIN_LENGTH_NAME, max = MAX_LENGTH_NAME, message = NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
 	String name;
-	
+
 }

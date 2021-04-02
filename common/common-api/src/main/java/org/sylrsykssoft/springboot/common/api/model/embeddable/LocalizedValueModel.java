@@ -8,9 +8,12 @@ import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPICons
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.DESCRIPTION_FIELD_COLUMN_DEFINITION;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_LOCALIZED_VALUE;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_LOCALIZED_VALUE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nLocalizedModelMessages.LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nLocalizedModelMessages.LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lombok.AccessLevel;
@@ -39,7 +42,8 @@ import lombok.experimental.SuperBuilder;
 public class LocalizedValueModel extends BaseEmbeddable {
 
 	@Column(name = BASE_LOCALIZED_MODEL_NAME_VALUE_COLUMN, nullable = false, columnDefinition = DESCRIPTION_FIELD_COLUMN_DEFINITION, length = MAX_LENGTH_LOCALIZED_VALUE)
-	@Size(min = MIN_LENGTH_LOCALIZED_VALUE, max = MAX_LENGTH_LOCALIZED_VALUE)
+	@NotBlank(message = LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE)
+	@Size(min = MIN_LENGTH_LOCALIZED_VALUE, max = MAX_LENGTH_LOCALIZED_VALUE, message = LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
 	String value;
 	
 }

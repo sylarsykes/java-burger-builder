@@ -4,6 +4,25 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.service.model.drinks.drink.create.dto;
 
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.FOODSIZE_SIZE_JSON_ALLOWED_VALUES_LARGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.FOODSIZE_SIZE_JSON_ALLOWED_VALUES_MEDIUM;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.FOODSIZE_SIZE_JSON_ALLOWED_VALUES_SMALL;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.FOODSIZE_SIZE_JSON_DEFAULT_VALUE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DRINK_TYPE_JSON_ALLOWED_VALUES_ALCOHOLIC;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DRINK_TYPE_JSON_ALLOWED_VALUES_NO_ALCOHOLIC;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DRINK_TYPE_JSON_DEFAULT_VALUE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.drinks.CreateDrinkI18nMessages.CREATE_DRINK_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.drinks.CreateDrinkI18nMessages.CREATE_DRINK_TYPE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.FoodSizeI18nMessages.FOOD_SIZE_MODEL_SIZE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.drinks.DrinkJsonProperties.DRINK_MODEL_TYPE_JSON_PROPERTY;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.embeddable.FoodSizeJsonProperties.FOOD_SIZE_MODEL_SIZE_JSON_PROPERTY;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.embeddable.PriceDataJsonProperties.PRICE_DATA_MODEL_PRICE_JSON_OBJECT_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nNameModelMessages.NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nStartEndDateModelMessages.START_END_DATE_MODEL_STARTENDDATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonDescriptionModelProperties.DESCRIPTION_MODEL_DESCRIPTION_JSON_OBJECT_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonNameModelProperties.NAME_MODEL_NAME_JSON_OBJECT_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonStartEndDateModelProperties.START_END_DATE_MODEL_START_DATE_JSON_OBJECT_PROPERTY;
+
 import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;
@@ -49,34 +68,38 @@ public class CreateDrinkModelDTO extends CreateModelDTO<DrinkDTO, Long> implemen
 
 	private static final long serialVersionUID = -4078145375295487869L;
 
-	@NotNull(message = "CreateDrinkModelDTO::Name field is mandatory")
-	@JsonProperty(value = "Name", required = true)
-	@Schema(name = "Name", description = "Name value", required = true)
+	@NotNull(message = NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = NAME_MODEL_NAME_JSON_OBJECT_PROPERTY, required = true)
+	@Schema(name = NAME_MODEL_NAME_JSON_OBJECT_PROPERTY, description = "Name value", required = true)
 	NameModelDTO name;
-	
+
 	@Nullable
-	@JsonProperty(value = "Description")
-	@Schema(name = "Description", description = "Description value", nullable = true)
+	@JsonProperty(value = DESCRIPTION_MODEL_DESCRIPTION_JSON_OBJECT_PROPERTY)
+	@Schema(name = DESCRIPTION_MODEL_DESCRIPTION_JSON_OBJECT_PROPERTY, description = "Description value", nullable = true)
 	DescriptionModelDTO description;
-	
-	@NotBlank(message = "CreateDrinkModelDTO::Type field is mandatory")
-	@JsonProperty(value = "Type", required = true, defaultValue = "NO_ALCOHOLIC")
-	@Schema(name = "Type", description = "Type DrinkType", required = true, allowableValues = { "NO_ALCOHOLIC", "ALCOHOLIC" }, defaultValue = "NO_ALCOHOLIC")
+
+	@NotBlank(message = CREATE_DRINK_TYPE_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE)
+	@JsonProperty(value = DRINK_MODEL_TYPE_JSON_PROPERTY, required = true, defaultValue = DRINK_TYPE_JSON_DEFAULT_VALUE)
+	@Schema(name = DRINK_MODEL_TYPE_JSON_PROPERTY, description = "Type DrinkType", required = true, allowableValues = {
+			DRINK_TYPE_JSON_ALLOWED_VALUES_NO_ALCOHOLIC,
+			DRINK_TYPE_JSON_ALLOWED_VALUES_ALCOHOLIC }, defaultValue = DRINK_TYPE_JSON_DEFAULT_VALUE)
 	String type;
-	
-	@NotBlank(message = "CreateDrinkModelDTO::Size field is mandatory")
-	@JsonProperty(value = "Size", required = true, defaultValue = "SMALL")
-	@Schema(name = "Size", description = "Size FoodSize", required = true, allowableValues = { "SMALL", "MEDIUM", "LARGE" }, defaultValue = "SMALL")
+
+	@NotBlank(message = FOOD_SIZE_MODEL_SIZE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = FOOD_SIZE_MODEL_SIZE_JSON_PROPERTY, required = true, defaultValue = FOODSIZE_SIZE_JSON_DEFAULT_VALUE)
+	@Schema(name = FOOD_SIZE_MODEL_SIZE_JSON_PROPERTY, description = "Size FoodSize", required = true, allowableValues = {
+			FOODSIZE_SIZE_JSON_ALLOWED_VALUES_SMALL, FOODSIZE_SIZE_JSON_ALLOWED_VALUES_MEDIUM,
+			FOODSIZE_SIZE_JSON_ALLOWED_VALUES_LARGE }, defaultValue = FOODSIZE_SIZE_JSON_DEFAULT_VALUE)
 	String size;
-	
-	@NotNull(message = "CreateDrinkModelDTO::Price field is mandatory")
-	@JsonProperty(value = "Price", required = true)
-	@Schema(name = "Price", description = "Price PriceDataDTO", required = true)
+
+	@NotNull(message = CREATE_DRINK_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = PRICE_DATA_MODEL_PRICE_JSON_OBJECT_PROPERTY, required = true)
+	@Schema(name = PRICE_DATA_MODEL_PRICE_JSON_OBJECT_PROPERTY, description = "Price PriceDataDTO", required = true)
 	PriceDataDTO price;
-	
-	@NotNull(message = "CreateDrinkModelDTO::DrinkStartEndDateData field is mandatory")
-	@JsonProperty(value = "DrinkStartEndDateData", required = true)
-	@Schema(name = "DrinkStartEndDateData", description = "DrinkStartEndDateData StartEndDateModelDTO", required = true)
+
+	@NotNull(message = START_END_DATE_MODEL_STARTENDDATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = START_END_DATE_MODEL_START_DATE_JSON_OBJECT_PROPERTY, required = true)
+	@Schema(name = START_END_DATE_MODEL_START_DATE_JSON_OBJECT_PROPERTY, description = "DrinkStartEndDateData StartEndDateModelDTO", required = true)
 	StartEndDateModelDTO drinkStartEndDateData;
-	
+
 }

@@ -5,8 +5,10 @@
 package org.sylrsykssoft.java.springboot.mealbuilder.model.service.drinks.drink.find;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.API_MODELMAPPER_MODEL_DRINKS_MODEL_MAPPER_BEAN_NAME;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.drinks.DrinkI18nMessages.DRINK_FIND_SERVICE_FIND_BY_ID_NOTFOUND;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.drinks.DrinkI18nMessages.DRINK_FIND_SERVICE_FIND_BY_NAME_NOTFOUND;
 
-import java.text.MessageFormat;
+import java.util.Locale;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -18,6 +20,7 @@ import javax.validation.constraints.Positive;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,6 +66,9 @@ public class DrinkFindService implements IDrinkFindService {
 	@Qualifier(API_MODELMAPPER_MODEL_DRINKS_MODEL_MAPPER_BEAN_NAME)
 	ModelMapper mapper;
 
+	@Autowired
+	MessageSource messageSource;
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -94,16 +100,14 @@ public class DrinkFindService implements IDrinkFindService {
 	 */
 	@Override
 	@SneakyThrows({ NullPointerException.class, IllegalArgumentException.class })
-	public DrinkDTO findById(@NonNull @NotNull @Positive final Long id)
+	public DrinkDTO findById(@NonNull @NotNull @Positive final Long id, @NonNull @NotNull final Locale locale)
 			throws IllegalArgumentException, EntityNotFoundException {
-		LOGGER.info("{} id {}", LOG_METHOD_FIND_BY_ID, id);
+		LOGGER.info("{} id {} locale {}", LOG_METHOD_FIND_BY_ID, id, locale);
 
 		final Optional<Drink> resultEntity = getRepository().findById(id);
 
-		LOGGER.info("{} result {}", LOG_METHOD_FIND_BY_ID, resultEntity);
-
-		return mapperToModel(resultEntity.orElseThrow(
-				() -> new EntityNotFoundException(MessageFormat.format("Drink with id {0} not exists.", id))));
+		return mapperToModel(resultEntity.orElseThrow(() -> new EntityNotFoundException(
+				messageSource.getMessage(DRINK_FIND_SERVICE_FIND_BY_ID_NOTFOUND, new Object[] { id }, locale))));
 	}
 
 	/**
@@ -122,14 +126,14 @@ public class DrinkFindService implements IDrinkFindService {
 	 */
 	@Override
 	@SneakyThrows({ NullPointerException.class, IllegalArgumentException.class })
-	public DrinkDTO findByName(@NonNull @NotBlank final String name)
+	public DrinkDTO findByName(@NonNull @NotBlank final String name, @NonNull @NotNull final Locale locale)
 			throws IllegalArgumentException, EntityNotFoundException {
 		LOGGER.info("{} name {}", LOG_METHOD_FIND_BY_NAME, name);
 
 		final Optional<Drink> resultEntity = getRepository().findByName(name);
 
-		return mapperToModel(resultEntity.orElseThrow(
-				() -> new EntityNotFoundException(MessageFormat.format("Drink with name {0} not exists.", name))));
+		return mapperToModel(resultEntity.orElseThrow(() -> new EntityNotFoundException(
+				messageSource.getMessage(DRINK_FIND_SERVICE_FIND_BY_NAME_NOTFOUND, new Object[] { name }, locale))));
 	}
 
 }

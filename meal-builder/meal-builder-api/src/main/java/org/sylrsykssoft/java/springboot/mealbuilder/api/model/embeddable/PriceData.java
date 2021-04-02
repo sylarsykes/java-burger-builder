@@ -9,6 +9,9 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.Api
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.LENGTH_PRECISION_PRICE;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.LENGTH_SCALE_PRICE;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.PRICE_PRICE_NAME_COLUMN;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.PriceDataI18nMessages.PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_DIGITS_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.PriceDataI18nMessages.PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.PriceDataI18nMessages.PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_POSITIVE_MESSAGE;
 
 import java.math.BigDecimal;
 
@@ -42,9 +45,9 @@ import lombok.experimental.SuperBuilder;
 public class PriceData {
 
 	@Column(name = PRICE_PRICE_NAME_COLUMN, nullable = false, precision = LENGTH_PRECISION_PRICE, scale = LENGTH_SCALE_PRICE)
-	@NotNull(message = "Price field is mandatory")
-	@Positive
-	@Digits(integer = LENGTH_DIGITS_PRECISION_PRICE, fraction = LENGTH_DIGITS_SCALE_PRICE)
+	@NotNull(message = PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@Positive(message = PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_POSITIVE_MESSAGE)
+	@Digits(integer = LENGTH_DIGITS_PRECISION_PRICE, fraction = LENGTH_DIGITS_SCALE_PRICE, message = PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_DIGITS_MESSAGE)
 	BigDecimal price;
 	
 }

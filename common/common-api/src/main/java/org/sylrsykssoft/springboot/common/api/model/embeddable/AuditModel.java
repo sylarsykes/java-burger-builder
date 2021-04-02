@@ -12,6 +12,10 @@ import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPICons
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.BASE_AUDIT_MODEL_NAME_LAST_MODIFY_BY_COLUMN;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MAX_LENGTH_NICKNAME_USER;
 import static org.sylrsykssoft.springboot.common.api.configuration.CommonAPIConstants.MIN_LENGTH_NICKNAME_USER;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nAuditModelMessages.AUDIT_MODEL_CREATEBY_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nAuditModelMessages.AUDIT_MODEL_CREATEBY_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nAuditModelMessages.AUDIT_MODEL_CREATED_DATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nAuditModelMessages.AUDIT_MODEL_LAST_MODIFIED_BY_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE;
 
 import java.time.LocalDateTime;
 
@@ -53,18 +57,18 @@ import lombok.experimental.SuperBuilder;
 public class AuditModel extends BaseEmbeddable {
 
 	@Column(name = BASE_AUDIT_MODEL_NAME_CREATED_BY_COLUMN, nullable = false, insertable = true, updatable = false, length = MAX_LENGTH_NICKNAME_USER)
-	@NotBlank(message = "CreatedBy field is mandatory")
-	@Size(min = MIN_LENGTH_NICKNAME_USER, max = MAX_LENGTH_NICKNAME_USER)
+	@NotBlank(message = AUDIT_MODEL_CREATEBY_FIELD_VALIDATION_CONSTRAINT_NOTBLANK_MESSAGE)
+	@Size(min = MIN_LENGTH_NICKNAME_USER, max = MAX_LENGTH_NICKNAME_USER, message = AUDIT_MODEL_CREATEBY_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
 	@CreatedBy
 	String createdBy;
 
 	@Column(name = BASE_AUDIT_MODEL_NAME_CREATED_DATE_COLUMN, columnDefinition = BASE_AUDIT_MODEL_NAME_CREATED_DATE_COLUMN_DEFAULT_VALUE, nullable = false, insertable = true, updatable = false)
-	@NotNull(message = "CreatedDate field is mandatory")
+	@NotNull(message = AUDIT_MODEL_CREATED_DATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
 	@CreatedDate
 	LocalDateTime createdDate;
 
 	@Column(name = BASE_AUDIT_MODEL_NAME_LAST_MODIFY_BY_COLUMN, nullable = true, insertable = false, updatable = true, length = MAX_LENGTH_NICKNAME_USER)
-	@Size(min = MIN_LENGTH_NICKNAME_USER, max = MAX_LENGTH_NICKNAME_USER)
+	@Size(min = MIN_LENGTH_NICKNAME_USER, max = MAX_LENGTH_NICKNAME_USER, message = AUDIT_MODEL_LAST_MODIFIED_BY_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE)
 	@LastModifiedBy
 	String lastModifiedBy;
 
@@ -72,5 +76,5 @@ public class AuditModel extends BaseEmbeddable {
 	@Nullable
 	@LastModifiedDate
 	LocalDateTime lastModifiedDate;
-	
+
 }
