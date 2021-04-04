@@ -4,17 +4,25 @@
  */
 package org.sylrsykssoft.java.springboot.mealbuilder.api.mapper.converter.service.model.create.dto.drinks;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.Converters.Converter;
 import org.modelmapper.ModelMapper;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.ApiConstants.FoodSize;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.DrinkApiConstants.DrinkType;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.LocalizedDrinkDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.embeddable.FoodSizeDataDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.service.model.drinks.drink.create.dto.CreateDrinkModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.DescriptionModelDTO;
+import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.NameModelDTO;
 
 import lombok.AccessLevel;
@@ -55,7 +63,26 @@ public final class CreateDrinkModelDTOMapperConverter implements Converter<Creat
 
 		final FoodSizeDataDTO size = FoodSizeDataDTO.builder().size(FoodSize.valueOf(source.getSize())).build();
 
+		final Map<LocalizedFieldNameModelDTO, LocalizedDrinkDTO> localizationsData = new HashMap<>();
+		if (MapUtils.isNotEmpty(source.getLocalizationsData())) {
+			source.getLocalizationsData().forEach((localeKey, values) -> {
+				if (CollectionUtils.isNotEmpty(values)) {
+					values.forEach(localizedFieldNameModel -> {
+						if (localizedFieldNameModel.getEmbeddedId() != null
+								&& StringUtils.equals(localeKey, localizedFieldNameModel.getEmbeddedId().getLocale())) {
+							final LocalizedFieldNameModelDTO key = commonModelMapper
+									.map(localizedFieldNameModel.getEmbeddedId(), LocalizedFieldNameModelDTO.class);
+							final LocalizedDrinkDTO value = LocalizedDrinkDTO.builder().embeddedId(key)
+									.value(localizedFieldNameModel.getValue()).build();
+
+							localizationsData.put(key, value);
+						}
+					});
+				}
+			});
+		}
+
 		return DrinkDTO.builder().name(name).description(description).type(type).size(size).price(source.getPrice())
-				.drinkStartEndDateData(source.getDrinkStartEndDateData()).build();
+				.drinkStartEndDateData(source.getDrinkStartEndDateData()).localizationsData(localizationsData).build();
 	}
 }

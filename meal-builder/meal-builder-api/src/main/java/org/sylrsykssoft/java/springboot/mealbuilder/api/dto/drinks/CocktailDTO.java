@@ -6,6 +6,8 @@ package org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks;
 
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.CocktailApiConstants.COCKTAIL_INGREDIENT_MAX_LENGTH;
 import static org.sylrsykssoft.java.springboot.mealbuilder.api.configuration.drinks.CocktailApiConstants.COCKTAIL_INGREDIENT_MIN_LENGTH;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.i18n.messages.embeddable.PriceDataI18nMessages.PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
+import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.embeddable.PriceDataJsonProperties.PRICE_DATA_MODEL_PRICE_JSON_OBJECT_PROPERTY;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -60,9 +62,9 @@ public class CocktailDTO extends BaseNameModelDTO<Long> implements Serializable 
 	@Schema(name = "Preparation", description = "Preparation of Cocktail", required = true)
 	PreparationDataDTO preparation;
 
-	@NotNull(message = "Price field is mandatory")
-	@JsonProperty(value = "Price", required = true)
-	@Schema(name = "Price", description = "Price PriceDataDTO", required = true)
+	@NotNull(message = PRICE_DATA_MODEL_PRICE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE)
+	@JsonProperty(value = PRICE_DATA_MODEL_PRICE_JSON_OBJECT_PROPERTY, required = true)
+	@Schema(name = PRICE_DATA_MODEL_PRICE_JSON_OBJECT_PROPERTY, description = "Price PriceDataDTO", required = true)
 	PriceDataDTO price;
 
 	@NotNull(message = "CocktailStartEndDateData field is mandatory")

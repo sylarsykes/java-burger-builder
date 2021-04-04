@@ -30,6 +30,9 @@ public class CommonI18nLocalizedModelMessages {
 	public static final String LOCALIZED_MODEL_FIELD_NAME_FIELD_VALIDATION_CONSTRAINT_SIZE = "org.sylrsykssoft.springboot.common.messages.localizedmodel.locale.validation.constraints.Size";
 	public static final String LOCALIZED_MODEL_FIELD_NAME_FIELD_VALIDATION_CONSTRAINT_SIZE_MESSAGE = "{"
 			+ LOCALIZED_MODEL_LOCALE_FIELD_VALIDATION_CONSTRAINT_SIZE + "}";
+	public static final String LOCALIZED_MODEL_EMBEDDED_ID_FIELD_VALIDATION_CONSTRAINT_NOTNULL = "org.sylrsykssoft.springboot.common.messages.localizedmodel.embeddedid.validation.constraints.NotNull";
+	public static final String LOCALIZED_MODEL_EMBEDDED_ID_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE = "{"
+			+ LOCALIZED_MODEL_EMBEDDED_ID_FIELD_VALIDATION_CONSTRAINT_NOTNULL + "}";
 	public static final String LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_NOTNULL = "org.sylrsykssoft.springboot.common.messages.localizedmodel.value.validation.constraints.NotNull";
 	public static final String LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE = "{"
 			+ LOCALIZED_MODEL_VALUE_FIELD_VALIDATION_CONSTRAINT_NOTNULL + "}";

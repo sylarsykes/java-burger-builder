@@ -20,10 +20,14 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.api.json.properties.e
 import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nNameModelMessages.NAME_MODEL_NAME_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
 import static org.sylrsykssoft.springboot.common.api.i18n.messages.embeddable.CommonI18nStartEndDateModelMessages.START_END_DATE_MODEL_STARTENDDATE_FIELD_VALIDATION_CONSTRAINT_NOTNULL_MESSAGE;
 import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonDescriptionModelProperties.DESCRIPTION_MODEL_DESCRIPTION_JSON_OBJECT_PROPERTY;
+import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonLocalizedModelProperties.LOCALIZED_MODEL_LOCALIZATIONS_DATA_JSON_OBJECT_PROPERTY;
 import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonNameModelProperties.NAME_MODEL_NAME_JSON_OBJECT_PROPERTY;
 import static org.sylrsykssoft.springboot.common.api.json.properties.embeddable.CommonJsonStartEndDateModelProperties.START_END_DATE_MODEL_START_DATE_JSON_OBJECT_PROPERTY;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -41,6 +45,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -102,4 +107,10 @@ public class CreateDrinkModelDTO extends CreateModelDTO<DrinkDTO, Long> implemen
 	@Schema(name = START_END_DATE_MODEL_START_DATE_JSON_OBJECT_PROPERTY, description = "DrinkStartEndDateData StartEndDateModelDTO", required = true)
 	StartEndDateModelDTO drinkStartEndDateData;
 
+	@JsonProperty(value = LOCALIZED_MODEL_LOCALIZATIONS_DATA_JSON_OBJECT_PROPERTY)
+	@Schema(name = LOCALIZED_MODEL_LOCALIZATIONS_DATA_JSON_OBJECT_PROPERTY, description = "Localizations of the name of DrinkDTO")
+	@Builder.Default
+	@EqualsAndHashCode.Exclude
+	transient Map<String, List<CreateDrinkLocalizationDataModelDTO>> localizationsData = new HashMap<>();
+	
 }
