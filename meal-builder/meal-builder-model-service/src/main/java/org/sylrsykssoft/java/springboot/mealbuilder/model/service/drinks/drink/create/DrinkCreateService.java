@@ -19,6 +19,7 @@ import org.springframework.validation.annotation.Validated;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.dto.drinks.DrinkDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.service.model.drinks.drink.create.IDrinkCreateModelService;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.service.model.drinks.drink.create.dto.CreateDrinkLocalizationDataModelDTO;
 import org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks.DrinkRepository;
 
 import lombok.AccessLevel;
@@ -40,6 +41,7 @@ public class DrinkCreateService implements IDrinkCreateModelService {
 	private static final String LOG_CLASS_NAME = DrinkCreateService.class.getSimpleName() + ".";
 	
 	private static final String LOG_METHOD_SAVE = LOG_CLASS_NAME + "save - Create a new Drink - ";
+	private static final String LOG_METHOD_INSERT_LOCALIZED_DATA = LOG_CLASS_NAME + "insertLocalizationData - Create a new LocalizedDrink - ";
 	
 	@Autowired
 	DrinkRepository drinkRepository;
@@ -80,7 +82,7 @@ public class DrinkCreateService implements IDrinkCreateModelService {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	@SneakyThrows({ NullPointerException.class, IllegalArgumentException.class })
-	public DrinkDTO save(@NonNull @NotNull @Valid DrinkDTO dto) {
+	public DrinkDTO save(@NonNull @NotNull @Valid final DrinkDTO dto) {
 		LOGGER.info("{} dto {}", LOG_METHOD_SAVE, dto);
 		
 		final Drink resultEntity = getRepository().save(mapperToEntity(dto));
@@ -88,6 +90,18 @@ public class DrinkCreateService implements IDrinkCreateModelService {
 		LOGGER.info("{} result {}", LOG_METHOD_SAVE, resultEntity);
 		
 		return mapperToModel(resultEntity);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@SneakyThrows({ NullPointerException.class, IllegalArgumentException.class })
+	public int insertLocalizationData(@NonNull @NotNull @Valid final CreateDrinkLocalizationDataModelDTO localizedData) {
+		LOGGER.info("{} dto {}", LOG_METHOD_INSERT_LOCALIZED_DATA, localizedData);
+		
+		return getRepository().insertLocalizationData(localizedData);
 	}
 
 }

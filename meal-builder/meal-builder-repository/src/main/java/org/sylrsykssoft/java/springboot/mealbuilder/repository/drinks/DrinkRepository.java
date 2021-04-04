@@ -10,13 +10,19 @@ import static org.sylrsykssoft.java.springboot.mealbuilder.repository.drinks.que
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
+import org.sylrsykssoft.java.springboot.mealbuilder.api.service.model.drinks.drink.create.dto.CreateDrinkLocalizationDataModelDTO;
 
 /**
  * DrinkRepository
@@ -28,6 +34,20 @@ import org.sylrsykssoft.java.springboot.mealbuilder.api.model.drinks.Drink;
 @Repository
 @RepositoryDefinition(domainClass = Drink.class, idClass = Long.class)
 public interface DrinkRepository extends JpaRepository<Drink, Long> {
+	
+	/**
+	 * Insert drink localized data
+	 * @param localizedData Localized data
+	 * @return int
+	 */
+	@Transactional
+	@Modifying
+	@Query(value = "INSERT INTO drinks.localized_drink"
+			+ "(drink_id, locale, field_name, value) "
+			+ "VALUES("
+			+ ":#{#localizedData.id}, :#{#localizedData.embeddedId.locale}, :#{#localizedData.embeddedId.fieldName}, :#{#localizedData.value.value}"
+			+ ")", nativeQuery = true)
+	int insertLocalizationData(@NotNull @Valid @Param("localizedData") CreateDrinkLocalizationDataModelDTO localizedData);
 	
 	/**
 	 * Find drink by name

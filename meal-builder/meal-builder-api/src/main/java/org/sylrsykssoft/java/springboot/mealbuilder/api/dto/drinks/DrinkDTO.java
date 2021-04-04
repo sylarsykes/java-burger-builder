@@ -28,10 +28,12 @@ import org.sylrsykssoft.springboot.common.api.dto.BaseNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.AuditModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.LocalizedFieldNameModelDTO;
 import org.sylrsykssoft.springboot.common.api.dto.embeddable.StartEndDateModelDTO;
+import org.sylrsykssoft.springboot.common.api.json.deserializer.embeddable.MapLocalizationsDataKeyDeseralizer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -82,6 +84,7 @@ public class DrinkDTO extends BaseNameModelDTO<Long> implements Serializable {
 	StartEndDateModelDTO drinkStartEndDateData;
 
 	@JsonProperty(value = LOCALIZED_MODEL_LOCALIZATIONS_DATA_JSON_OBJECT_PROPERTY)
+	@JsonDeserialize(keyUsing = MapLocalizationsDataKeyDeseralizer.class)
 	@JsonManagedReference
 	@Schema(name = LOCALIZED_MODEL_LOCALIZATIONS_DATA_JSON_OBJECT_PROPERTY, description = "Localizations of the name of DrinkDTO")
 	@Builder.Default

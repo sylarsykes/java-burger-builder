@@ -23,9 +23,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.Value;
+import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
+import lombok.extern.jackson.Jacksonized;
 
 /**
  * LocalizedModel
@@ -34,8 +37,11 @@ import lombok.experimental.SuperBuilder;
  * @see https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
  */
 @Value
-@SuperBuilder(toBuilder = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+@Jacksonized
+@SuperBuilder(toBuilder = true)
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 @ToString(callSuper = true, includeFieldNames = true)
 public class LocalizedModelDTO extends BaseEmbeddableDTO implements Serializable {
